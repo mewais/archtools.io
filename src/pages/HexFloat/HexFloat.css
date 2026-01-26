@@ -766,6 +766,16 @@
   font-style: italic;
 }
 
+.hex-float__bulk-cell--na {
+  color: var(--text-tertiary);
+}
+
+.hex-float__scale-control--inline {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: transparent;
+  border: none;
+}
+
 /* Responsive */
 @media (max-width: 767px) {
   .hex-float__header {

@@ -464,11 +464,16 @@ const encodeAllFormats = (value: number): AllEncodings => ({
   fp8e5m2: encodeToFormat(value, FP_FORMATS[5]),
 });
 
+interface ScaledEncodings {
+  [key: string]: ScaledEncodedValue;
+}
+
 interface BulkResult {
   input: string;
   value: number;
   isValid: boolean;
   encodings?: AllEncodings;
+  scaledEncodings?: ScaledEncodings;
 }
 
 const ChevronIcon: React.FC<{ expanded: boolean; size?: number }> = ({ expanded, size = 16 }) => (
@@ -546,14 +551,30 @@ const HexFloat: React.FC = () => {
     const values = bulkInput.split(/[\s,;\n]+/).filter(v => v.trim());
     return values.map(input => {
       const { value, isValid } = parseFloatInput(input);
+      if (!isValid) {
+        return { input, value, isValid };
+      }
+
+      // Compute scaled encodings for compatible formats
+      const isSpecialValue = !Number.isFinite(value) || Number.isNaN(value);
+      const compatibleScaledFormats = isSpecialValue
+        ? SCALED_FORMATS.filter(f => f.hasInfNan)
+        : SCALED_FORMATS;
+
+      const scaledEncs: ScaledEncodings = {};
+      compatibleScaledFormats.forEach(format => {
+        scaledEncs[format.shortName] = encodeToScaledFormat(value, format, sharedScale);
+      });
+
       return {
         input,
         value,
         isValid,
-        encodings: isValid ? encodeAllFormats(value) : undefined,
+        encodings: encodeAllFormats(value),
+        scaledEncodings: scaledEncs,
       };
     });
-  }, [bulkInput]);
+  }, [bulkInput, sharedScale]);
 
   const parsedBulkResults = bulkResults();
 
@@ -1229,6 +1250,22 @@ const HexFloat: React.FC = () => {
                       </span>
                     )}
                   </span>
+                  <div className="hex-float__scale-control hex-float__scale-control--inline">
+                    <label className="hex-float__scale-label">
+                      MX Scale (2^n):
+                      <input
+                        type="number"
+                        className="hex-float__scale-input"
+                        value={scaleInput}
+                        onChange={(e) => setScaleInput(e.target.value)}
+                        onBlur={() => {
+                          const val = parseInt(scaleInput) || 0;
+                          setSharedScale(val);
+                          setScaleInput(String(val));
+                        }}
+                      />
+                    </label>
+                  </div>
                 </div>
                 <div className="hex-float__bulk-table-wrapper">
                   <table className="hex-float__bulk-table">
@@ -1236,10 +1273,15 @@ const HexFloat: React.FC = () => {
                       <tr>
                         <th>Input</th>
                         <th>Value</th>
-                        <th>FP64 Hex</th>
-                        <th>FP32 Hex</th>
-                        <th>FP16 Hex</th>
-                        <th>BF16 Hex</th>
+                        <th>FP64</th>
+                        <th>FP32</th>
+                        <th>FP16</th>
+                        <th>BF16</th>
+                        <th>E4M3</th>
+                        <th>E5M2</th>
+                        {SCALED_FORMATS.map(f => (
+                          <th key={f.shortName}>{f.shortName}</th>
+                        ))}
                       </tr>
                     </thead>
                     <tbody>
@@ -1313,9 +1355,57 @@ const HexFloat: React.FC = () => {
                                   </button>
                                 </span>
                               </td>
+                              <td className="hex-float__bulk-cell--mono">
+                                <span
+                                  className={`hex-float__bulk-cell-content ${longPressTarget === result.encodings.fp8e4m3.hex ? 'hex-float__bulk-cell-content--copying' : ''}`}
+                                  onTouchStart={() => handleTouchStart(result.encodings!.fp8e4m3.hex)}
+                                  onTouchEnd={handleTouchEnd}
+                                  onTouchCancel={handleTouchEnd}
+                                >
+                                  {result.encodings.fp8e4m3.hex}
+                                  <button className="hex-float__bulk-copy-btn" onClick={() => copyToClipboard(result.encodings!.fp8e4m3.hex)} title="Copy">
+                                    <CopyIcon size={14} />
+                                  </button>
+                                </span>
+                              </td>
+                              <td className="hex-float__bulk-cell--mono">
+                                <span
+                                  className={`hex-float__bulk-cell-content ${longPressTarget === result.encodings.fp8e5m2.hex ? 'hex-float__bulk-cell-content--copying' : ''}`}
+                                  onTouchStart={() => handleTouchStart(result.encodings!.fp8e5m2.hex)}
+                                  onTouchEnd={handleTouchEnd}
+                                  onTouchCancel={handleTouchEnd}
+                                >
+                                  {result.encodings.fp8e5m2.hex}
+                                  <button className="hex-float__bulk-copy-btn" onClick={() => copyToClipboard(result.encodings!.fp8e5m2.hex)} title="Copy">
+                                    <CopyIcon size={14} />
+                                  </button>
+                                </span>
+                              </td>
+                              {SCALED_FORMATS.map(f => {
+                                const scaled = result.scaledEncodings?.[f.shortName];
+                                return (
+                                  <td key={f.shortName} className="hex-float__bulk-cell--mono">
+                                    {scaled ? (
+                                      <span
+                                        className={`hex-float__bulk-cell-content ${longPressTarget === scaled.hex ? 'hex-float__bulk-cell-content--copying' : ''}`}
+                                        onTouchStart={() => handleTouchStart(scaled.hex)}
+                                        onTouchEnd={handleTouchEnd}
+                                        onTouchCancel={handleTouchEnd}
+                                      >
+                                        {scaled.hex}
+                                        <button className="hex-float__bulk-copy-btn" onClick={() => copyToClipboard(scaled.hex)} title="Copy">
+                                          <CopyIcon size={14} />
+                                        </button>
+                                      </span>
+                                    ) : (
+                                      <span className="hex-float__bulk-cell--na">—</span>
+                                    )}
+                                  </td>
+                                );
+                              })}
                             </>
                           ) : (
-                            <td colSpan={5} className="hex-float__bulk-cell--error">Invalid</td>
+                            <td colSpan={7 + SCALED_FORMATS.length} className="hex-float__bulk-cell--error">Invalid</td>
                           )}
                         </tr>
                       ))}
