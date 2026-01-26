@@ -1,0 +1,73 @@
+/* Tool Page Layout */
+
+.tool-page {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  width: 100%;
+}
+
+.tool-page__header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.tool-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: var(--spacing-md);
+  transition: color var(--transition-fast);
+}
+
+.tool-page__back:hover {
+  color: var(--color-primary-500);
+}
+
+.tool-page__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tool-page__description {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+.tool-page__content {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  min-height: 400px;
+}
+
+.tool-page__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-lg);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .tool-page {
+    padding: var(--spacing-md);
+  }
+
+  .tool-page__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .tool-page__content {
+    padding: var(--spacing-md);
+  }
+}
