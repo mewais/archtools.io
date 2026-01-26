@@ -144,7 +144,17 @@ const HexInt: React.FC = () => {
   const shiftAmount = Math.max(1, Math.min(bitWidth, parseInt(shiftAmountInput) || 1));
 
   // Calculate minimum required bits and available widths
-  const minBitsRequired = useMemo(() => getMinBitsRequired(singleInput), [singleInput]);
+  const minBitsRequired = useMemo(() => {
+    if (mode === 'single') {
+      return getMinBitsRequired(singleInput);
+    } else {
+      // For bulk mode, find the max bits needed across all values
+      if (!bulkInput.trim()) return 8;
+      const values = bulkInput.split(/[\s,;\n]+/).filter(v => v.trim());
+      const maxBits = values.reduce((max, v) => Math.max(max, getMinBitsRequired(v)), 8);
+      return maxBits;
+    }
+  }, [mode, singleInput, bulkInput]);
   const availableWidths = useMemo(() =>
     ALL_BIT_WIDTHS.filter(w => w >= minBitsRequired),
     [minBitsRequired]
@@ -263,6 +273,25 @@ const HexInt: React.FC = () => {
   // Copy to clipboard
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
+  };
+
+  // Long-press to copy for touch devices
+  const longPressTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const [longPressTarget, setLongPressTarget] = useState<string | null>(null);
+
+  const handleTouchStart = (text: string) => {
+    longPressTimerRef.current = setTimeout(() => {
+      copyToClipboard(text);
+      setLongPressTarget(text);
+      setTimeout(() => setLongPressTarget(null), 300);
+    }, 500);
+  };
+
+  const handleTouchEnd = () => {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
   };
 
   // Copy all bulk values
@@ -541,6 +570,7 @@ const HexInt: React.FC = () => {
                         <th>Unsigned</th>
                         <th>Signed</th>
                         <th>Hex</th>
+                        <th>Hex (LE)</th>
                         <th>Binary</th>
                       </tr>
                     </thead>
@@ -550,13 +580,74 @@ const HexInt: React.FC = () => {
                           <td className="hex-int__bulk-cell--input">{v.input}</td>
                           {v.isValid ? (
                             <>
-                              <td>{formatNumber(v.unsigned)}</td>
-                              <td>{formatNumber(v.signed)}</td>
-                              <td className="hex-int__bulk-cell--mono">{v.hex}</td>
-                              <td className="hex-int__bulk-cell--mono hex-int__bulk-cell--binary">{v.binary}</td>
+                              <td>
+                                <span
+                                  className={`hex-int__bulk-cell-content ${longPressTarget === v.unsigned.toString() ? 'hex-int__bulk-cell-content--copying' : ''}`}
+                                  onTouchStart={() => handleTouchStart(v.unsigned.toString())}
+                                  onTouchEnd={handleTouchEnd}
+                                  onTouchCancel={handleTouchEnd}
+                                >
+                                  {formatNumber(v.unsigned)}
+                                  <button className="hex-int__bulk-copy-btn" onClick={() => copyToClipboard(v.unsigned.toString())} title="Copy">
+                                    <CopyIcon size={14} />
+                                  </button>
+                                </span>
+                              </td>
+                              <td>
+                                <span
+                                  className={`hex-int__bulk-cell-content ${longPressTarget === v.signed.toString() ? 'hex-int__bulk-cell-content--copying' : ''}`}
+                                  onTouchStart={() => handleTouchStart(v.signed.toString())}
+                                  onTouchEnd={handleTouchEnd}
+                                  onTouchCancel={handleTouchEnd}
+                                >
+                                  {formatNumber(v.signed)}
+                                  <button className="hex-int__bulk-copy-btn" onClick={() => copyToClipboard(v.signed.toString())} title="Copy">
+                                    <CopyIcon size={14} />
+                                  </button>
+                                </span>
+                              </td>
+                              <td className="hex-int__bulk-cell--mono">
+                                <span
+                                  className={`hex-int__bulk-cell-content ${longPressTarget === v.hex ? 'hex-int__bulk-cell-content--copying' : ''}`}
+                                  onTouchStart={() => handleTouchStart(v.hex)}
+                                  onTouchEnd={handleTouchEnd}
+                                  onTouchCancel={handleTouchEnd}
+                                >
+                                  {v.hex}
+                                  <button className="hex-int__bulk-copy-btn" onClick={() => copyToClipboard(v.hex)} title="Copy">
+                                    <CopyIcon size={14} />
+                                  </button>
+                                </span>
+                              </td>
+                              <td className="hex-int__bulk-cell--mono">
+                                <span
+                                  className={`hex-int__bulk-cell-content ${longPressTarget === v.hexLE ? 'hex-int__bulk-cell-content--copying' : ''}`}
+                                  onTouchStart={() => handleTouchStart(v.hexLE)}
+                                  onTouchEnd={handleTouchEnd}
+                                  onTouchCancel={handleTouchEnd}
+                                >
+                                  {v.hexLE}
+                                  <button className="hex-int__bulk-copy-btn" onClick={() => copyToClipboard(v.hexLE)} title="Copy">
+                                    <CopyIcon size={14} />
+                                  </button>
+                                </span>
+                              </td>
+                              <td className="hex-int__bulk-cell--mono hex-int__bulk-cell--binary">
+                                <span
+                                  className={`hex-int__bulk-cell-content ${longPressTarget === v.binary ? 'hex-int__bulk-cell-content--copying' : ''}`}
+                                  onTouchStart={() => handleTouchStart(v.binary)}
+                                  onTouchEnd={handleTouchEnd}
+                                  onTouchCancel={handleTouchEnd}
+                                >
+                                  {v.binary}
+                                  <button className="hex-int__bulk-copy-btn" onClick={() => copyToClipboard(v.binary)} title="Copy">
+                                    <CopyIcon size={14} />
+                                  </button>
+                                </span>
+                              </td>
                             </>
                           ) : (
-                            <td colSpan={4} className="hex-int__bulk-cell--error">Invalid</td>
+                            <td colSpan={5} className="hex-int__bulk-cell--error">Invalid</td>
                           )}
                         </tr>
                       ))}

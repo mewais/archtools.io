@@ -1,0 +1,8 @@
+0xDEADBEEF
+invalid
+0xFF
+hello
+256
+0xGGGG
+0b1010
+not_a_number
