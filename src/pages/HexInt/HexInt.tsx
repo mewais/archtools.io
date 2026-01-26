@@ -324,7 +324,22 @@ const HexInt: React.FC = () => {
   return (
     <ToolPage
       title="Hex-Integer Converter"
-      description="Convert between hexadecimal, decimal, binary, and octal. Supports signed/unsigned values and bit manipulation."
+      description="Free online hex to decimal converter. Convert between hexadecimal, decimal, binary, and octal. Supports signed/unsigned integers, bit manipulation, and bulk conversion."
+      keywords={[
+        'hex to decimal',
+        'decimal to hex',
+        'hexadecimal converter',
+        'binary converter',
+        'octal converter',
+        'hex calculator',
+        'number base converter',
+        'bit manipulation',
+        'twos complement',
+        'unsigned integer',
+        'signed integer',
+        'programmer calculator',
+        'developer tools'
+      ]}
     >
       <div className="hex-int">
         {/* Tabs and Bit Width */}

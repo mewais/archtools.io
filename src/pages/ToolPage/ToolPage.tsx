@@ -1,14 +1,76 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ToolPage.css';
 
 interface ToolPageProps {
   title: string;
   description: string;
+  keywords?: string[];
   children?: React.ReactNode;
 }
 
-const ToolPage: React.FC<ToolPageProps> = ({ title, description, children }) => {
+const ToolPage: React.FC<ToolPageProps> = ({ title, description, keywords, children }) => {
+  // Update document title and meta tags for SEO
+  useEffect(() => {
+    // Set page title
+    const prevTitle = document.title;
+    document.title = `${title} - archtools.io`;
+
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    const prevDescription = metaDescription?.getAttribute('content') || '';
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    }
+
+    // Update or create meta keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (keywords && keywords.length > 0) {
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.setAttribute('content', keywords.join(', '));
+    }
+
+    // Add structured data (JSON-LD)
+    const structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      'name': title,
+      'description': description,
+      'url': window.location.href,
+      'applicationCategory': 'DeveloperApplication',
+      'operatingSystem': 'Any',
+      'offers': {
+        '@type': 'Offer',
+        'price': '0',
+        'priceCurrency': 'USD'
+      }
+    };
+
+    let scriptTag = document.querySelector('script[data-tool-schema]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-tool-schema', 'true');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
+
+    // Cleanup on unmount
+    return () => {
+      document.title = prevTitle;
+      if (metaDescription) {
+        metaDescription.setAttribute('content', prevDescription);
+      }
+      if (scriptTag) {
+        scriptTag.remove();
+      }
+    };
+  }, [title, description, keywords]);
+
   return (
     <main className="tool-page">
       <div className="tool-page__header">
