@@ -137,7 +137,11 @@ const HexInt: React.FC = () => {
   const [bitWidth, setBitWidth] = useState<BitWidth>(32);
   const [singleInput, setSingleInput] = useState('0');
   const [bulkInput, setBulkInput] = useState('');
+  const [shiftAmountInput, setShiftAmountInput] = useState('1');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Parse shift amount, defaulting to 1 if invalid
+  const shiftAmount = Math.max(1, Math.min(bitWidth, parseInt(shiftAmountInput) || 1));
 
   // Calculate minimum required bits and available widths
   const minBitsRequired = useMemo(() => getMinBitsRequired(singleInput), [singleInput]);
@@ -194,19 +198,66 @@ const HexInt: React.FC = () => {
     setSingleInput('0x' + inverted.toString(16).toUpperCase());
   };
 
-  const shiftLeft = () => {
+  const negateBits = () => {
     const { value, isValid } = parseInput(singleInput, bitWidth);
     if (!isValid) return;
     const mask = (1n << BigInt(bitWidth)) - 1n;
-    const shifted = (value << 1n) & mask;
+    // Two's complement negation: -value masked to bit width
+    const negated = (-value) & mask;
+    setSingleInput('0x' + negated.toString(16).toUpperCase());
+  };
+
+  // Logical Shift Left: shift left, fill with 0s
+  const lsl = () => {
+    const { value, isValid } = parseInput(singleInput, bitWidth);
+    if (!isValid) return;
+    const mask = (1n << BigInt(bitWidth)) - 1n;
+    const shifted = (value << BigInt(shiftAmount)) & mask;
     setSingleInput('0x' + shifted.toString(16).toUpperCase());
   };
 
-  const shiftRight = () => {
+  // Logical Shift Right: shift right, fill with 0s
+  const lsr = () => {
     const { value, isValid } = parseInput(singleInput, bitWidth);
     if (!isValid) return;
-    const shifted = value >> 1n;
+    const shifted = value >> BigInt(shiftAmount);
     setSingleInput('0x' + shifted.toString(16).toUpperCase());
+  };
+
+  // Arithmetic Shift Right: shift right, preserve sign bit
+  const asr = () => {
+    const { value, isValid } = parseInput(singleInput, bitWidth);
+    if (!isValid) return;
+    const signBit = 1n << BigInt(bitWidth - 1);
+    const isNegative = (value & signBit) !== 0n;
+    let result = value;
+    for (let i = 0; i < shiftAmount; i++) {
+      result = result >> 1n;
+      if (isNegative) {
+        result = result | signBit;
+      }
+    }
+    setSingleInput('0x' + result.toString(16).toUpperCase());
+  };
+
+  // Rotate Left: bits that fall off left come back on right
+  const rol = () => {
+    const { value, isValid } = parseInput(singleInput, bitWidth);
+    if (!isValid) return;
+    const mask = (1n << BigInt(bitWidth)) - 1n;
+    const effectiveShift = shiftAmount % bitWidth;
+    const rotated = ((value << BigInt(effectiveShift)) | (value >> BigInt(bitWidth - effectiveShift))) & mask;
+    setSingleInput('0x' + rotated.toString(16).toUpperCase());
+  };
+
+  // Rotate Right: bits that fall off right come back on left
+  const ror = () => {
+    const { value, isValid } = parseInput(singleInput, bitWidth);
+    if (!isValid) return;
+    const mask = (1n << BigInt(bitWidth)) - 1n;
+    const effectiveShift = shiftAmount % bitWidth;
+    const rotated = ((value >> BigInt(effectiveShift)) | (value << BigInt(bitWidth - effectiveShift))) & mask;
+    setSingleInput('0x' + rotated.toString(16).toUpperCase());
   };
 
   // Copy to clipboard
@@ -355,12 +406,32 @@ const HexInt: React.FC = () => {
                 <div className="hex-int__binary-section">
                   <div className="hex-int__binary-header">
                     <span className="hex-int__binary-title">Binary (click bits to toggle)</span>
-                    <div className="hex-int__quick-actions">
-                      <button onClick={setAllBits} title="Set all bits to 1">Set All</button>
-                      <button onClick={clearAllBits} title="Clear all bits to 0">Clear</button>
-                      <button onClick={invertBits} title="Invert all bits">Invert</button>
-                      <button onClick={shiftLeft} title="Shift left">≪</button>
-                      <button onClick={shiftRight} title="Shift right">≫</button>
+                    <div className="hex-int__quick-actions-container">
+                      <div className="hex-int__action-group">
+                        <button onClick={setAllBits} title="Set all bits to 1">Set All</button>
+                        <button onClick={clearAllBits} title="Clear all bits to 0">Clear</button>
+                        <button onClick={invertBits} title="Bitwise NOT (~)">Invert</button>
+                        <button onClick={negateBits} title="Two's complement negation (-)">Negate</button>
+                      </div>
+                      <div className="hex-int__action-group">
+                        <span className="hex-int__shift-label">
+                          Shift/Rotate by
+                          <input
+                            type="number"
+                            className="hex-int__shift-input"
+                            value={shiftAmountInput}
+                            onChange={(e) => setShiftAmountInput(e.target.value)}
+                            onBlur={() => setShiftAmountInput(String(shiftAmount))}
+                            min={1}
+                            max={bitWidth}
+                          />
+                        </span>
+                        <button onClick={lsl} title="Logical Shift Left">LSL</button>
+                        <button onClick={lsr} title="Logical Shift Right">LSR</button>
+                        <button onClick={asr} title="Arithmetic Shift Right">ASR</button>
+                        <button onClick={rol} title="Rotate Left">ROL</button>
+                        <button onClick={ror} title="Rotate Right">ROR</button>
+                      </div>
                     </div>
                   </div>
                   <div className="hex-int__bit-grid">

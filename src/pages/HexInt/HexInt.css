@@ -170,12 +170,23 @@
   color: var(--text-secondary);
 }
 
-.hex-int__quick-actions {
+.hex-int__quick-actions-container {
   display: flex;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
-.hex-int__quick-actions button {
+.hex-int__action-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+}
+
+.hex-int__action-group button {
   padding: var(--spacing-xs) var(--spacing-sm);
   border: 1px solid var(--border-primary);
   background: var(--bg-primary);
@@ -186,10 +197,47 @@
   transition: all var(--transition-fast);
 }
 
-.hex-int__quick-actions button:hover {
+.hex-int__action-group button:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
   border-color: var(--border-secondary);
+}
+
+.hex-int__shift-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.hex-int__shift-input {
+  width: 3rem;
+  padding: var(--spacing-xs);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-code);
+  text-align: center;
+}
+
+.hex-int__shift-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* Hide number input spinners */
+.hex-int__shift-input::-webkit-outer-spin-button,
+.hex-int__shift-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hex-int__shift-input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* Bit Grid */
@@ -204,10 +252,25 @@
 }
 
 .hex-int__bit-row {
-  display: flex;
+  display: grid;
   gap: var(--spacing-md);
   justify-content: center;
-  flex-wrap: nowrap;
+  /* Default: 2 nibbles (8 bits) per row */
+  grid-template-columns: repeat(2, auto);
+}
+
+/* Medium screens: 4 nibbles (16 bits) per row */
+@media (min-width: 600px) {
+  .hex-int__bit-row {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+/* Large screens: 8 nibbles (32 bits) per row */
+@media (min-width: 1200px) {
+  .hex-int__bit-row {
+    grid-template-columns: repeat(8, auto);
+  }
 }
 
 .hex-int__nibble {
@@ -492,25 +555,34 @@
   .hex-int__binary-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: var(--spacing-sm);
   }
 
-  .hex-int__quick-actions {
+  .hex-int__quick-actions-container {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .hex-int__action-group {
     width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .hex-int__quick-actions button {
+  .hex-int__action-group button {
     flex: 1;
-    min-width: 3.75rem;
+    min-width: 3rem;
+  }
+
+  .hex-int__shift-label {
+    width: 100%;
+    justify-content: center;
+    padding-bottom: var(--spacing-xs);
   }
 
   .hex-int__bit-grid {
     align-items: center;
-  }
-
-  .hex-int__bit-row {
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
   .hex-int__bit-label {
