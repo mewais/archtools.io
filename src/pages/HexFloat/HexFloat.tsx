@@ -981,25 +981,40 @@ const HexFloat: React.FC = () => {
   return (
     <ToolPage
       title="Hex-Float Converter"
-      description="Free IEEE 754 floating-point converter. Convert between decimal, hexadecimal, and binary representations for FP64, FP32, FP16, BF16, FP8, and scaled MX formats."
+      description="Free online IEEE 754 floating-point converter. Convert between decimal, hexadecimal, and binary for FP64, FP32, FP16, BF16, FP8 (E4M3, E5M2), and MX/Microscaling formats. Interactive bit manipulation, bulk conversion, and visual binary breakdown."
       keywords={[
-        'ieee 754',
-        'float converter',
-        'hex to float',
+        'ieee 754 converter',
         'float to hex',
-        'floating point',
+        'hex to float',
+        'floating point converter',
+        'fp64 converter',
         'fp32 converter',
         'fp16 converter',
         'bf16 converter',
+        'bfloat16',
         'fp8 converter',
+        'e4m3',
+        'e5m2',
         'mxfp',
-        'microscaling',
-        'binary float',
+        'microscaling formats',
         'double precision',
         'single precision',
         'half precision',
         'brain float',
-        'developer tools'
+        'binary to float',
+        'float to binary',
+        'floating point binary',
+        'sign exponent mantissa',
+        'float bit manipulation',
+        'ieee 754 visualization',
+        'float encoding',
+        'denormalized float',
+        'subnormal numbers',
+        'infinity nan',
+        'machine learning formats',
+        'ai float formats',
+        'developer tools',
+        'programmer calculator'
       ]}
     >
       <div className="hex-float">
