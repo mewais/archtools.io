@@ -38,6 +38,45 @@
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
 
+  /* ========== Size System ========== */
+  /* Icon sizes */
+  --size-icon-xs: 0.875rem;
+  --size-icon-sm: 1rem;
+  --size-icon-md: 1.125rem;
+  --size-icon-lg: 1.25rem;
+  --size-icon-xl: 1.5rem;
+
+  /* Bit cell sizes for binary displays */
+  --size-bit-cell-sm: 1rem;
+  --size-bit-cell-md: 1.25rem;
+  --size-bit-cell-lg: 1.5rem;
+  --size-bit-cell-xl: 1.75rem;
+
+  /* Copy button sizes */
+  --size-copy-btn-sm: 1.25rem;
+  --size-copy-btn-md: 1.5rem;
+  --size-copy-btn-lg: 2rem;
+
+  /* Touch target minimum */
+  --size-touch-target: 2.25rem;
+
+  /* Label widths */
+  --size-label-sm: 3rem;
+  --size-label-md: 5rem;
+  --size-label-lg: 8.75rem;
+
+  /* Input widths */
+  --size-input-sm: 3rem;
+  --size-input-md: 4rem;
+  --size-input-lg: 6rem;
+
+  /* Textarea min-height */
+  --size-textarea-min: 7.5rem;
+
+  /* Grid card minimum widths */
+  --size-card-min-sm: 14rem;
+  --size-card-min-md: 18rem;
+
   /* ========== Border Radius ========== */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;

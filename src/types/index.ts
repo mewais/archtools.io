@@ -2,6 +2,37 @@
 
 export type Theme = 'light' | 'dark';
 
+export interface TabItem {
+  id: string;
+  label: string;
+  icon?: React.ReactNode;
+}
+
+export interface TabSelectorProps {
+  tabs: TabItem[];
+  activeTab: string;
+  onTabChange: (tabId: string) => void;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+export type GridLayout = 'horizontal' | 'vertical';
+
+export interface GridColumn {
+  id: string;
+  content: React.ReactNode;
+  span?: number; // Grid column span (1-12)
+}
+
+export interface GridProps {
+  header?: React.ReactNode;
+  columns: GridColumn[];
+  layout?: GridLayout;
+  gap?: 'sm' | 'md' | 'lg';
+  mobileHeight?: 'auto' | 'split'; // 'auto' = natural height, 'split' = 40/60 split-screen on mobile
+  className?: string;
+}
+
 export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
@@ -11,6 +42,14 @@ export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   className?: string;
+  // Event handlers for tooltips
+  onMouseEnter?: (e: React.MouseEvent) => void;
+  onMouseLeave?: (e: React.MouseEvent) => void;
+  onFocus?: (e: React.FocusEvent) => void;
+  onBlur?: (e: React.FocusEvent) => void;
+  // Aria attributes
+  'aria-label'?: string;
+  'aria-describedby'?: string;
 }
 
 export interface CardProps {

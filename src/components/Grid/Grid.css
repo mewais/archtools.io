@@ -1,0 +1,206 @@
+/* Grid Component Styles */
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ========== Grid Header ========== */
+
+.grid__header {
+  flex-shrink: 0;
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+/* ========== Grid Content ========== */
+
+.grid__content {
+  flex: 1;
+  display: grid;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ========== Grid Gaps ========== */
+
+.grid--gap-sm .grid__content {
+  gap: var(--spacing-sm);
+}
+
+.grid--gap-md .grid__content {
+  gap: var(--spacing-md);
+}
+
+.grid--gap-lg .grid__content {
+  gap: var(--spacing-lg);
+}
+
+/* ========== Grid Columns ========== */
+
+.grid__column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevent overflow */
+  min-height: 0; /* Prevent overflow */
+  overflow: auto;
+  transition: grid-column var(--transition-base), width var(--transition-base);
+}
+
+/* ========== Horizontal Layout (Side by Side) ========== */
+
+.grid--horizontal .grid__content {
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr; /* Equal width columns by default */
+}
+
+/* Support for custom column spans (1-12) */
+.grid--horizontal .grid__column[style*='--column-span'] {
+  grid-column: span var(--column-span, 1);
+}
+
+/* ========== Vertical Layout (Stacked) ========== */
+
+.grid--vertical .grid__content {
+  grid-auto-flow: row;
+  grid-auto-rows: 1fr; /* Equal height rows by default */
+}
+
+/* Support for custom row spans (1-12) */
+.grid--vertical .grid__column[style*='--column-span'] {
+  grid-row: span var(--column-span, 1);
+}
+
+/* ========== Responsive Behavior ========== */
+
+/* Phone (< 768px) - Force vertical layout for better mobile experience */
+@media (max-width: 767px) {
+  .grid--horizontal .grid__content {
+    grid-auto-flow: row;
+    grid-auto-columns: unset;
+    grid-template-columns: 1fr;
+  }
+
+  .grid--horizontal .grid__column[style*='--column-span'] {
+    grid-column: span 1; /* Override spans on mobile */
+  }
+
+  .grid__header {
+    padding: var(--spacing-sm);
+  }
+
+  .grid--gap-md .grid__content {
+    gap: var(--spacing-sm); /* Reduce gap on mobile */
+  }
+
+  .grid--gap-lg .grid__content {
+    gap: var(--spacing-md); /* Reduce gap on mobile */
+  }
+
+  /* Split-screen mode: 40/60 split for list/detail view */
+  .grid--mobile-split .grid__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .grid--mobile-split .grid__column:first-child {
+    flex: 0 0 40%; /* Fixed 40% for first column (list) */
+    min-height: 0; /* Allow scrolling */
+    overflow-y: auto;
+  }
+
+  .grid--mobile-split .grid__column:last-child {
+    flex: 1 1 60%; /* Remaining 60% for last column (detail) */
+    min-height: 0; /* Allow scrolling */
+    overflow-y: auto;
+  }
+}
+
+/* Tablet (768px - 1023px) - Use 12-column grid like desktop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid__header {
+    padding: var(--spacing-md);
+  }
+
+  /* Use 12-column grid on tablet so spans work correctly */
+  .grid--horizontal .grid__content {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .grid--horizontal .grid__column {
+    grid-column: span 12; /* Default: full width */
+  }
+
+  /* Column span utilities work on tablet too */
+  .grid--horizontal .grid__column[style*='--column-span'] {
+    grid-column: span var(--column-span, 1);
+  }
+}
+
+/* Desktop (>= 1024px) - Full layout control */
+@media (min-width: 1024px) {
+  .grid__header {
+    padding: var(--spacing-lg);
+  }
+
+  /* Support 12-column grid system on desktop */
+  .grid--horizontal .grid__content {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .grid--horizontal .grid__column {
+    grid-column: span 12; /* Default: full width */
+  }
+
+  /* Column span utilities (1-12) */
+  .grid--horizontal .grid__column--span-1 { grid-column: span 1; }
+  .grid--horizontal .grid__column--span-2 { grid-column: span 2; }
+  .grid--horizontal .grid__column--span-3 { grid-column: span 3; }
+  .grid--horizontal .grid__column--span-4 { grid-column: span 4; }
+  .grid--horizontal .grid__column--span-5 { grid-column: span 5; }
+  .grid--horizontal .grid__column--span-6 { grid-column: span 6; }
+  .grid--horizontal .grid__column--span-7 { grid-column: span 7; }
+  .grid--horizontal .grid__column--span-8 { grid-column: span 8; }
+  .grid--horizontal .grid__column--span-9 { grid-column: span 9; }
+  .grid--horizontal .grid__column--span-10 { grid-column: span 10; }
+  .grid--horizontal .grid__column--span-11 { grid-column: span 11; }
+  .grid--horizontal .grid__column--span-12 { grid-column: span 12; }
+
+  /* Row span utilities for vertical layout (1-12) */
+  .grid--vertical .grid__column--span-1 { grid-row: span 1; }
+  .grid--vertical .grid__column--span-2 { grid-row: span 2; }
+  .grid--vertical .grid__column--span-3 { grid-row: span 3; }
+  .grid--vertical .grid__column--span-4 { grid-row: span 4; }
+  .grid--vertical .grid__column--span-5 { grid-row: span 5; }
+  .grid--vertical .grid__column--span-6 { grid-row: span 6; }
+  .grid--vertical .grid__column--span-7 { grid-row: span 7; }
+  .grid--vertical .grid__column--span-8 { grid-row: span 8; }
+  .grid--vertical .grid__column--span-9 { grid-row: span 9; }
+  .grid--vertical .grid__column--span-10 { grid-row: span 10; }
+  .grid--vertical .grid__column--span-11 { grid-row: span 11; }
+  .grid--vertical .grid__column--span-12 { grid-row: span 12; }
+}
+
+/* Large Desktop (>= 1920px) - Extra spacing */
+@media (min-width: 1920px) {
+  .grid__header {
+    padding: var(--spacing-xl);
+  }
+
+  .grid--gap-sm .grid__content {
+    gap: var(--spacing-md);
+  }
+
+  .grid--gap-md .grid__content {
+    gap: var(--spacing-lg);
+  }
+
+  .grid--gap-lg .grid__content {
+    gap: var(--spacing-xl);
+  }
+}

@@ -1,11 +1,18 @@
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import ToolPage from '../ToolPage';
 import { CopyIcon, UploadIcon } from '../../components/Icons';
+import { TabSelector } from '../../components';
+import type { TabItem } from '../../types';
 import './HexInt.css';
 
 type BitWidth = 8 | 16 | 32 | 64 | 128;
 type TabMode = 'single' | 'bulk';
 const ALL_BIT_WIDTHS: BitWidth[] = [8, 16, 32, 64, 128];
+
+const MODE_TABS: TabItem[] = [
+  { id: 'single', label: 'Single Value' },
+  { id: 'bulk', label: 'Bulk Convert' },
+];
 
 // Calculate minimum bits required to represent a value
 const getMinBitsRequired = (input: string): number => {
@@ -276,7 +283,7 @@ const HexInt: React.FC = () => {
   };
 
   // Long-press to copy for touch devices
-  const longPressTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [longPressTarget, setLongPressTarget] = useState<string | null>(null);
 
   const handleTouchStart = (text: string) => {
@@ -344,20 +351,13 @@ const HexInt: React.FC = () => {
       <div className="hex-int">
         {/* Tabs and Bit Width */}
         <div className="hex-int__header">
-          <div className="hex-int__tabs">
-            <button
-              className={`hex-int__tab ${mode === 'single' ? 'hex-int__tab--active' : ''}`}
-              onClick={() => setMode('single')}
-            >
-              Single Value
-            </button>
-            <button
-              className={`hex-int__tab ${mode === 'bulk' ? 'hex-int__tab--active' : ''}`}
-              onClick={() => setMode('bulk')}
-            >
-              Bulk Convert
-            </button>
-          </div>
+          <TabSelector
+            tabs={MODE_TABS}
+            activeTab={mode}
+            onTabChange={(tabId) => setMode(tabId as TabMode)}
+            size="md"
+            className="hex-int__tabs"
+          />
           <select
             className="hex-int__width-select"
             value={bitWidth}

@@ -15,33 +15,9 @@
   gap: var(--spacing-md);
 }
 
-.hex-float__tabs {
-  display: flex;
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xs);
-}
-
-.hex-float__tab {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: none;
-  background: transparent;
-  color: var(--text-secondary);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.hex-float__tab:hover {
-  color: var(--text-primary);
-}
-
-.hex-float__tab--active {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  box-shadow: var(--shadow-sm);
+.hex-float__tabs.tab-selector {
+  width: auto;
+  flex-shrink: 0;
 }
 
 /* Input Section */
@@ -62,7 +38,7 @@
   border-radius: var(--radius-lg);
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
   font-family: var(--font-code);
   transition: border-color var(--transition-fast);
 }
@@ -122,7 +98,7 @@
 
 .hex-float__section-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--size-card-min-md), 1fr));
   gap: var(--spacing-md);
   padding: var(--spacing-md);
   background: var(--bg-primary);
@@ -195,7 +171,7 @@
 }
 
 .hex-float__value-label {
-  flex: 0 0 3rem;
+  flex: 0 0 var(--size-label-sm);
   font-size: var(--font-size-xs);
   color: var(--text-tertiary);
 }
@@ -217,8 +193,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--size-copy-btn-md);
+  height: var(--size-copy-btn-md);
   border: none;
   background: transparent;
   color: var(--text-tertiary);
@@ -362,9 +338,9 @@
 }
 
 .hex-float__bit-label {
-  width: 1.25rem;
+  width: var(--size-bit-cell-md);
   text-align: center;
-  font-size: 0.625rem;
+  font-size: var(--font-size-xs);
   color: var(--text-tertiary);
   font-family: var(--font-code);
 }
@@ -379,14 +355,14 @@
 .hex-float__field-bg {
   display: flex;
   gap: 0;
-  height: 0.25rem;
+  height: var(--spacing-xs);
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   overflow: hidden;
 }
 
 .hex-float__field-bg-cell {
   flex: 1;
-  min-width: 1.25rem;
+  min-width: var(--size-bit-cell-md);
 }
 
 .hex-float__field-bg-cell--sign {
@@ -420,8 +396,8 @@
 }
 
 .hex-float__bit-cell {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: var(--size-bit-cell-md);
+  height: var(--size-bit-cell-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -524,7 +500,7 @@
 }
 
 .hex-float__scale-input {
-  width: 4rem;
+  width: var(--size-input-md);
   padding: var(--spacing-xs) var(--spacing-sm);
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-sm);
@@ -577,7 +553,7 @@
 
 .hex-float__scaled-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--size-card-min-sm), 1fr));
   gap: var(--spacing-md);
 }
 
@@ -631,7 +607,7 @@
   font-size: var(--font-size-sm);
   font-family: var(--font-code);
   resize: vertical;
-  min-height: 7.5rem;
+  min-height: var(--size-textarea-min);
   transition: border-color var(--transition-fast);
 }
 
@@ -733,8 +709,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: var(--size-copy-btn-sm);
+  height: var(--size-copy-btn-sm);
   padding: 0;
   border: none;
   background: transparent;
@@ -783,13 +759,8 @@
     align-items: stretch;
   }
 
-  .hex-float__tabs {
+  .hex-float__tabs.tab-selector {
     width: 100%;
-  }
-
-  .hex-float__tab {
-    flex: 1;
-    text-align: center;
   }
 
   .hex-float__section-content {
@@ -857,14 +828,14 @@
   }
 
   .hex-float__bit-cell {
-    width: 1rem;
-    height: 1rem;
-    font-size: 0.625rem;
+    width: var(--size-bit-cell-sm);
+    height: var(--size-bit-cell-sm);
+    font-size: var(--font-size-xs);
   }
 
   .hex-float__bit-label {
-    width: 1rem;
-    font-size: 0.5rem;
+    width: var(--size-bit-cell-sm);
+    font-size: var(--font-size-xs);
   }
 
   .hex-float__nibble-hex {
@@ -872,11 +843,11 @@
   }
 
   .hex-float__field-bg-cell {
-    min-width: 1rem;
+    min-width: var(--size-bit-cell-sm);
   }
 
   .hex-float__field-bg {
-    height: 0.1875rem;
+    height: var(--spacing-2xs);
   }
 }
 
@@ -886,6 +857,6 @@
   }
 
   .hex-float__value-label {
-    flex: 0 0 2.5rem;
+    flex: 0 0 var(--spacing-2xl);
   }
 }

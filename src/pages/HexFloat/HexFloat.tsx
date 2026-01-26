@@ -1,9 +1,16 @@
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import ToolPage from '../ToolPage';
 import { CopyIcon, UploadIcon } from '../../components/Icons';
+import { TabSelector } from '../../components';
+import type { TabItem } from '../../types';
 import './HexFloat.css';
 
 type TabMode = 'single' | 'bulk';
+
+const MODE_TABS: TabItem[] = [
+  { id: 'single', label: 'Single Value' },
+  { id: 'bulk', label: 'Bulk Convert' },
+];
 
 // IEEE 754 Format configurations
 interface FormatConfig {
@@ -72,13 +79,14 @@ interface ScaledEncodedValue {
   scaledValue: number;
 }
 
-// Convert float64 to raw bits
-const float64ToBits = (value: number): bigint => {
+// Convert float64 to raw bits (kept for potential future use)
+const _float64ToBits = (value: number): bigint => {
   const buffer = new ArrayBuffer(8);
   const view = new DataView(buffer);
   view.setFloat64(0, value, false);
   return (BigInt(view.getUint32(0)) << 32n) | BigInt(view.getUint32(4));
 };
+void _float64ToBits; // Silence unused warning
 
 // Convert raw bits to float64
 const bitsToFloat64 = (bits: bigint): number => {
@@ -89,13 +97,14 @@ const bitsToFloat64 = (bits: bigint): number => {
   return view.getFloat64(0, false);
 };
 
-// Convert float32 to raw bits
-const float32ToBits = (value: number): bigint => {
+// Convert float32 to raw bits (kept for potential future use)
+const _float32ToBits = (value: number): bigint => {
   const buffer = new ArrayBuffer(4);
   const view = new DataView(buffer);
   view.setFloat32(0, value, false);
   return BigInt(view.getUint32(0, false));
 };
+void _float32ToBits; // Silence unused warning
 
 // Convert raw bits to float32
 const bitsToFloat32 = (bits: bigint): number => {
@@ -342,7 +351,7 @@ const encodeToScaledFormat = (value: number, format: ScaledFormatConfig, scale: 
 
 // Helper to format scaled encoded value
 const formatScaledValue = (bits: bigint, format: ScaledFormatConfig, scale: number): ScaledEncodedValue => {
-  const { totalBits, exponentBits, mantissaBits } = format;
+  const { totalBits, exponentBits } = format;
 
   const binary = bits.toString(2).padStart(totalBits, '0');
   const hex = '0x' + bits.toString(16).toUpperCase().padStart(Math.ceil(totalBits / 4), '0');
@@ -643,67 +652,6 @@ const HexFloat: React.FC = () => {
     return val.toPrecision(7).replace(/\.?0+$/, '');
   };
 
-  // Render clickable bit grid for a slice of bits
-  const renderBitSlice = (
-    format: FormatConfig,
-    encoded: EncodedValue,
-    bits: string,
-    startBitIndex: number
-  ) => {
-    return (
-      <div className="hex-float__bit-grid">
-        {bits.split('').map((bit, idx) => {
-          const bitIndex = startBitIndex - idx;
-          return (
-            <button
-              key={idx}
-              className={`hex-float__bit-cell ${bit === '1' ? 'hex-float__bit-cell--set' : ''}`}
-              onClick={() => toggleBit(format, bitIndex, encoded.bits)}
-              title={`Bit ${bitIndex}: Click to toggle`}
-            >
-              {bit}
-            </button>
-          );
-        })}
-      </div>
-    );
-  };
-
-  // Split mantissa into chunks for multi-row display
-  // firstChunkSize: how many mantissa bits fit on first row (with sign + exp)
-  // remainingChunkSize: how many bits per subsequent row
-  const splitMantissa = (
-    mantissaBits: string,
-    firstChunkSize: number,
-    remainingChunkSize: number
-  ) => {
-    const chunks: { bits: string; startBit: number; endBit: number }[] = [];
-    const totalBits = mantissaBits.length;
-
-    if (totalBits <= firstChunkSize) {
-      // All fits in first chunk
-      return [{ bits: mantissaBits, startBit: totalBits - 1, endBit: 0 }];
-    }
-
-    // First chunk
-    const firstBits = mantissaBits.slice(0, firstChunkSize);
-    chunks.push({
-      bits: firstBits,
-      startBit: totalBits - 1,
-      endBit: totalBits - firstChunkSize,
-    });
-
-    // Remaining chunks
-    for (let i = firstChunkSize; i < totalBits; i += remainingChunkSize) {
-      const bits = mantissaBits.slice(i, Math.min(i + remainingChunkSize, totalBits));
-      const startBit = totalBits - 1 - i;
-      const endBit = totalBits - i - bits.length;
-      chunks.push({ bits, startBit, endBit });
-    }
-
-    return chunks;
-  };
-
   // Render a format card with clickable bits
   const renderFormatCard = (format: FormatConfig, encoded: EncodedValue) => (
     <div key={format.shortName} className="hex-float__format-card">
@@ -868,9 +816,6 @@ const HexFloat: React.FC = () => {
       if (bitIndex >= expStart && bitIndex <= expEnd) return 'exponent';
       return 'mantissa';
     };
-
-    // Calculate nibbles
-    const totalNibbles = Math.ceil(totalBits / 4);
 
     return (
       <div key={format.shortName} className="hex-float__format-card">
@@ -1059,20 +1004,13 @@ const HexFloat: React.FC = () => {
     >
       <div className="hex-float">
         <div className="hex-float__header">
-          <div className="hex-float__tabs">
-            <button
-              className={`hex-float__tab ${mode === 'single' ? 'hex-float__tab--active' : ''}`}
-              onClick={() => setMode('single')}
-            >
-              Single Value
-            </button>
-            <button
-              className={`hex-float__tab ${mode === 'bulk' ? 'hex-float__tab--active' : ''}`}
-              onClick={() => setMode('bulk')}
-            >
-              Bulk Convert
-            </button>
-          </div>
+          <TabSelector
+            tabs={MODE_TABS}
+            activeTab={mode}
+            onTabChange={(tabId) => setMode(tabId as TabMode)}
+            size="md"
+            className="hex-float__tabs"
+          />
         </div>
 
         {mode === 'single' ? (
