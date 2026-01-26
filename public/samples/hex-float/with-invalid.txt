@@ -1,0 +1,8 @@
+3.14159
+invalid
+0x40490FDB
+hello
+1.5
+0xGGGG
+inf
+not_a_number
