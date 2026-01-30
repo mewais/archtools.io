@@ -62,6 +62,21 @@ export const SwapIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => 
   </svg>
 );
 
+export const BinaryViewerIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <rect x="2" y="3" width="20" height="18" rx="2" fill="currentColor" opacity="0.1" stroke="currentColor" strokeWidth="1.5" />
+    <text x="4" y="9" fontFamily="monospace" fontSize="5" fill="currentColor" opacity="0.7">00</text>
+    <text x="11" y="9" fontFamily="monospace" fontSize="5" fill="currentColor">4A</text>
+    <text x="18" y="9" fontFamily="monospace" fontSize="5" fill="currentColor">F2</text>
+    <text x="4" y="14" fontFamily="monospace" fontSize="5" fill="currentColor">1B</text>
+    <text x="11" y="14" fontFamily="monospace" fontSize="5" fill="currentColor" opacity="0.7">00</text>
+    <text x="18" y="14" fontFamily="monospace" fontSize="5" fill="currentColor">8C</text>
+    <text x="4" y="19" fontFamily="monospace" fontSize="5" fill="currentColor">D7</text>
+    <text x="11" y="19" fontFamily="monospace" fontSize="5" fill="currentColor">3E</text>
+    <text x="18" y="19" fontFamily="monospace" fontSize="5" fill="currentColor" opacity="0.7">00</text>
+  </svg>
+);
+
 export const CacheIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <rect x="3" y="3" width="18" height="5" rx="1" fill="currentColor" opacity="0.3" />

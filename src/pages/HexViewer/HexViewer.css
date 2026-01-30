@@ -1,0 +1,506 @@
+/* Hex Viewer & Converter Styles */
+
+.hex-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Header with mode tabs */
+.hex-viewer__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.hex-viewer__mode-tabs.tab-selector {
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* Input Section */
+.hex-viewer__input-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.hex-viewer__input-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Upload button inherits from Button component */
+
+.hex-viewer__paste-group {
+  display: flex;
+  flex: 1;
+  min-width: var(--size-hex-paste-min);
+  gap: var(--spacing-xs);
+}
+
+.hex-viewer__paste-input {
+  flex: 1;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-code);
+  resize: none;
+}
+
+.hex-viewer__paste-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* Paste button inherits from Button component */
+
+.hex-viewer__file-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* Controls */
+.hex-viewer__controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+}
+
+.hex-viewer__control-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.hex-viewer__view-tabs.tab-selector {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.hex-viewer__control-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.hex-viewer__control-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.hex-viewer__select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.hex-viewer__select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* Scale input for MXFP formats */
+.hex-viewer__scale-input {
+  width: 4rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-code);
+  text-align: center;
+}
+
+.hex-viewer__scale-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+.hex-viewer__scale-input--compact {
+  width: 3rem;
+  padding: var(--spacing-2xs) var(--spacing-xs);
+}
+
+.hex-viewer__scale-hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-family: var(--font-code);
+}
+
+.hex-viewer__action-group--convert {
+  flex-wrap: wrap;
+}
+
+/* Search */
+.hex-viewer__search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.hex-viewer__search-input {
+  flex: 1;
+  min-width: var(--size-hex-search-min);
+  max-width: var(--size-hex-search-max);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-code);
+}
+
+.hex-viewer__search-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* Search button inherits from Button component */
+
+.hex-viewer__search-results {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* Search nav buttons - compact size override */
+.hex-viewer__search-nav.btn {
+  padding: var(--spacing-2xs) var(--spacing-xs);
+  min-height: auto;
+}
+
+/* Statistics */
+.hex-viewer__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-code);
+  color: var(--text-secondary);
+}
+
+/* Data View */
+.hex-viewer__view {
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.hex-viewer__empty {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.hex-viewer__dump {
+  max-height: 60vh;
+  overflow: auto;
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+}
+
+.hex-viewer__row {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-2xs) var(--spacing-sm);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.hex-viewer__row:last-child {
+  border-bottom: none;
+}
+
+.hex-viewer__row:hover {
+  background: var(--bg-secondary);
+}
+
+.hex-viewer__row--diff {
+  gap: var(--spacing-sm);
+}
+
+.hex-viewer__diff-separator {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  padding: 0 var(--spacing-xs);
+}
+
+.hex-viewer__offset {
+  flex-shrink: 0;
+  width: var(--size-hex-offset);
+  color: var(--text-tertiary);
+  margin-right: var(--spacing-md);
+}
+
+.hex-viewer__hex-cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-right: var(--spacing-lg);
+}
+
+.hex-viewer__byte {
+  color: var(--text-primary);
+}
+
+.hex-viewer__byte--empty {
+  color: var(--text-tertiary);
+}
+
+.hex-viewer__byte--diff {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+  background: color-mix(in srgb, var(--color-error) 15%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--spacing-2xs);
+}
+
+.hex-viewer__byte--diff2 {
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+  background: color-mix(in srgb, var(--color-success) 15%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--spacing-2xs);
+}
+
+.hex-viewer__byte--highlight {
+  background: color-mix(in srgb, var(--color-warning) 30%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--spacing-2xs);
+}
+
+.hex-viewer__spacer {
+  width: var(--spacing-sm);
+}
+
+.hex-viewer__ascii-cells {
+  display: flex;
+  color: var(--text-secondary);
+}
+
+.hex-viewer__ascii {
+  width: var(--size-hex-ascii-char);
+}
+
+.hex-viewer__ascii--diff {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+}
+
+.hex-viewer__ascii--highlight {
+  background: color-mix(in srgb, var(--color-warning) 30%, transparent);
+}
+
+/* Int View */
+.hex-viewer__int-cells {
+  display: grid;
+  grid-template-columns: repeat(var(--values-per-row, 8), 1fr);
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.hex-viewer__int-value {
+  color: var(--text-primary);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hex-viewer__int-value--diff {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+}
+
+.hex-viewer__int-value--diff2 {
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Float View */
+.hex-viewer__float-cells {
+  display: grid;
+  grid-template-columns: repeat(var(--values-per-row, 8), 1fr);
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.hex-viewer__float-value {
+  color: var(--text-primary);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hex-viewer__float-value--diff {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+}
+
+.hex-viewer__float-value--diff2 {
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ASCII View */
+.hex-viewer__ascii-line {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hex-viewer__ascii-char {
+  color: var(--text-primary);
+}
+
+.hex-viewer__ascii-char--nonprint {
+  color: var(--text-tertiary);
+}
+
+.hex-viewer__ascii-char--diff {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+}
+
+.hex-viewer__ascii-char--diff2 {
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+}
+
+.hex-viewer__ascii-char--empty {
+  opacity: 0.3;
+}
+
+.hex-viewer__ascii-char--highlight {
+  background: color-mix(in srgb, var(--color-warning) 30%, transparent);
+}
+
+/* Actions */
+.hex-viewer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+}
+
+.hex-viewer__action-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.hex-viewer__action-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* Action buttons inherit from Button component */
+
+/* Download button - position only, inherits from Button component */
+.hex-viewer__download-btn {
+  margin-left: auto;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .hex-viewer__input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hex-viewer__paste-group {
+    min-width: 100%;
+  }
+
+  .hex-viewer__view-tabs.tab-selector {
+    width: 100%;
+  }
+
+  .hex-viewer__control-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hex-viewer__search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hex-viewer__search-input {
+    max-width: none;
+  }
+
+  .hex-viewer__dump {
+    font-size: var(--font-size-xs);
+  }
+
+  .hex-viewer__offset {
+    width: var(--size-hex-offset-tablet);
+  }
+
+  .hex-viewer__int-cells,
+  .hex-viewer__float-cells {
+    font-size: var(--font-size-xs);
+  }
+
+  .hex-viewer__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hex-viewer__action-group {
+    flex-wrap: wrap;
+  }
+
+  .hex-viewer__download-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hex-viewer__hex-cells {
+    gap: var(--spacing-2xs);
+  }
+
+  .hex-viewer__ascii-cells {
+    display: none;
+  }
+
+  .hex-viewer__offset {
+    width: var(--size-hex-offset-phone);
+    font-size: var(--font-size-xs);
+  }
+}

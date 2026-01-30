@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../../components';
-import { HexIcon, FloatIcon, SwapIcon, CacheIcon, BookIcon, PlayIcon } from '../../components/Icons';
+import { HexIcon, FloatIcon, BinaryViewerIcon, SwapIcon, CacheIcon, BookIcon, PlayIcon } from '../../components/Icons';
 import './Home.css';
 
 const tools = {
@@ -20,6 +20,14 @@ const tools = {
       href: '/hex-float',
       icon: <FloatIcon size={28} />,
       tags: ['IEEE 754', 'float', 'half', 'bfloat16'],
+    },
+    {
+      id: 'hex-viewer',
+      title: 'Hex Viewer & Converter',
+      description: 'View binary files as hex, integers, floats, or ASCII. Convert formats, swap endianness, diff files.',
+      href: '/hex-viewer',
+      icon: <BinaryViewerIcon size={28} />,
+      tags: ['hex dump', 'binary', 'endian', 'diff'],
     },
     {
       id: 'endian',

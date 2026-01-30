@@ -77,6 +77,18 @@
   --size-card-min-sm: 14rem;
   --size-card-min-md: 18rem;
 
+  /* Hex viewer specific sizes */
+  --size-hex-paste-min: 12.5rem;
+  --size-hex-search-min: 9.375rem;
+  --size-hex-search-max: 18.75rem;
+  --size-hex-offset: 5rem;
+  --size-hex-offset-tablet: 4rem;
+  --size-hex-offset-phone: 3.5rem;
+  --size-hex-ascii-char: 0.6rem;
+  --size-hex-int-value: 8rem;
+  --size-hex-float-value: 10rem;
+  --size-hex-value-mobile: 6rem;
+
   /* ========== Border Radius ========== */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;

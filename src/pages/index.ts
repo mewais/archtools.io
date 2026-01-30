@@ -2,6 +2,7 @@ export { default as Home } from './Home';
 export { default as ToolPage } from './ToolPage';
 export { default as HexInt } from './HexInt';
 export { default as HexFloat } from './HexFloat';
+export { default as HexViewer } from './HexViewer';
 export { default as Endian } from './Endian';
 export { default as CacheConfig } from './CacheConfig';
 export { default as ISAReference } from './ISAReference';

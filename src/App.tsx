@@ -5,6 +5,7 @@ import {
   Home,
   HexInt,
   HexFloat,
+  HexViewer,
   Endian,
   CacheConfig,
   ISAReference,
@@ -47,6 +48,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/hex-int" element={<HexInt />} />
           <Route path="/hex-float" element={<HexFloat />} />
+          <Route path="/hex-viewer" element={<HexViewer />} />
           <Route path="/endian" element={<Endian />} />
           <Route path="/cache-config" element={<CacheConfig />} />
           <Route path="/isa-reference" element={<ISAReference />} />
