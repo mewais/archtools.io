@@ -878,30 +878,49 @@ const HexViewer: React.FC = () => {
 
   return (
     <ToolPage
-      title="Hex Viewer & Converter"
-      description="Advanced binary file viewer and converter. View files as hex, integers, or floats. Convert between FP32, FP16, BF16 formats. Compare files, search patterns, swap endianness."
+      title="Hex Viewer & Binary Diff Tool"
+      description="Free online hex viewer and binary file analyzer. View files as hex dump, integers (8/16/32/64-bit), or floating-point (FP64, FP32, FP16, BF16, FP8, MXFP). Side-by-side diff comparison, pattern search, endianness swap, format conversion, and statistics. Perfect for debugging, reverse engineering, and ML model analysis."
       keywords={[
         'hex viewer',
+        'hex viewer online',
         'hex editor',
         'binary viewer',
-        'binary editor',
+        'binary file viewer',
         'hex dump',
-        'float converter',
-        'fp32 to fp16',
+        'binary diff',
+        'hex compare',
+        'file comparison tool',
+        'binary file diff',
+        'float viewer',
+        'fp32 viewer',
+        'fp16 viewer',
+        'fp64 viewer',
+        'bfloat16 viewer',
+        'bf16',
         'fp8 viewer',
         'e4m3',
         'e5m2',
-        'bfloat16',
-        'mxfp',
+        'mxfp viewer',
         'microscaling formats',
+        'float converter',
+        'fp32 to fp16',
         'endian swap',
-        'binary diff',
-        'hex compare',
-        'binary file viewer',
-        'data converter',
+        'byte swap',
+        'little endian',
+        'big endian',
+        'binary to decimal',
+        'hex to decimal',
+        'integer viewer',
         'byte viewer',
+        'data converter',
+        'binary analysis',
+        'reverse engineering',
+        'debugging tool',
+        'machine learning formats',
+        'ml model viewer',
+        'tensor viewer',
         'developer tools',
-        'machine learning formats'
+        'free hex viewer'
       ]}
     >
       <div className="hex-viewer">
