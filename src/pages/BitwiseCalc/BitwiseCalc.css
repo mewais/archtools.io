@@ -1,0 +1,498 @@
+/* Bitwise Calculator Styles */
+
+.bitwise-calc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Config Bar */
+.bitwise-calc__config {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bitwise-calc__width-select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.bitwise-calc__width-select:focus {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Expression Input */
+.bitwise-calc__input-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.bitwise-calc__input {
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-family: var(--font-code);
+  transition: border-color var(--transition-fast);
+}
+
+.bitwise-calc__input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+.bitwise-calc__input--error {
+  border-color: var(--color-error);
+}
+
+.bitwise-calc__input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.bitwise-calc__error-msg {
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+}
+
+.bitwise-calc__warning-msg {
+  font-size: var(--font-size-sm);
+  color: var(--color-warning);
+}
+
+/* Values Display */
+.bitwise-calc__values {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.bitwise-calc__value-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
+}
+
+.bitwise-calc__value-row:not(:last-child) {
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.bitwise-calc__value-label {
+  flex: 0 0 var(--size-label-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.bitwise-calc__value-data {
+  flex: 1;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  word-break: break-all;
+}
+
+.bitwise-calc__value-data--mono {
+  font-family: var(--font-code);
+}
+
+.bitwise-calc__copy-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-copy-btn-lg);
+  height: var(--size-copy-btn-lg);
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.bitwise-calc__copy-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Steps Section */
+.bitwise-calc__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.bitwise-calc__steps-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.bitwise-calc__step-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.bitwise-calc__step-card {
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.bitwise-calc__step-card--selected {
+  border-color: var(--border-focus);
+}
+
+.bitwise-calc__step-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.bitwise-calc__step-header:hover {
+  background: var(--bg-hover);
+}
+
+.bitwise-calc__step-num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-copy-btn-lg);
+  height: var(--size-copy-btn-lg);
+  border-radius: var(--radius-full);
+  background: var(--color-primary-500);
+  color: var(--text-inverse);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.bitwise-calc__step-expr {
+  flex: 1;
+  font-family: var(--font-code);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bitwise-calc__step-eq {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.bitwise-calc__step-result {
+  font-family: var(--font-code);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-500);
+  flex-shrink: 0;
+}
+
+.bitwise-calc__step-chevron {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--text-tertiary);
+  transition: transform var(--transition-fast);
+}
+
+.bitwise-calc__step-chevron--open {
+  transform: rotate(180deg);
+}
+
+.bitwise-calc__step-detail {
+  padding: var(--spacing-sm) var(--spacing-md);
+  padding-left: calc(var(--spacing-md) + var(--size-copy-btn-lg) + var(--spacing-sm));
+  border-top: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.bitwise-calc__step-detail-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.bitwise-calc__step-detail-label {
+  flex: 0 0 var(--size-label-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-medium);
+}
+
+.bitwise-calc__step-detail-value {
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+/* Bit Grid Visualization */
+.bitwise-calc__visualization {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.bitwise-calc__grids {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.bitwise-calc__op-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-code);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-500);
+  padding: var(--spacing-sm) 0;
+}
+
+.bitwise-calc__grid-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.bitwise-calc__grid-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  font-family: var(--font-code);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bitwise-calc__bit-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+.bitwise-calc__bit-row {
+  display: grid;
+  gap: var(--spacing-md);
+  justify-content: center;
+  /* Default: 2 nibbles (8 bits) per row */
+  grid-template-columns: repeat(2, auto);
+}
+
+/*
+ * Nibble width: 4×1.75rem cells + 3×0.125rem gaps = 7.375rem
+ *
+ * Page layout steals significant width from the content column:
+ *   PageLayout: 2×160px sidebars + gaps + padding (desktop)
+ *               2×120px sidebars + gaps + padding (768–1023px)
+ *               no sidebars (<768px, single column)
+ *   ToolPage:   padding 1.5rem×2 (desktop) / 1rem×2 (mobile)
+ *   Card:       padding 2rem×2 (desktop) / 1rem×2 (mobile) + 2px border
+ *   Grid:       padding 1rem×2
+ *
+ * 4 nibbles need ~520px content. With tablet sidebars (240px + gaps),
+ * ToolPage + card + grid chrome (~146px), need viewport ≥ ~920px.
+ * 8 nibbles need ~1048px content → viewport ≥ ~1420px.
+ * On phone (<768px, no sidebars, smaller cells), 4 nibbles need ~456px,
+ * chrome ~100px → viewport ≥ ~560px.
+ */
+@media (max-width: 767px) and (min-width: 560px) {
+  .bitwise-calc__bit-row {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media (min-width: 920px) {
+  .bitwise-calc__bit-row {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media (min-width: 1420px) {
+  .bitwise-calc__bit-row {
+    grid-template-columns: repeat(8, auto);
+  }
+}
+
+.bitwise-calc__nibble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.bitwise-calc__bit-labels {
+  display: flex;
+  gap: var(--spacing-2xs);
+}
+
+.bitwise-calc__bit-label {
+  width: var(--size-bit-cell-xl);
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-family: var(--font-code);
+}
+
+.bitwise-calc__bit-cells {
+  display: flex;
+  gap: var(--spacing-2xs);
+}
+
+.bitwise-calc__bit-cell {
+  width: var(--size-bit-cell-xl);
+  height: var(--size-bit-cell-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-primary);
+  background: var(--bg-primary);
+  color: var(--text-tertiary);
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.bitwise-calc__bit-cell:hover {
+  border-color: var(--border-focus);
+  background: var(--bg-hover);
+}
+
+.bitwise-calc__bit-cell--set {
+  background: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+  color: var(--text-inverse);
+}
+
+.bitwise-calc__bit-cell--set:hover {
+  background: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.bitwise-calc__bit-cell--changed {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: var(--text-inverse);
+}
+
+.bitwise-calc__bit-cell--changed.bitwise-calc__bit-cell--set {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.bitwise-calc__bit-cell--readonly {
+  cursor: default;
+}
+
+.bitwise-calc__bit-cell--readonly:hover {
+  border-color: var(--border-primary);
+  background: var(--bg-primary);
+}
+
+.bitwise-calc__bit-cell--readonly.bitwise-calc__bit-cell--set:hover {
+  background: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+}
+
+.bitwise-calc__bit-cell--readonly.bitwise-calc__bit-cell--changed:hover {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.bitwise-calc__nibble-hex {
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-500);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .bitwise-calc__config {
+    justify-content: stretch;
+  }
+
+  .bitwise-calc__width-select {
+    width: 100%;
+  }
+
+  .bitwise-calc__value-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .bitwise-calc__value-label {
+    flex: none;
+  }
+
+  .bitwise-calc__value-data {
+    width: 100%;
+  }
+
+  .bitwise-calc__copy-btn {
+    align-self: flex-end;
+    margin-top: calc(-1 * var(--spacing-lg));
+  }
+
+  .bitwise-calc__step-header {
+    flex-wrap: wrap;
+  }
+
+  .bitwise-calc__step-expr {
+    white-space: normal;
+    word-break: break-all;
+    flex-basis: 100%;
+    order: 5;
+    margin-top: var(--spacing-xs);
+  }
+
+  .bitwise-calc__step-detail {
+    padding-left: var(--spacing-md);
+  }
+
+  .bitwise-calc__bit-label {
+    width: var(--size-bit-cell-lg);
+    font-size: var(--font-size-xs);
+  }
+
+  .bitwise-calc__bit-cell {
+    width: var(--size-bit-cell-lg);
+    height: var(--size-bit-cell-lg);
+    font-size: var(--font-size-xs);
+  }
+}
