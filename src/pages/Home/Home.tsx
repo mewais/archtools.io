@@ -56,14 +56,6 @@ const tools = {
       tags: ['speedup', 'parallel', 'performance'],
     },
     {
-      id: 'bandwidth-calc',
-      title: 'Memory Bandwidth Calculator',
-      description: 'Compute peak memory bandwidth from clock, bus width, channels, and DDR rate. Supports DDR4/5, HBM, GDDR.',
-      href: '/bandwidth-calc',
-      icon: <BandwidthIcon size={28} />,
-      tags: ['DDR5', 'HBM', 'bandwidth'],
-    },
-    {
       id: 'flops-calc',
       title: 'FLOPS Calculator',
       description: 'Compute peak floating-point performance from cores, clock, FP units, and vector width.',
@@ -78,6 +70,14 @@ const tools = {
       href: '/cache-config',
       icon: <CacheIcon size={28} />,
       tags: ['cache', 'memory', 'architecture'],
+    },
+    {
+      id: 'bandwidth-calc',
+      title: 'Memory Bandwidth Calculator',
+      description: 'Compute peak memory bandwidth from clock, bus width, channels, and DDR rate. Supports DDR4/5, HBM, GDDR.',
+      href: '/bandwidth-calc',
+      icon: <BandwidthIcon size={28} />,
+      tags: ['DDR5', 'HBM', 'bandwidth'],
     },
   ],
   riscv: [
