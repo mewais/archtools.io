@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useMemo } from 'react';
+import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import ToolPage from '../ToolPage';
 import { UploadIcon } from '../../components/Icons';
 import { TabSelector, Button } from '../../components';
@@ -408,12 +408,22 @@ const HexViewer: React.FC = () => {
   // View state
   const [viewMode, setViewMode] = useState<ViewMode>('hex');
   const [endianness, setEndianness] = useState<Endianness>('little');
-  const [config, setConfig] = useState<ViewConfig>({
+  const [config, setConfig] = useState<ViewConfig>(() => ({
     intSize: 32,
     intSign: 'unsigned',
     floatFormat: 'fp32',
-    bytesPerRow: 16,
-  });
+    bytesPerRow: window.matchMedia('(max-width: 767px)').matches ? 8 : 16,
+  }));
+
+  // Keep bytesPerRow responsive to screen width
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    const handler = (e: MediaQueryListEvent) => {
+      setConfig(prev => ({ ...prev, bytesPerRow: e.matches ? 8 : 16 }));
+    };
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
 
   // Mode state
   const [diffMode, setDiffMode] = useState(false);
@@ -1004,29 +1014,31 @@ const HexViewer: React.FC = () => {
               className="hex-viewer__view-tabs"
             />
 
-            <div className="hex-viewer__control-group">
-              <label className="hex-viewer__control-label">Endian:</label>
-              <select
-                className="hex-viewer__select"
-                value={endianness}
-                onChange={(e) => setEndianness(e.target.value as Endianness)}
-              >
-                <option value="little">Little</option>
-                <option value="big">Big</option>
-              </select>
-            </div>
+            <div className="hex-viewer__control-options">
+              <div className="hex-viewer__control-group">
+                <label className="hex-viewer__control-label">Endian:</label>
+                <select
+                  className="hex-viewer__select"
+                  value={endianness}
+                  onChange={(e) => setEndianness(e.target.value as Endianness)}
+                >
+                  <option value="little">Little</option>
+                  <option value="big">Big</option>
+                </select>
+              </div>
 
-            <div className="hex-viewer__control-group">
-              <label className="hex-viewer__control-label">Bytes/Row:</label>
-              <select
-                className="hex-viewer__select"
-                value={config.bytesPerRow}
-                onChange={(e) => setConfig({ ...config, bytesPerRow: Number(e.target.value) })}
-              >
-                <option value={8}>8</option>
-                <option value={16}>16</option>
-                <option value={32}>32</option>
-              </select>
+              <div className="hex-viewer__control-group">
+                <label className="hex-viewer__control-label">Bytes/Row:</label>
+                <select
+                  className="hex-viewer__select"
+                  value={config.bytesPerRow}
+                  onChange={(e) => setConfig({ ...config, bytesPerRow: Number(e.target.value) })}
+                >
+                  <option value={8}>8</option>
+                  <option value={16}>16</option>
+                  <option value={32}>32</option>
+                </select>
+              </div>
             </div>
           </div>
 

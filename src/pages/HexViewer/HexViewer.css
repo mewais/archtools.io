@@ -91,6 +91,13 @@
   flex-shrink: 0;
 }
 
+.hex-viewer__control-options {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-left: auto;
+}
+
 .hex-viewer__control-group {
   display: flex;
   align-items: center;
@@ -438,6 +445,16 @@
 }
 
 /* Responsive */
+
+/* Tablet: options stack vertically to match tab wrapping */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hex-viewer__control-options {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-xs);
+  }
+}
+
 @media (max-width: 767px) {
   .hex-viewer__input-row {
     flex-direction: column;
@@ -454,7 +471,12 @@
 
   .hex-viewer__control-row {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+  }
+
+  .hex-viewer__control-options {
+    margin-left: 0;
+    justify-content: space-between;
   }
 
   .hex-viewer__search {
@@ -497,10 +519,6 @@
 @media (max-width: 480px) {
   .hex-viewer__hex-cells {
     gap: var(--spacing-2xs);
-  }
-
-  .hex-viewer__ascii-cells {
-    display: none;
   }
 
   .hex-viewer__offset {
