@@ -11,7 +11,7 @@ interface Enhancement {
   id: number;
   name: string;
   fraction: number; // 0–1
-  speedup: number;  // >= 1
+  speedup: number;  // > 0 (< 1 means slowdown)
 }
 
 type Mode = 'amdahl' | 'gustafson';
@@ -465,10 +465,10 @@ const AmdahlsLaw: React.FC = () => {
                       <input
                         type="number"
                         className="amdahl__speedup-input"
-                        min={1} step="any"
+                        min={0.01} step="any"
                         value={e.speedup}
                         onChange={(ev) => {
-                          const v = Math.max(1, Number(ev.target.value) || 1);
+                          const v = Math.max(0.01, Number(ev.target.value) || 1);
                           updateEnhancement(e.id, 'speedup', v);
                         }}
                       />
