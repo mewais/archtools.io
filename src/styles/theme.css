@@ -190,6 +190,11 @@
   /* Category Colors */
   --category-general: #8b5cf6;
   --category-riscv: #10b981;
+
+  /* Visualization Palette (charts, color-coded groups) */
+  --color-palette-purple: #8b5cf6;
+  --color-palette-pink: #ec4899;
+  --color-palette-orange: #f97316;
 }
 
 /* ============================================
@@ -263,6 +268,11 @@
   /* Category Colors - Dark Theme */
   --category-general: #a78bfa;
   --category-riscv: #34d399;
+
+  /* Visualization Palette - Dark Theme */
+  --color-palette-purple: #a78bfa;
+  --color-palette-pink: #f472b6;
+  --color-palette-orange: #fb923c;
 }
 
 /* ============================================

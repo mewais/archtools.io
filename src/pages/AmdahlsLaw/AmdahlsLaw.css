@@ -10,10 +10,10 @@
   --enhance-1: var(--color-success);
   --enhance-2: var(--color-warning);
   --enhance-3: var(--color-error);
-  --enhance-4: #8b5cf6;
-  --enhance-5: #ec4899;
-  --enhance-6: #3b82f6;
-  --enhance-7: #f97316;
+  --enhance-4: var(--color-palette-purple);
+  --enhance-5: var(--color-palette-pink);
+  --enhance-6: var(--color-info);
+  --enhance-7: var(--color-palette-orange);
 }
 
 .amdahl__tabs.tab-selector {
@@ -40,7 +40,7 @@
 }
 
 .amdahl__enhancement-color {
-  width: 4px;
+  width: var(--spacing-xs);
   border-radius: var(--radius-full);
   flex-shrink: 0;
 }
@@ -221,7 +221,7 @@
 
 .amdahl__fraction-bar {
   display: flex;
-  height: 8px;
+  height: var(--spacing-sm);
   border-radius: var(--radius-full);
   overflow: hidden;
   background: var(--bg-tertiary);
