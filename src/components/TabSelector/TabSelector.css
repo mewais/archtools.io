@@ -146,20 +146,27 @@
     height: var(--size-icon-xs);
   }
 
-  /* On very small screens, show icon-only */
+  /* On very small screens, icon-only for tabs that have icons */
   @media (max-width: 480px) {
-    .tab-selector__tab {
+    /* Tabs with icons: show icon only */
+    .tab-selector__tab:has(.tab-selector__icon) {
       padding: var(--spacing-sm);
       min-width: var(--size-touch-target);
     }
 
-    .tab-selector__label {
+    .tab-selector__tab:has(.tab-selector__icon) .tab-selector__label {
       display: none;
     }
 
     .tab-selector__icon {
       width: var(--size-icon-sm);
       height: var(--size-icon-sm);
+    }
+
+    /* Text-only tabs: keep labels visible, just compact */
+    .tab-selector__tab:not(:has(.tab-selector__icon)) {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: var(--font-size-xs);
     }
   }
 }

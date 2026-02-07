@@ -113,6 +113,8 @@
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-primary);
+  min-width: 0;
+  container-type: inline-size;
 }
 
 .hex-float__format-header {
@@ -319,10 +321,51 @@
 }
 
 .hex-float__bit-row {
-  display: flex;
+  display: grid;
   gap: var(--spacing-md);
-  flex-wrap: wrap;
   justify-content: center;
+  grid-template-columns: repeat(2, auto);
+}
+
+/* Mobile: smaller cells (1rem), lower container thresholds */
+/* 4 nibbles: 4×(4×1rem + 3×0.125rem) + 3×1rem gap = 20.5rem */
+/* 8 nibbles: 8×(4×1rem + 3×0.125rem) + 7×1rem gap = 42rem */
+@media (max-width: 767px) {
+  @container (min-width: 21rem) {
+    .hex-float__bit-row {
+      grid-template-columns: repeat(4, auto);
+    }
+  }
+
+  @container (min-width: 42rem) {
+    .hex-float__bit-row {
+      grid-template-columns: repeat(8, auto);
+    }
+  }
+}
+
+/* Desktop: larger cells (1.25rem), higher container thresholds */
+/* 4 nibbles: 4×(4×1.25rem + 3×0.125rem) + 3×1rem gap = 24.5rem */
+/* 8 nibbles: 8×(4×1.25rem + 3×0.125rem) + 7×1rem gap = 50rem */
+/* 16 nibbles: 16×(4×1.25rem + 3×0.125rem) + 15×1rem gap = 101rem */
+@media (min-width: 768px) {
+  @container (min-width: 25rem) {
+    .hex-float__bit-row {
+      grid-template-columns: repeat(4, auto);
+    }
+  }
+
+  @container (min-width: 50rem) {
+    .hex-float__bit-row {
+      grid-template-columns: repeat(8, auto);
+    }
+  }
+
+  @container (min-width: 101rem) {
+    .hex-float__bit-row {
+      grid-template-columns: repeat(16, auto);
+    }
+  }
 }
 
 .hex-float__nibble {

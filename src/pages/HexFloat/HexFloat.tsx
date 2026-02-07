@@ -693,10 +693,10 @@ const HexFloat: React.FC = () => {
       </div>
 
       {(() => {
-        const bitsPerRow = 16;
         const totalBits = format.totalBits;
         const expEnd = totalBits - 1 - 1; // After sign bit
         const expStart = expEnd - format.exponentBits + 1;
+        const totalNibbles = Math.ceil(totalBits / 4);
 
         // Get bit type based on bit index (MSB = totalBits-1)
         const getBitType = (bitIndex: number): 'sign' | 'exponent' | 'mantissa' => {
@@ -705,11 +705,6 @@ const HexFloat: React.FC = () => {
           return 'mantissa';
         };
 
-        // Calculate nibbles per row
-        const nibblesPerRow = bitsPerRow / 4;
-        const totalNibbles = Math.ceil(totalBits / 4);
-        const numRows = Math.ceil(totalNibbles / nibblesPerRow);
-
         return (
           <div className="hex-float__binary-breakdown hex-float__binary-breakdown--interactive">
             <div className="hex-float__bit-legend">
@@ -717,64 +712,56 @@ const HexFloat: React.FC = () => {
               <span className="hex-float__legend-item hex-float__legend-item--exponent">Exp ({format.exponentBits})</span>
               <span className="hex-float__legend-item hex-float__legend-item--mantissa">Mantissa ({format.mantissaBits})</span>
             </div>
-            {Array.from({ length: numRows }, (_, rowIdx) => {
-              const rowStartBit = totalBits - 1 - rowIdx * bitsPerRow;
-              const nibblesInRow = Math.min(nibblesPerRow, Math.ceil((rowStartBit + 1) / 4));
+            <div className="hex-float__bit-row">
+              {Array.from({ length: totalNibbles }, (_, nibbleIdx) => {
+                const startBit = totalBits - 1 - nibbleIdx * 4;
+                if (startBit < 0) return null;
 
-              return (
-                <div key={rowIdx} className="hex-float__bit-row">
-                  {Array.from({ length: nibblesInRow }, (_, nibbleInRow) => {
-                    const nibbleIdx = rowIdx * nibblesPerRow + nibbleInRow;
-                    const startBit = totalBits - 1 - nibbleIdx * 4;
-                    if (startBit < 0) return null;
+                // Calculate hex value for this nibble
+                const nibbleValue = Number((encoded.bits >> BigInt(Math.max(0, startBit - 3))) & 0xFn);
 
-                    // Calculate hex value for this nibble
-                    const nibbleValue = Number((encoded.bits >> BigInt(Math.max(0, startBit - 3))) & 0xFn);
-
-                    return (
-                      <div key={nibbleIdx} className="hex-float__nibble">
-                        <div className="hex-float__bit-labels">
-                          {[0, 1, 2, 3].map(i => {
-                            const bitIdx = startBit - i;
-                            if (bitIdx < 0) return <span key={i} className="hex-float__bit-label"></span>;
-                            return <span key={i} className="hex-float__bit-label">{bitIdx}</span>;
-                          })}
-                        </div>
-                        <div className="hex-float__bit-cells-wrapper">
-                          <div className="hex-float__field-bg">
-                            {[0, 1, 2, 3].map(i => {
-                              const bitIdx = startBit - i;
-                              if (bitIdx < 0) return null;
-                              const bitType = getBitType(bitIdx);
-                              return <span key={i} className={`hex-float__field-bg-cell hex-float__field-bg-cell--${bitType}`} />;
-                            })}
-                          </div>
-                          <div className="hex-float__bit-cells">
-                            {[0, 1, 2, 3].map(i => {
-                              const bitIdx = startBit - i;
-                              if (bitIdx < 0) return null;
-                              const bitValue = (encoded.bits >> BigInt(bitIdx)) & 1n;
-                              const bitType = getBitType(bitIdx);
-                              return (
-                                <button
-                                  key={i}
-                                  className={`hex-float__bit-cell hex-float__bit-cell--${bitType} ${bitValue === 1n ? 'hex-float__bit-cell--set' : ''}`}
-                                  onClick={() => toggleBit(format, bitIdx, encoded.bits)}
-                                  title={`Bit ${bitIdx} (${bitType}): Click to toggle`}
-                                >
-                                  {bitValue.toString()}
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </div>
-                        <span className="hex-float__nibble-hex">{nibbleValue.toString(16).toUpperCase()}</span>
+                return (
+                  <div key={nibbleIdx} className="hex-float__nibble">
+                    <div className="hex-float__bit-labels">
+                      {[0, 1, 2, 3].map(i => {
+                        const bitIdx = startBit - i;
+                        if (bitIdx < 0) return <span key={i} className="hex-float__bit-label"></span>;
+                        return <span key={i} className="hex-float__bit-label">{bitIdx}</span>;
+                      })}
+                    </div>
+                    <div className="hex-float__bit-cells-wrapper">
+                      <div className="hex-float__field-bg">
+                        {[0, 1, 2, 3].map(i => {
+                          const bitIdx = startBit - i;
+                          if (bitIdx < 0) return null;
+                          const bitType = getBitType(bitIdx);
+                          return <span key={i} className={`hex-float__field-bg-cell hex-float__field-bg-cell--${bitType}`} />;
+                        })}
                       </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
+                      <div className="hex-float__bit-cells">
+                        {[0, 1, 2, 3].map(i => {
+                          const bitIdx = startBit - i;
+                          if (bitIdx < 0) return null;
+                          const bitValue = (encoded.bits >> BigInt(bitIdx)) & 1n;
+                          const bitType = getBitType(bitIdx);
+                          return (
+                            <button
+                              key={i}
+                              className={`hex-float__bit-cell hex-float__bit-cell--${bitType} ${bitValue === 1n ? 'hex-float__bit-cell--set' : ''}`}
+                              onClick={() => toggleBit(format, bitIdx, encoded.bits)}
+                              title={`Bit ${bitIdx} (${bitType}): Click to toggle`}
+                            >
+                              {bitValue.toString()}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <span className="hex-float__nibble-hex">{nibbleValue.toString(16).toUpperCase()}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         );
       })()}
