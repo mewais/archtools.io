@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header, Footer, AdBlockDetector } from './components';
+import { Header, Footer, AdBlockDetector, PageLayout } from './components';
 import {
   Home,
   HexInt,
@@ -48,20 +48,22 @@ function App() {
       <div className="app">
         <Header theme={theme} onThemeToggle={toggleTheme} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hex-int" element={<HexInt />} />
-          <Route path="/hex-float" element={<HexFloat />} />
-          <Route path="/hex-viewer" element={<HexViewer />} />
-          <Route path="/bitwise-calc" element={<BitwiseCalc />} />
-          <Route path="/crc-calc" element={<CRCCalc />} />
-          <Route path="/amdahls-law" element={<AmdahlsLaw />} />
-          <Route path="/bandwidth-calc" element={<BandwidthCalc />} />
-          <Route path="/flops-calc" element={<FLOPSCalc />} />
-          <Route path="/cache-config" element={<CacheConfig />} />
-          <Route path="/isa-reference" element={<ISAReference />} />
-          <Route path="/simulator" element={<Simulator />} />
-        </Routes>
+        <PageLayout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hex-int" element={<HexInt />} />
+            <Route path="/hex-float" element={<HexFloat />} />
+            <Route path="/hex-viewer" element={<HexViewer />} />
+            <Route path="/bitwise-calc" element={<BitwiseCalc />} />
+            <Route path="/crc-calc" element={<CRCCalc />} />
+            <Route path="/amdahls-law" element={<AmdahlsLaw />} />
+            <Route path="/bandwidth-calc" element={<BandwidthCalc />} />
+            <Route path="/flops-calc" element={<FLOPSCalc />} />
+            <Route path="/cache-config" element={<CacheConfig />} />
+            <Route path="/isa-reference" element={<ISAReference />} />
+            <Route path="/simulator" element={<Simulator />} />
+          </Routes>
+        </PageLayout>
 
         <Footer />
         <AdBlockDetector />

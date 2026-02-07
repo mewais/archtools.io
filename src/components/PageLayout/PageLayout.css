@@ -1,0 +1,72 @@
+/* PageLayout — 3-column grid with ad sidebars */
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  grid-template-rows: 1fr auto;
+  gap: var(--spacing-md);
+  flex: 1;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.page-layout__sidebar {
+  min-width: 0;
+}
+
+.page-layout__sidebar--left {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.page-layout__sidebar--right {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.page-layout__content {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.page-layout__ad-sticky {
+  position: sticky;
+  top: var(--spacing-md);
+}
+
+.page-layout__mobile-banner {
+  display: none;
+}
+
+/* Tablet: narrower sidebars */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-layout {
+    grid-template-columns: 120px 1fr 120px;
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Phone: single column, no sidebars, show mobile banner */
+@media (max-width: 767px) {
+  .page-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .page-layout__sidebar {
+    display: none;
+  }
+
+  .page-layout__content {
+    flex: 1;
+  }
+
+  .page-layout__mobile-banner {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

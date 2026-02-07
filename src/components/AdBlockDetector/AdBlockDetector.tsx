@@ -49,7 +49,7 @@ const AdBlockDetector: React.FC = () => {
   };
 
   const handleSupport = () => {
-    window.open('https://ko-fi.com/archtools', '_blank');
+    window.open('https://ko-fi.com/archtoolsio', '_blank');
   };
 
   if (!adBlockDetected || dismissed) {

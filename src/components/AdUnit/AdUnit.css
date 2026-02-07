@@ -1,0 +1,10 @@
+/* AdUnit styles */
+
+.ad-unit {
+  overflow: hidden;
+  text-align: center;
+}
+
+.ad-unit ins {
+  display: block;
+}
