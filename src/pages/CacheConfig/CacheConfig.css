@@ -15,16 +15,13 @@
 /* ─── Configuration ─────────────────────────────────────────────────────── */
 
 .cache__config {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
   gap: var(--spacing-sm);
 }
 
 .cache__config-row {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
+  display: contents;
 }
 
 .cache__field {
@@ -34,12 +31,15 @@
 }
 
 .cache__field-label {
+  flex: 0 0 5.5rem;
   font-size: var(--font-size-xs);
   color: var(--text-tertiary);
   white-space: nowrap;
 }
 
 .cache__field-select {
+  flex: 1;
+  min-width: 0;
   padding: var(--spacing-xs) var(--spacing-sm);
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-sm);
@@ -531,17 +531,8 @@
 /* ─── Responsive ────────────────────────────────────────────────────────── */
 
 @media (max-width: 767px) {
-  .cache__config-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cache__field {
-    width: 100%;
-  }
-
-  .cache__field-select {
-    flex: 1;
+  .cache__config {
+    grid-template-columns: 1fr;
   }
 
   .cache__sample-input-row {
