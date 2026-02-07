@@ -52,18 +52,16 @@
   gap: var(--spacing-md);
 }
 
-.header__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
+.header__feedback-link {
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-md);
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.header__link:hover {
+.header__feedback-link:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
 }

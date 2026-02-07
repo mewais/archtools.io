@@ -192,20 +192,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Coming Soon Teaser */}
-      <section className="home__section home__section--muted">
-        <div className="home__coming-soon">
-          <h3>More tools coming soon</h3>
-          <p>
-            Cache simulator, GEMM visualizer, instruction encoders, and more.
-            <br />
-            <a href="https://github.com/archtools" target="_blank" rel="noopener noreferrer">
-              Follow us on GitHub
-            </a>
-            {' '}to stay updated.
-          </p>
-        </div>
-      </section>
+
     </main>
   );
 };

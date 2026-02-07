@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle';
-import { GithubIcon } from '../Icons';
 import type { Theme } from '../../types';
 import './Header.css';
 
@@ -21,13 +20,12 @@ const Header: React.FC<HeaderProps> = ({ theme, onThemeToggle }) => {
 
         <nav className="header__nav">
           <a
-            href="https://github.com/archtools"
+            href="https://github.com/mewais/archtools.io/issues"
             target="_blank"
             rel="noopener noreferrer"
-            className="header__link"
-            aria-label="GitHub"
+            className="header__feedback-link"
           >
-            <GithubIcon size={22} />
+            Report Issue
           </a>
           <ThemeToggle theme={theme} onToggle={onThemeToggle} />
         </nav>
