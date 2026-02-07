@@ -950,7 +950,7 @@ const HexViewer: React.FC = () => {
               ref={fileInputRef}
               type="file"
               onChange={(e) => handleFileUpload(e, false)}
-              style={{ display: 'none' }}
+              className="hex-viewer__file-input"
             />
 
             {diffMode && (
@@ -967,7 +967,7 @@ const HexViewer: React.FC = () => {
                   ref={fileInputRef2}
                   type="file"
                   onChange={(e) => handleFileUpload(e, true)}
-                  style={{ display: 'none' }}
+                  className="hex-viewer__file-input"
                 />
               </>
             )}

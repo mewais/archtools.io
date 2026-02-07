@@ -119,8 +119,12 @@
 }
 
 /* Scale input for MXFP formats */
+.hex-viewer__file-input {
+  display: none;
+}
+
 .hex-viewer__scale-input {
-  width: 4rem;
+  width: var(--size-hex-scale-input);
   padding: var(--spacing-xs) var(--spacing-sm);
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-md);
@@ -137,7 +141,7 @@
 }
 
 .hex-viewer__scale-input--compact {
-  width: 3rem;
+  width: var(--size-hex-scale-input-compact);
   padding: var(--spacing-2xs) var(--spacing-xs);
 }
 
@@ -222,7 +226,7 @@
 }
 
 .hex-viewer__dump {
-  max-height: 60vh;
+  max-height: var(--size-hex-dump-max-height);
   overflow: auto;
   font-family: var(--font-code);
   font-size: var(--font-size-sm);
@@ -396,7 +400,7 @@
 }
 
 .hex-viewer__ascii-char--empty {
-  opacity: 0.3;
+  opacity: var(--opacity-empty);
 }
 
 .hex-viewer__ascii-char--highlight {

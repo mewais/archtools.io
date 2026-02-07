@@ -85,9 +85,10 @@
   --size-hex-offset-tablet: 4rem;
   --size-hex-offset-phone: 3.5rem;
   --size-hex-ascii-char: 0.6rem;
-  --size-hex-int-value: 8rem;
-  --size-hex-float-value: 10rem;
-  --size-hex-value-mobile: 6rem;
+  --size-hex-scale-input: 4rem;
+  --size-hex-scale-input-compact: 3rem;
+  --size-hex-dump-max-height: 60vh;
+  --opacity-empty: 0.3;
 
   /* ========== Border Radius ========== */
   --radius-sm: 0.25rem;
