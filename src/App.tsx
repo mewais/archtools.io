@@ -6,7 +6,11 @@ import {
   HexInt,
   HexFloat,
   HexViewer,
-  Endian,
+  BitwiseCalc,
+  CRCCalc,
+  AmdahlsLaw,
+  BandwidthCalc,
+  FLOPSCalc,
   CacheConfig,
   ISAReference,
   Simulator,
@@ -49,7 +53,11 @@ function App() {
           <Route path="/hex-int" element={<HexInt />} />
           <Route path="/hex-float" element={<HexFloat />} />
           <Route path="/hex-viewer" element={<HexViewer />} />
-          <Route path="/endian" element={<Endian />} />
+          <Route path="/bitwise-calc" element={<BitwiseCalc />} />
+          <Route path="/crc-calc" element={<CRCCalc />} />
+          <Route path="/amdahls-law" element={<AmdahlsLaw />} />
+          <Route path="/bandwidth-calc" element={<BandwidthCalc />} />
+          <Route path="/flops-calc" element={<FLOPSCalc />} />
           <Route path="/cache-config" element={<CacheConfig />} />
           <Route path="/isa-reference" element={<ISAReference />} />
           <Route path="/simulator" element={<Simulator />} />

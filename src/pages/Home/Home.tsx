@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card } from '../../components';
-import { HexIcon, FloatIcon, BinaryViewerIcon, SwapIcon, CacheIcon, BookIcon, PlayIcon } from '../../components/Icons';
+import { HexIcon, FloatIcon, BinaryViewerIcon, BitwiseIcon, ChecksumIcon, CacheIcon, SpeedupIcon, BandwidthIcon, FLOPSIcon, BookIcon, PlayIcon } from '../../components/Icons';
 import './Home.css';
 
 const tools = {
-  general: [
+  numerical: [
     {
       id: 'hex-int',
       title: 'Hex-Integer Converter',
@@ -23,19 +23,53 @@ const tools = {
     },
     {
       id: 'hex-viewer',
-      title: 'Hex Viewer & Converter',
+      title: 'Hex Viewer & Diff',
       description: 'View binary files as hex, integers, floats, or ASCII. Convert formats, swap endianness, diff files.',
       href: '/hex-viewer',
       icon: <BinaryViewerIcon size={28} />,
       tags: ['hex dump', 'binary', 'endian', 'diff'],
     },
     {
-      id: 'endian',
-      title: 'Endian Swapper',
-      description: 'Swap byte order between big-endian and little-endian. Visualize byte arrangement.',
-      href: '/endian',
-      icon: <SwapIcon size={28} />,
-      tags: ['little-endian', 'big-endian', 'byte order'],
+      id: 'bitwise-calc',
+      title: 'Bitwise Calculator',
+      description: 'Perform AND, OR, XOR, NOT, shifts, and rotations. Visualize bit manipulation in binary and hex.',
+      href: '/bitwise-calc',
+      icon: <BitwiseIcon size={28} />,
+      tags: ['AND', 'OR', 'XOR', 'shift'],
+    },
+    {
+      id: 'crc-calc',
+      title: 'CRC & Checksum Calculator',
+      description: 'Compute CRC32, CRC16, CRC8, MD5, SHA-256, and more. Supports text, hex, and custom polynomials.',
+      href: '/crc-calc',
+      icon: <ChecksumIcon size={28} />,
+      tags: ['CRC32', 'checksum', 'hash'],
+    },
+  ],
+  architecture: [
+    {
+      id: 'amdahls-law',
+      title: "Amdahl's Law Calculator",
+      description: "Calculate theoretical speedup from parallelization. Visualize diminishing returns and efficiency.",
+      href: '/amdahls-law',
+      icon: <SpeedupIcon size={28} />,
+      tags: ['speedup', 'parallel', 'performance'],
+    },
+    {
+      id: 'bandwidth-calc',
+      title: 'Memory Bandwidth Calculator',
+      description: 'Compute peak memory bandwidth from clock, bus width, channels, and DDR rate. Supports DDR4/5, HBM, GDDR.',
+      href: '/bandwidth-calc',
+      icon: <BandwidthIcon size={28} />,
+      tags: ['DDR5', 'HBM', 'bandwidth'],
+    },
+    {
+      id: 'flops-calc',
+      title: 'FLOPS Calculator',
+      description: 'Compute peak floating-point performance from cores, clock, FP units, and vector width.',
+      href: '/flops-calc',
+      icon: <FLOPSIcon size={28} />,
+      tags: ['GFLOPS', 'TFLOPS', 'performance'],
     },
     {
       id: 'cache-config',
@@ -89,16 +123,39 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* General Tools */}
+      {/* Numerical Tools */}
       <section className="home__section">
         <div className="home__section-header">
-          <h2 className="home__section-title">General Tools</h2>
+          <h2 className="home__section-title">Numerical Tools</h2>
           <p className="home__section-description">
-            Everyday utilities for working with numbers, memory, and data representation
+            Convert, visualize, and manipulate numbers, hex, floats, and binary data
           </p>
         </div>
         <div className="home__grid">
-          {tools.general.map((tool) => (
+          {tools.numerical.map((tool) => (
+            <Card
+              key={tool.id}
+              title={tool.title}
+              description={tool.description}
+              icon={tool.icon}
+              href={tool.href}
+              category="general"
+              tags={tool.tags}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Architecture Tools */}
+      <section className="home__section">
+        <div className="home__section-header">
+          <h2 className="home__section-title">Architecture Tools</h2>
+          <p className="home__section-description">
+            Cache configuration, performance analysis, and system design utilities
+          </p>
+        </div>
+        <div className="home__grid">
+          {tools.architecture.map((tool) => (
             <Card
               key={tool.id}
               title={tool.title}
@@ -117,7 +174,7 @@ const Home: React.FC = () => {
         <div className="home__section-header">
           <h2 className="home__section-title">RISC-V Tools</h2>
           <p className="home__section-description">
-            Specialized tools for RISC-V development and computer architecture education
+            Instruction set reference and assembly simulator for RISC-V
           </p>
         </div>
         <div className="home__grid">
@@ -140,7 +197,7 @@ const Home: React.FC = () => {
         <div className="home__coming-soon">
           <h3>More tools coming soon</h3>
           <p>
-            GEMM visualizer, instruction encoders, pipeline diagrams, and more.
+            Cache simulator, GEMM visualizer, instruction encoders, and more.
             <br />
             <a href="https://github.com/archtools" target="_blank" rel="noopener noreferrer">
               Follow us on GitHub

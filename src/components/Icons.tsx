@@ -162,3 +162,69 @@ export const UploadIcon: React.FC<IconProps> = ({ size = 24, className = '' }) =
     <line x1="12" y1="3" x2="12" y2="15" />
   </svg>
 );
+
+export const BitwiseIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="bitwiseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#F59E0B" />
+        <stop offset="100%" stopColor="#EF4444" />
+      </linearGradient>
+    </defs>
+    <text x="4" y="10" fontSize="7" fontWeight="bold" fontFamily="monospace" fill="url(#bitwiseGrad)">AND</text>
+    <text x="3" y="20" fontSize="7" fontWeight="bold" fontFamily="monospace" fill="url(#bitwiseGrad)">XOR</text>
+  </svg>
+);
+
+export const SpeedupIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="speedupGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#10B981" />
+        <stop offset="100%" stopColor="#3B82F6" />
+      </linearGradient>
+    </defs>
+    <polyline points="3 20 8 14 13 16 21 4" stroke="url(#speedupGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    <polyline points="16 4 21 4 21 9" stroke="url(#speedupGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+);
+
+export const ChecksumIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="checksumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8B5CF6" />
+        <stop offset="100%" stopColor="#EC4899" />
+      </linearGradient>
+    </defs>
+    <rect x="3" y="3" width="18" height="18" rx="3" stroke="url(#checksumGrad)" strokeWidth="2" fill="none" />
+    <path d="M8 12l2 2 4-4" stroke="url(#checksumGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+);
+
+export const BandwidthIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="bandwidthGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#06B6D4" />
+        <stop offset="100%" stopColor="#6366F1" />
+      </linearGradient>
+    </defs>
+    <path d="M4 12h16" stroke="url(#bandwidthGrad)" strokeWidth="2" strokeLinecap="round" />
+    <path d="M4 7h16" stroke="url(#bandwidthGrad)" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+    <path d="M4 17h16" stroke="url(#bandwidthGrad)" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+    <polyline points="18 9 21 12 18 15" stroke="url(#bandwidthGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const FLOPSIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="flopsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#F97316" />
+        <stop offset="100%" stopColor="#FBBF24" />
+      </linearGradient>
+    </defs>
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#flopsGrad)" />
+  </svg>
+);
