@@ -6,10 +6,11 @@ interface ToolPageProps {
   title: string;
   description: string;
   keywords?: string[];
+  fullWidth?: boolean;
   children?: React.ReactNode;
 }
 
-const ToolPage: React.FC<ToolPageProps> = ({ title, description, keywords, children }) => {
+const ToolPage: React.FC<ToolPageProps> = ({ title, description, keywords, fullWidth, children }) => {
   // Update document title and meta tags for SEO
   useEffect(() => {
     // Set page title
@@ -72,7 +73,7 @@ const ToolPage: React.FC<ToolPageProps> = ({ title, description, keywords, child
   }, [title, description, keywords]);
 
   return (
-    <main className="tool-page">
+    <main className={`tool-page${fullWidth ? ' tool-page--full-width' : ''}`}>
       <div className="tool-page__header">
         <Link to="/" className="tool-page__back">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

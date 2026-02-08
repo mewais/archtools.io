@@ -1,0 +1,2825 @@
+[
+  {
+    "mnemonic": "LA",
+    "pseudoinstruction": "la rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "addi rd, rd, symbol[11:0]"
+    ],
+    "description": "Load address",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LA",
+    "pseudoinstruction": "la rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "addi rd, rd, symbol[11:0]"
+    ],
+    "description": "Load address",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LA",
+    "pseudoinstruction": "la rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol@GOT[31:12]",
+      "lw rd, symbol@GOT[11:0](rd)"
+    ],
+    "description": "Load address",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LA",
+    "pseudoinstruction": "la rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol@GOT[31:12]",
+      "ld rd, symbol@GOT[11:0](rd)"
+    ],
+    "description": "Load address",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LLA",
+    "pseudoinstruction": "lla rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "addi rd, rd, symbol[11:0]"
+    ],
+    "description": "Load local address",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LLA",
+    "pseudoinstruction": "lla rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "addi rd, rd, symbol[11:0]"
+    ],
+    "description": "Load local address",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LGA",
+    "pseudoinstruction": "lga rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol@GOT[31:12]",
+      "lw rd, symbol@GOT[11:0](rd)"
+    ],
+    "description": "Load global address",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LGA",
+    "pseudoinstruction": "lga rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol@GOT[31:12]",
+      "ld rd, symbol@GOT[11:0](rd)"
+    ],
+    "description": "Load global address",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LB",
+    "pseudoinstruction": "lb rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lb rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LB",
+    "pseudoinstruction": "lb rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lb rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LH",
+    "pseudoinstruction": "lh rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lh rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LH",
+    "pseudoinstruction": "lh rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lh rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LW",
+    "pseudoinstruction": "lw rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lw rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LW",
+    "pseudoinstruction": "lw rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lw rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LD",
+    "pseudoinstruction": "ld rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "ld rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LBU",
+    "pseudoinstruction": "lbu rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lbu rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LBU",
+    "pseudoinstruction": "lbu rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lbu rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LHU",
+    "pseudoinstruction": "lhu rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lhu rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "LHU",
+    "pseudoinstruction": "lhu rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lhu rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "LWU",
+    "pseudoinstruction": "lwu rd, symbol",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rd, symbol[31:12]",
+      "lwu rd, symbol[11:0](rd)"
+    ],
+    "description": "Load global, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SB",
+    "pseudoinstruction": "sb rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "sb rd, symbol[11:0](rt)"
+    ],
+    "description": "Store global",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SB",
+    "pseudoinstruction": "sb rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "sb rd, symbol[11:0](rt)"
+    ],
+    "description": "Store global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SH",
+    "pseudoinstruction": "sh rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "sh rd, symbol[11:0](rt)"
+    ],
+    "description": "Store global",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SH",
+    "pseudoinstruction": "sh rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "sh rd, symbol[11:0](rt)"
+    ],
+    "description": "Store global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SW",
+    "pseudoinstruction": "sw rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "sw rd, symbol[11:0](rt)"
+    ],
+    "description": "Store global",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SW",
+    "pseudoinstruction": "sw rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "sw rd, symbol[11:0](rt)"
+    ],
+    "description": "Store global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SD",
+    "pseudoinstruction": "sd rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "sd rd, symbol[11:0](rt)"
+    ],
+    "description": "Store global",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "FLH",
+    "pseudoinstruction": "flh rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "flh rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV32I",
+      "RV32Zfh"
+    ]
+  },
+  {
+    "mnemonic": "FLH",
+    "pseudoinstruction": "flh rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "flh rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV64I",
+      "RV64Zfh"
+    ]
+  },
+  {
+    "mnemonic": "FLW",
+    "pseudoinstruction": "flw rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "flw rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV32F",
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "FLW",
+    "pseudoinstruction": "flw rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "flw rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV64F",
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "FLD",
+    "pseudoinstruction": "fld rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fld rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV32D",
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "FLD",
+    "pseudoinstruction": "fld rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fld rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV64D",
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "FLQ",
+    "pseudoinstruction": "flq rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "flq rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV32I",
+      "RV32Q"
+    ]
+  },
+  {
+    "mnemonic": "FLQ",
+    "pseudoinstruction": "flq rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "flq rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point load global",
+    "requiredExtensions": [
+      "RV64I",
+      "RV64Q"
+    ]
+  },
+  {
+    "mnemonic": "FSH",
+    "pseudoinstruction": "fsh rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsh rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV32I",
+      "RV32Zfh"
+    ]
+  },
+  {
+    "mnemonic": "FSH",
+    "pseudoinstruction": "fsh rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsh rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV64I",
+      "RV64Zfh"
+    ]
+  },
+  {
+    "mnemonic": "FSW",
+    "pseudoinstruction": "fsw rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsw rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV32F",
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "FSW",
+    "pseudoinstruction": "fsw rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsw rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV64F",
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "FSD",
+    "pseudoinstruction": "fsd rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsd rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV32D",
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "FSD",
+    "pseudoinstruction": "fsd rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsd rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV64D",
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "FSQ",
+    "pseudoinstruction": "fsq rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsq rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV32I",
+      "RV32Q"
+    ]
+  },
+  {
+    "mnemonic": "FSQ",
+    "pseudoinstruction": "fsq rd, symbol, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, symbol[31:12]",
+      "fsq rd, symbol[11:0](rt)"
+    ],
+    "description": "Floating-point store global",
+    "requiredExtensions": [
+      "RV64I",
+      "RV64Q"
+    ]
+  },
+  {
+    "mnemonic": "NOP",
+    "pseudoinstruction": "nop",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "addi x0, x0, 0"
+    ],
+    "description": "No operation",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "NOP",
+    "pseudoinstruction": "nop",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "addi x0, x0, 0"
+    ],
+    "description": "No operation",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "MV",
+    "pseudoinstruction": "mv rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "addi rd, rs, 0"
+    ],
+    "description": "Copy register",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "MV",
+    "pseudoinstruction": "mv rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "addi rd, rs, 0"
+    ],
+    "description": "Copy register",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "NOT",
+    "pseudoinstruction": "not rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "xori rd, rs, -1"
+    ],
+    "description": "Ones\u2019 complement",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "NOT",
+    "pseudoinstruction": "not rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "xori rd, rs, -1"
+    ],
+    "description": "Ones\u2019 complement",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "NEG",
+    "pseudoinstruction": "neg rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "sub rd, x0, rs"
+    ],
+    "description": "Two\u2019s complement",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "NEG",
+    "pseudoinstruction": "neg rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "sub rd, x0, rs"
+    ],
+    "description": "Two\u2019s complement",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "NEGW",
+    "pseudoinstruction": "negw rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "subw rd, x0, rs"
+    ],
+    "description": "Two\u2019s complement word",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "NEGW",
+    "pseudoinstruction": "negw rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "subw rd, x0, rs"
+    ],
+    "description": "Two\u2019s complement word",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SEXT.B",
+    "pseudoinstruction": "sext.b rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 32 - 8",
+      "srai rd, rd, 32 - 8"
+    ],
+    "description": "Sign extend byte",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SEXT.B",
+    "pseudoinstruction": "sext.b rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 64 - 8",
+      "srai rd, rd, 64 - 8"
+    ],
+    "description": "Sign extend byte",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SEXT.H",
+    "pseudoinstruction": "sext.h rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 32 - 16",
+      "srai rd, rd, 32 - 16"
+    ],
+    "description": "Sign extend halfword",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SEXT.H",
+    "pseudoinstruction": "sext.h rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 64 - 16",
+      "srai rd, rd, 64 - 16"
+    ],
+    "description": "Sign extend halfword",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SEXT.W",
+    "pseudoinstruction": "sext.w rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "addiw rd, rs, 0"
+    ],
+    "description": "Sign extend word",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "ZEXT.B",
+    "pseudoinstruction": "zext.b rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "andi rd, rs, 255"
+    ],
+    "description": "Zero extend byte",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "ZEXT.B",
+    "pseudoinstruction": "zext.b rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "andi rd, rs, 255"
+    ],
+    "description": "Zero extend byte",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "ZEXT.H",
+    "pseudoinstruction": "zext.h rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 32 - 16",
+      "srli rd, rd, 32 - 16"
+    ],
+    "description": "Zero extend halfword",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "ZEXT.H",
+    "pseudoinstruction": "zext.h rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 64 - 16",
+      "srli rd, rd, 64 - 16"
+    ],
+    "description": "Zero extend halfword",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "ZEXT.W",
+    "pseudoinstruction": "zext.w rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 32 - 32",
+      "srli rd, rd, 32 - 32"
+    ],
+    "description": "Zero extend word",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "ZEXT.W",
+    "pseudoinstruction": "zext.w rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slli rd, rs, 64 - 32",
+      "srli rd, rd, 64 - 32"
+    ],
+    "description": "Zero extend word",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SEQZ",
+    "pseudoinstruction": "seqz rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "sltiu rd, rs, 1"
+    ],
+    "description": "Set if = zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SEQZ",
+    "pseudoinstruction": "seqz rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "sltiu rd, rs, 1"
+    ],
+    "description": "Set if = zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SNEZ",
+    "pseudoinstruction": "snez rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "sltu rd, x0, rs"
+    ],
+    "description": "Set if != zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SNEZ",
+    "pseudoinstruction": "snez rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "sltu rd, x0, rs"
+    ],
+    "description": "Set if != zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SLTZ",
+    "pseudoinstruction": "sltz rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slt rd, rs, x0"
+    ],
+    "description": "Set if < zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SLTZ",
+    "pseudoinstruction": "sltz rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slt rd, rs, x0"
+    ],
+    "description": "Set if < zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "SGTZ",
+    "pseudoinstruction": "sgtz rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slt rd, x0, rs"
+    ],
+    "description": "Set if > zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "SGTZ",
+    "pseudoinstruction": "sgtz rd, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "slt rd, x0, rs"
+    ],
+    "description": "Set if > zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "FMV.H",
+    "pseudoinstruction": "fmv.h frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnj.h frd, frs, frs"
+    ],
+    "description": "Copy half-precision register",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FMV.H",
+    "pseudoinstruction": "fmv.h frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnj.h frd, frs, frs"
+    ],
+    "description": "Copy half-precision register",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FABS.H",
+    "pseudoinstruction": "fabs.h frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjx.h frd, frs, frs"
+    ],
+    "description": "Half-precision absolute value",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FABS.H",
+    "pseudoinstruction": "fabs.h frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjx.h frd, frs, frs"
+    ],
+    "description": "Half-precision absolute value",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FNEG.H",
+    "pseudoinstruction": "fneg.h frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjn.h frd, frs, frs"
+    ],
+    "description": "Half-precision negate",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FNEG.H",
+    "pseudoinstruction": "fneg.h frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjn.h frd, frs, frs"
+    ],
+    "description": "Half-precision negate",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FGT.H",
+    "pseudoinstruction": "fgt.h rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "flt.h rd, frt, frs"
+    ],
+    "description": "Half-precision >",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FGT.H",
+    "pseudoinstruction": "fgt.h rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "flt.h rd, frt, frs"
+    ],
+    "description": "Half-precision >",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FGE.H",
+    "pseudoinstruction": "fge.h rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fle.h rd, frt, frs"
+    ],
+    "description": "Half-precision >=",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FGE.H",
+    "pseudoinstruction": "fge.h rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fle.h rd, frt, frs"
+    ],
+    "description": "Half-precision >=",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FMV.S",
+    "pseudoinstruction": "fmv.s frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnj.s frd, frs, frs"
+    ],
+    "description": "Copy single-precision register",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FMV.S",
+    "pseudoinstruction": "fmv.s frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnj.s frd, frs, frs"
+    ],
+    "description": "Copy single-precision register",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FABS.S",
+    "pseudoinstruction": "fabs.s frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjx.s frd, frs, frs"
+    ],
+    "description": "Single-precision absolute value",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FABS.S",
+    "pseudoinstruction": "fabs.s frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjx.s frd, frs, frs"
+    ],
+    "description": "Single-precision absolute value",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FNEG.S",
+    "pseudoinstruction": "fneg.s frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjn.s frd, frs, frs"
+    ],
+    "description": "Single-precision negate",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FNEG.S",
+    "pseudoinstruction": "fneg.s frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjn.s frd, frs, frs"
+    ],
+    "description": "Single-precision negate",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FGT.S",
+    "pseudoinstruction": "fgt.s rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "flt.s rd, frt, frs"
+    ],
+    "description": "Single-precision >",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FGT.S",
+    "pseudoinstruction": "fgt.s rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "flt.s rd, frt, frs"
+    ],
+    "description": "Single-precision >",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FGE.S",
+    "pseudoinstruction": "fge.s rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fle.s rd, frt, frs"
+    ],
+    "description": "Single-precision >=",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FGE.S",
+    "pseudoinstruction": "fge.s rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fle.s rd, frt, frs"
+    ],
+    "description": "Single-precision >=",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FMV.D",
+    "pseudoinstruction": "fmv.d frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnj.d frd, frs, frs"
+    ],
+    "description": "Copy double-precision register",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FMV.D",
+    "pseudoinstruction": "fmv.d frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnj.d frd, frs, frs"
+    ],
+    "description": "Copy double-precision register",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FABS.D",
+    "pseudoinstruction": "fabs.d frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjx.d frd, frs, frs"
+    ],
+    "description": "Double-precision absolute value",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FABS.D",
+    "pseudoinstruction": "fabs.d frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjx.d frd, frs, frs"
+    ],
+    "description": "Double-precision absolute value",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FNEG.D",
+    "pseudoinstruction": "fneg.d frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjn.d frd, frs, frs"
+    ],
+    "description": "Double-precision negate",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FNEG.D",
+    "pseudoinstruction": "fneg.d frd, frs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fsgnjn.d frd, frs, frs"
+    ],
+    "description": "Double-precision negate",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FGT.D",
+    "pseudoinstruction": "fgt.d rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "flt.d rd, frt, frs"
+    ],
+    "description": "Double-precision >",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FGT.D",
+    "pseudoinstruction": "fgt.d rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "flt.d rd, frt, frs"
+    ],
+    "description": "Double-precision >",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FGE.D",
+    "pseudoinstruction": "fge.d rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fle.d rd, frt, frs"
+    ],
+    "description": "Double-precision >=",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FGE.D",
+    "pseudoinstruction": "fge.d rd, frs, frt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fle.d rd, frt, frs"
+    ],
+    "description": "Double-precision >=",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "BEQZ",
+    "pseudoinstruction": "beqz rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "beq rs, x0, offset"
+    ],
+    "description": "Branch if = zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BEQZ",
+    "pseudoinstruction": "beqz rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "beq rs, x0, offset"
+    ],
+    "description": "Branch if = zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BNEZ",
+    "pseudoinstruction": "bnez rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bne rs, x0, offset"
+    ],
+    "description": "Branch if != zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BNEZ",
+    "pseudoinstruction": "bnez rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bne rs, x0, offset"
+    ],
+    "description": "Branch if != zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BLEZ",
+    "pseudoinstruction": "blez rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bge x0, rs, offset"
+    ],
+    "description": "Branch if \u2264 zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BLEZ",
+    "pseudoinstruction": "blez rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bge x0, rs, offset"
+    ],
+    "description": "Branch if \u2264 zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BGEZ",
+    "pseudoinstruction": "bgez rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bge rs, x0, offset"
+    ],
+    "description": "Branch if \u2265 zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BGEZ",
+    "pseudoinstruction": "bgez rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bge rs, x0, offset"
+    ],
+    "description": "Branch if \u2265 zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BLTZ",
+    "pseudoinstruction": "bltz rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "blt rs, x0, offset"
+    ],
+    "description": "Branch if < zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BLTZ",
+    "pseudoinstruction": "bltz rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "blt rs, x0, offset"
+    ],
+    "description": "Branch if < zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BGTZ",
+    "pseudoinstruction": "bgtz rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "blt x0, rs, offset"
+    ],
+    "description": "Branch if > zero",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BGTZ",
+    "pseudoinstruction": "bgtz rs, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "blt x0, rs, offset"
+    ],
+    "description": "Branch if > zero",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BGT",
+    "pseudoinstruction": "bgt rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "blt rt, rs, offset"
+    ],
+    "description": "Branch if >",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BGT",
+    "pseudoinstruction": "bgt rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "blt rt, rs, offset"
+    ],
+    "description": "Branch if >",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BLE",
+    "pseudoinstruction": "ble rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bge rt, rs, offset"
+    ],
+    "description": "Branch if \u2264",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BLE",
+    "pseudoinstruction": "ble rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bge rt, rs, offset"
+    ],
+    "description": "Branch if \u2264",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BGTU",
+    "pseudoinstruction": "bgtu rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bltu rt, rs, offset"
+    ],
+    "description": "Branch if >, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BGTU",
+    "pseudoinstruction": "bgtu rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bltu rt, rs, offset"
+    ],
+    "description": "Branch if >, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "BLEU",
+    "pseudoinstruction": "bleu rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bgeu rt, rs, offset"
+    ],
+    "description": "Branch if \u2264, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "BLEU",
+    "pseudoinstruction": "bleu rs, rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "bgeu rt, rs, offset"
+    ],
+    "description": "Branch if \u2264, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "J",
+    "pseudoinstruction": "j offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jal x0, offset"
+    ],
+    "description": "Jump",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "J",
+    "pseudoinstruction": "j offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jal x0, offset"
+    ],
+    "description": "Jump",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "JUMP",
+    "pseudoinstruction": "jump offset, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, offset[31:12]",
+      "jalr x0, rt, offset[11:0]"
+    ],
+    "description": "Jump to far-away label",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "JUMP",
+    "pseudoinstruction": "jump offset, rt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, offset[31:12]",
+      "jalr x0, rt, offset[11:0]"
+    ],
+    "description": "Jump to far-away label",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "JAL",
+    "pseudoinstruction": "jal offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jal x1, offset"
+    ],
+    "description": "Jump and link",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "JAL",
+    "pseudoinstruction": "jal offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jal x1, offset"
+    ],
+    "description": "Jump and link",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "JR",
+    "pseudoinstruction": "jr rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jalr x0, rs, 0"
+    ],
+    "description": "Jump register",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "JR",
+    "pseudoinstruction": "jr rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jalr x0, rs, 0"
+    ],
+    "description": "Jump register",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "JALR",
+    "pseudoinstruction": "jalr rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jalr x1, rs, 0"
+    ],
+    "description": "Jump and link register",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "JALR",
+    "pseudoinstruction": "jalr rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jalr x1, rs, 0"
+    ],
+    "description": "Jump and link register",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "RET",
+    "pseudoinstruction": "ret",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jalr x0, x1, 0"
+    ],
+    "description": "Return from subroutine",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "RET",
+    "pseudoinstruction": "ret",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "jalr x0, x1, 0"
+    ],
+    "description": "Return from subroutine",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VFNEG.V",
+    "pseudoinstruction": "vfneg.v vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vfsgnjn.vv vd, vs, vs"
+    ],
+    "description": "Floating-point vector negate",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VFNEG.V",
+    "pseudoinstruction": "vfneg.v vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vfsgnjn.vv vd, vs, vs"
+    ],
+    "description": "Floating-point vector negate",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VFABS.V",
+    "pseudoinstruction": "vfabs.v vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vfsgnjx.vv vd, vs, vs"
+    ],
+    "description": "Floating-point vector absolute value",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VFABS.V",
+    "pseudoinstruction": "vfabs.v vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vfsgnjx.vv vd, vs, vs"
+    ],
+    "description": "Floating-point vector absolute value",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMCLR.M",
+    "pseudoinstruction": "vmclr.m vd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmxor.mm vd, vd, vd"
+    ],
+    "description": "Vector clear mask register",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMCLR.M",
+    "pseudoinstruction": "vmclr.m vd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmxor.mm vd, vd, vd"
+    ],
+    "description": "Vector clear mask register",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMFGE.VV",
+    "pseudoinstruction": "vmfge.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmfle.vv vd, vb, va, vm"
+    ],
+    "description": "Vector Floating-point >=",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMFGE.VV",
+    "pseudoinstruction": "vmfge.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmfle.vv vd, vb, va, vm"
+    ],
+    "description": "Vector Floating-point >=",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMFGT.VV",
+    "pseudoinstruction": "vmfgt.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmflt.vv vd, vb, va, vm"
+    ],
+    "description": "Vector Floating-point >",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMFGT.VV",
+    "pseudoinstruction": "vmfgt.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmflt.vv vd, vb, va, vm"
+    ],
+    "description": "Vector Floating-point >",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMMV.M",
+    "pseudoinstruction": "vmmv.m vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmand.mm vd, vs, vs"
+    ],
+    "description": "Vector copy mask register",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMMV.M",
+    "pseudoinstruction": "vmmv.m vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmand.mm vd, vs, vs"
+    ],
+    "description": "Vector copy mask register",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMNOT.M",
+    "pseudoinstruction": "vmnot.m vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmnand.mm vd, vs, vs"
+    ],
+    "description": "Vector invert mask bits",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMNOT.M",
+    "pseudoinstruction": "vmnot.m vd, vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmnand.mm vd, vs, vs"
+    ],
+    "description": "Vector invert mask bits",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSET.M",
+    "pseudoinstruction": "vmset.m vd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmxnor.mm vd, vd, vd"
+    ],
+    "description": "Vector set all mask bits",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSET.M",
+    "pseudoinstruction": "vmset.m vd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmxnor.mm vd, vd, vd"
+    ],
+    "description": "Vector set all mask bits",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGE.VI",
+    "pseudoinstruction": "vmsge.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsgt.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector >= Immediate",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGE.VI",
+    "pseudoinstruction": "vmsge.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsgt.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector >= Immediate",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VI",
+    "pseudoinstruction": "vmsgeu.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsgtu.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector >= Immediate, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VI",
+    "pseudoinstruction": "vmsgeu.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsgtu.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector >= Immediate, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGE.VV",
+    "pseudoinstruction": "vmsge.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsle.vv vd, vb, va, vm"
+    ],
+    "description": "Vector >= Vector",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGE.VV",
+    "pseudoinstruction": "vmsge.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsle.vv vd, vb, va, vm"
+    ],
+    "description": "Vector >= Vector",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VV",
+    "pseudoinstruction": "vmsgeu.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsleu.vv vd, vb, va, vm"
+    ],
+    "description": "Vector >= Vector, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VV",
+    "pseudoinstruction": "vmsgeu.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsleu.vv vd, vb, va, vm"
+    ],
+    "description": "Vector >= Vector, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGT.VV",
+    "pseudoinstruction": "vmsgt.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmslt.vv vd, vb, va, vm"
+    ],
+    "description": "Vector > Vector",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGT.VV",
+    "pseudoinstruction": "vmsgt.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmslt.vv vd, vb, va, vm"
+    ],
+    "description": "Vector > Vector",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGTU.VV",
+    "pseudoinstruction": "vmsgtu.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vv vd, vb, va, vm"
+    ],
+    "description": "Vector > Vector, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGTU.VV",
+    "pseudoinstruction": "vmsgtu.vv vd, va, vb, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vv vd, vb, va, vm"
+    ],
+    "description": "Vector > Vector, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSLT.VI",
+    "pseudoinstruction": "vmslt.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsle.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector < immediate",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSLT.VI",
+    "pseudoinstruction": "vmslt.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsle.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector < immediate",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSLTU.VI",
+    "pseudoinstruction": "vmsltu.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsleu.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector < immediate, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSLTU.VI",
+    "pseudoinstruction": "vmsltu.vi vd, va, i, vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsleu.vi vd, va, i-1, vm"
+    ],
+    "description": "Vector < immediate, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VNEG.V",
+    "pseudoinstruction": "vneg.v vd,vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vrsub.vx vd,vs,x0"
+    ],
+    "description": "Vector negate",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VNEG.V",
+    "pseudoinstruction": "vneg.v vd,vs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vrsub.vx vd,vs,x0"
+    ],
+    "description": "Vector negate",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VNOT.V",
+    "pseudoinstruction": "vnot.v vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vxor.vi vd, vs, -1, vm"
+    ],
+    "description": "Vector not",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VNOT.V",
+    "pseudoinstruction": "vnot.v vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vxor.vi vd, vs, -1, vm"
+    ],
+    "description": "Vector not",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VNCVT.X.X.W",
+    "pseudoinstruction": "vncvt.x.x.w vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vnsrl.wx vd,vs,x0,vm"
+    ],
+    "description": "Vector narrow convert element",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VNCVT.X.X.W",
+    "pseudoinstruction": "vncvt.x.x.w vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vnsrl.wx vd,vs,x0,vm"
+    ],
+    "description": "Vector narrow convert element",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VWCVT.X.X.V",
+    "pseudoinstruction": "vwcvt.x.x.v vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vwadd.vx vd,vs,x0,vm"
+    ],
+    "description": "Vector widen convert, integer-integer",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VWCVT.X.X.V",
+    "pseudoinstruction": "vwcvt.x.x.v vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vwadd.vx vd,vs,x0,vm"
+    ],
+    "description": "Vector widen convert, integer-integer",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VWCVTU.X.X.V",
+    "pseudoinstruction": "vwcvtu.x.x.v vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vwaddu.vx vd,vs,x0,vm"
+    ],
+    "description": "Vector widen convert, integer-integer, unsigned",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VWCVTU.X.X.V",
+    "pseudoinstruction": "vwcvtu.x.x.v vd,vs,vm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vwaddu.vx vd,vs,x0,vm"
+    ],
+    "description": "Vector widen convert, integer-integer, unsigned",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VL1R.V",
+    "pseudoinstruction": "vl1r.v v3, x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl1re8.v v3, x0"
+    ],
+    "description": "Equal to vl1re8.v",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VL1R.V",
+    "pseudoinstruction": "vl1r.v v3, x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl1re8.v v3, x0"
+    ],
+    "description": "Equal to vl1re8.v",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VL2R.V",
+    "pseudoinstruction": "vl2r.v v2,x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl2re8.v v2, x0"
+    ],
+    "description": "Equal to vl2re8.v",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VL2R.V",
+    "pseudoinstruction": "vl2r.v v2,x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl2re8.v v2, x0"
+    ],
+    "description": "Equal to vl2re8.v",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VL4R.V",
+    "pseudoinstruction": "vl4r.v v4,x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl4re8.v v4, x0"
+    ],
+    "description": "Equal to vl4re8.v",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VL4R.V",
+    "pseudoinstruction": "vl4r.v v4,x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl4re8.v v4, x0"
+    ],
+    "description": "Equal to vl4re8.v",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VL8R.V",
+    "pseudoinstruction": "vl8r.v v8,x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl8re8.v v8, x0"
+    ],
+    "description": "Equal to vl8re8.v",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VL8R.V",
+    "pseudoinstruction": "vl8r.v v8,x0",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vl8re8.v v8, x0"
+    ],
+    "description": "Equal to vl8re8.v",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vd, va, x",
+      "vmnand.mm vd, vd, vd"
+    ],
+    "description": "Vector >= scalar, unmasked",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vd, va, x",
+      "vmnand.mm vd, vd, vd"
+    ],
+    "description": "Vector >= scalar, unmasked",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x, v0.t",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vd, va, x, v0.t",
+      "vmxor.mm vd, vd, v0"
+    ],
+    "description": "Vector >= scalar, masked",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x, v0.t",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vd, va, x, v0.t",
+      "vmxor.mm vd, vd, v0"
+    ],
+    "description": "Vector >= scalar, masked",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x, v0.t, vt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vt, va, x",
+      "vmandn.mm vd, vd, vt"
+    ],
+    "description": "Vector >= scalar, masked",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x, v0.t, vt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vt, va, x",
+      "vmandn.mm vd, vd, vt"
+    ],
+    "description": "Vector >= scalar, masked",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x, v0.t, vt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vt, va, x",
+      "vmandn.mm vt, v0, vt",
+      "vmandn.mm vd, vd, v0",
+      "vmor.mm vd, vt, vd"
+    ],
+    "description": "Vector >= scalar, masked",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "VMSGEU.VX",
+    "pseudoinstruction": "vmsgeu.vx vd, va, x, v0.t, vt",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "vmsltu.vx vt, va, x",
+      "vmandn.mm vt, v0, vt",
+      "vmandn.mm vd, vd, v0",
+      "vmor.mm vd, vt, vd"
+    ],
+    "description": "Vector >= scalar, masked",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "CALL",
+    "pseudoinstruction": "call offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc x1, offset[31:12]",
+      "jalr x1, x1, offset[11:0]"
+    ],
+    "description": "Call far-away subroutine",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "CALL",
+    "pseudoinstruction": "call offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc x1, offset[31:12]",
+      "jalr x1, x1, offset[11:0]"
+    ],
+    "description": "Call far-away subroutine",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "CALL",
+    "pseudoinstruction": "call rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, offset[31:12]",
+      "jalr rt, rt, offset[11:0]"
+    ],
+    "description": "Call far-away subroutine",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "CALL",
+    "pseudoinstruction": "call rt, offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc rt, offset[31:12]",
+      "jalr rt, rt, offset[11:0]"
+    ],
+    "description": "Call far-away subroutine",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "TAIL",
+    "pseudoinstruction": "tail offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc x6, offset[31:12]",
+      "jalr x0, x6, offset[11:0]"
+    ],
+    "description": "Tail call far-away subroutine",
+    "requiredExtensions": [
+      "RV32I"
+    ]
+  },
+  {
+    "mnemonic": "TAIL",
+    "pseudoinstruction": "tail offset",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "auipc x6, offset[31:12]",
+      "jalr x0, x6, offset[11:0]"
+    ],
+    "description": "Tail call far-away subroutine",
+    "requiredExtensions": [
+      "RV64I"
+    ]
+  },
+  {
+    "mnemonic": "FENCE",
+    "pseudoinstruction": "fence",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fence iorw, iorw"
+    ],
+    "description": "Fence on all memory and I/O",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FENCE",
+    "pseudoinstruction": "fence",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fence iorw, iorw"
+    ],
+    "description": "Fence on all memory and I/O",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "PAUSE",
+    "pseudoinstruction": "pause",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fence w, 0"
+    ],
+    "description": "PAUSE hint",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "PAUSE",
+    "pseudoinstruction": "pause",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "fence w, 0"
+    ],
+    "description": "PAUSE hint",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "CSRR",
+    "pseudoinstruction": "csrr rd, csr",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, csr, x0"
+    ],
+    "description": "Read CSR",
+    "requiredExtensions": [
+      "RV32Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRR",
+    "pseudoinstruction": "csrr rd, csr",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, csr, x0"
+    ],
+    "description": "Read CSR",
+    "requiredExtensions": [
+      "RV64Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRW",
+    "pseudoinstruction": "csrw csr, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, csr, rs"
+    ],
+    "description": "Write CSR",
+    "requiredExtensions": [
+      "RV32Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRW",
+    "pseudoinstruction": "csrw csr, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, csr, rs"
+    ],
+    "description": "Write CSR",
+    "requiredExtensions": [
+      "RV64Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRS",
+    "pseudoinstruction": "csrs csr, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs x0, csr, rs"
+    ],
+    "description": "Set bits in CSR",
+    "requiredExtensions": [
+      "RV32Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRS",
+    "pseudoinstruction": "csrs csr, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs x0, csr, rs"
+    ],
+    "description": "Set bits in CSR",
+    "requiredExtensions": [
+      "RV64Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRC",
+    "pseudoinstruction": "csrc csr, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrc x0, csr, rs"
+    ],
+    "description": "Clear bits in CSR",
+    "requiredExtensions": [
+      "RV32Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRC",
+    "pseudoinstruction": "csrc csr, rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrc x0, csr, rs"
+    ],
+    "description": "Clear bits in CSR",
+    "requiredExtensions": [
+      "RV64Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRWI",
+    "pseudoinstruction": "csrwi csr, imm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrwi x0, csr, imm"
+    ],
+    "description": "Write immediate to CSR",
+    "requiredExtensions": [
+      "RV32Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRWI",
+    "pseudoinstruction": "csrwi csr, imm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrwi x0, csr, imm"
+    ],
+    "description": "Write immediate to CSR",
+    "requiredExtensions": [
+      "RV64Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRSI",
+    "pseudoinstruction": "csrsi csr, imm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrsi x0, csr, imm"
+    ],
+    "description": "Set bits in CSR using immediate",
+    "requiredExtensions": [
+      "RV32Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRSI",
+    "pseudoinstruction": "csrsi csr, imm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrsi x0, csr, imm"
+    ],
+    "description": "Set bits in CSR using immediate",
+    "requiredExtensions": [
+      "RV64Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRCI",
+    "pseudoinstruction": "csrci csr, imm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrci x0, csr, imm"
+    ],
+    "description": "Clear bits in CSR using immediate",
+    "requiredExtensions": [
+      "RV32Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "CSRCI",
+    "pseudoinstruction": "csrci csr, imm",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrci x0, csr, imm"
+    ],
+    "description": "Clear bits in CSR using immediate",
+    "requiredExtensions": [
+      "RV64Zicsr"
+    ]
+  },
+  {
+    "mnemonic": "FRCSR",
+    "pseudoinstruction": "frcsr rd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, fcsr, x0"
+    ],
+    "description": "Read FP control/status register",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FRCSR",
+    "pseudoinstruction": "frcsr rd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, fcsr, x0"
+    ],
+    "description": "Read FP control/status register",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FSCSR",
+    "pseudoinstruction": "fscsr rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, fcsr, rs"
+    ],
+    "description": "Write FP control/status register",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FSCSR",
+    "pseudoinstruction": "fscsr rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, fcsr, rs"
+    ],
+    "description": "Write FP control/status register",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FRRM",
+    "pseudoinstruction": "frrm rd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, frm, x0"
+    ],
+    "description": "Read FP rounding mode",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FRRM",
+    "pseudoinstruction": "frrm rd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, frm, x0"
+    ],
+    "description": "Read FP rounding mode",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FSRM",
+    "pseudoinstruction": "fsrm rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, frm, rs"
+    ],
+    "description": "Write FP rounding mode",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FSRM",
+    "pseudoinstruction": "fsrm rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, frm, rs"
+    ],
+    "description": "Write FP rounding mode",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FRFLAGS",
+    "pseudoinstruction": "frflags rd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, fflags, x0"
+    ],
+    "description": "Read FP exception flags",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FRFLAGS",
+    "pseudoinstruction": "frflags rd",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrs rd, fflags, x0"
+    ],
+    "description": "Read FP exception flags",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  },
+  {
+    "mnemonic": "FSFLAGS",
+    "pseudoinstruction": "fsflags rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, fflags, rs"
+    ],
+    "description": "Write FP exception flags",
+    "requiredExtensions": [
+      "RV32F"
+    ]
+  },
+  {
+    "mnemonic": "FSFLAGS",
+    "pseudoinstruction": "fsflags rs",
+    "format": "Pseudo",
+    "baseInstructions": [
+      "csrrw x0, fflags, rs"
+    ],
+    "description": "Write FP exception flags",
+    "requiredExtensions": [
+      "RV64F"
+    ]
+  }
+]

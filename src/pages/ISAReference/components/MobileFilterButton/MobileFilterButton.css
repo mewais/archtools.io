@@ -1,0 +1,92 @@
+/* MobileFilterButton Component Styles */
+
+.mobile-filter-button {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: var(--z-floating);
+  display: none; /* Hidden on desktop */
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  font-family: var(--font-content);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mobile-filter-button:hover {
+  background: var(--button-primary-hover);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+.mobile-filter-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-filter-button:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.mobile-filter-button__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.mobile-filter-button__label {
+  line-height: 1;
+}
+
+.mobile-filter-button__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--radius-full);
+  background-color: var(--color-error);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+/* Show on tablet and phone */
+@media (max-width: 1279px) {
+  .mobile-filter-button {
+    display: flex;
+  }
+}
+
+/* Phone - Smaller button */
+@media (max-width: 767px) {
+  .mobile-filter-button {
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .mobile-filter-button__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-filter-button__badge {
+    min-width: 18px;
+    height: 18px;
+    font-size: 0.625rem; /* 10px */
+  }
+}

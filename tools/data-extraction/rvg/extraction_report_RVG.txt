@@ -1,0 +1,232 @@
+======================================================================
+RISC-V INSTRUCTION EXTRACTION REPORT
+======================================================================
+Generated: 2026-01-04 20:14:37
+
+OVERALL STATISTICS
+----------------------------------------------------------------------
+Total tables processed: 17
+Total instructions extracted: 238
+Unique mnemonics: 228
+
+
+RV64 DUPLICATION STATISTICS
+----------------------------------------------------------------------
+
+F Extension:
+  RV32F: 26 instructions
+  RV64F (specific only): 4 instructions
+  Duplicated from RV32: 26 instructions
+  RV64F TOTAL: 30 instructions
+
+  Duplicated mnemonics:
+    FADD.S, FCLASS.S, FCVT.S.W, FCVT.S.WU, FCVT.W.S, FCVT.WU.S, FDIV.S, FEQ.S
+    FLE.S, FLT.S, FLW, FMADD.S, FMAX.S, FMIN.S, FMSUB.S, FMUL.S
+    FMV.W.X, FMV.X.W, FNMADD.S, FNMSUB.S, FSGNJ.S, FSGNJN.S, FSGNJX.S, FSQRT.S
+    FSUB.S, FSW
+
+Zfh Extension:
+  RV32Zfh: 32 instructions
+  RV64Zfh (specific only): 4 instructions
+  Duplicated from RV32: 32 instructions
+  RV64Zfh TOTAL: 36 instructions
+
+  Duplicated mnemonics:
+    FADD.H, FCLASS.H, FCVT.D.H, FCVT.H.D, FCVT.H.Q, FCVT.H.S, FCVT.H.W, FCVT.H.WU
+    FCVT.Q.H, FCVT.S.H, FCVT.W.H, FCVT.WU.H, FDIV.H, FEQ.H, FLE.H, FLH
+    FLT.H, FMADD.H, FMAX.H, FMIN.H, FMSUB.H, FMUL.H, FMV.H.X, FMV.X.H
+    FNMADD.H, FNMSUB.H, FSGNJ.H, FSGNJN.H, FSGNJX.H, FSH, FSQRT.H, FSUB.H
+
+I Extension:
+  RV32I: 42 instructions
+  RV64I (specific only): 15 instructions
+  Duplicated from RV32: 42 instructions
+  RV64I TOTAL: 57 instructions
+
+  Duplicated mnemonics:
+    ADD, ADDI, AND, ANDI, AUIPC, BEQ, BGE, BGEU
+    BLT, BLTU, BNE, EBREAK, ECALL, FENCE, FENCE.TSO, JAL
+    JALR, LB, LBU, LH, LHU, LUI, LW, OR
+    ORI, PAUSE, SB, SH, SLL, SLLI, SLT, SLTI
+    SLTIU, SLTU, SRA, SRAI, SRL, SRLI, SUB, SW
+    XOR, XORI
+
+Zawrs Extension:
+  RV32Zawrs: 2 instructions
+  RV64Zawrs (specific only): 0 instructions
+  Duplicated from RV32: 2 instructions
+  RV64Zawrs TOTAL: 2 instructions
+
+  Duplicated mnemonics:
+    WRS.NTO, WRS.STO
+
+M Extension:
+  RV32M: 8 instructions
+  RV64M (specific only): 5 instructions
+  Duplicated from RV32: 8 instructions
+  RV64M TOTAL: 13 instructions
+
+  Duplicated mnemonics:
+    DIV, DIVU, MUL, MULH, MULHSU, MULHU, REM, REMU
+
+Q Extension:
+  RV32Q: 28 instructions
+  RV64Q (specific only): 4 instructions
+  Duplicated from RV32: 28 instructions
+  RV64Q TOTAL: 32 instructions
+
+  Duplicated mnemonics:
+    FADD.Q, FCLASS.Q, FCVT.D.Q, FCVT.Q.D, FCVT.Q.S, FCVT.Q.W, FCVT.Q.WU, FCVT.S.Q
+    FCVT.W.Q, FCVT.WU.Q, FDIV.Q, FEQ.Q, FLE.Q, FLQ, FLT.Q, FMADD.Q
+    FMAX.Q, FMIN.Q, FMSUB.Q, FMUL.Q, FNMADD.Q, FNMSUB.Q, FSGNJ.Q, FSGNJN.Q
+    FSGNJX.Q, FSQ, FSQRT.Q, FSUB.Q
+
+A Extension:
+  RV32A: 11 instructions
+  RV64A (specific only): 11 instructions
+  Duplicated from RV32: 11 instructions
+  RV64A TOTAL: 22 instructions
+
+  Duplicated mnemonics:
+    AMOADD.W, AMOAND.W, AMOMAX.W, AMOMAXU.W, AMOMIN.W, AMOMINU.W, AMOOR.W, AMOSWAP.W
+    AMOXOR.W, LR.W, SC.W
+
+D Extension:
+  RV32D: 26 instructions
+  RV64D (specific only): 6 instructions
+  Duplicated from RV32: 26 instructions
+  RV64D TOTAL: 32 instructions
+
+  Duplicated mnemonics:
+    FADD.D, FCLASS.D, FCVT.D.S, FCVT.D.W, FCVT.D.WU, FCVT.S.D, FCVT.W.D, FCVT.WU.D
+    FDIV.D, FEQ.D, FLD, FLE.D, FLT.D, FMADD.D, FMAX.D, FMIN.D
+    FMSUB.D, FMUL.D, FNMADD.D, FNMSUB.D, FSD, FSGNJ.D, FSGNJN.D, FSGNJX.D
+    FSQRT.D, FSUB.D
+
+
+INSTRUCTIONS BY EXTENSION
+----------------------------------------------------------------------
+
+RV32/RV64Zicsr: 6 instructions (6 unique)
+  CSRRC, CSRRCI, CSRRS, CSRRSI, CSRRW, CSRRWI
+
+RV32/RV64Zifencei: 1 instructions (1 unique)
+  FENCE.I
+
+RV32A: 11 instructions (11 unique)
+  AMOADD.W, AMOAND.W, AMOMAX.W, AMOMAXU.W, AMOMIN.W, AMOMINU.W, AMOOR.W, AMOSWAP.W, AMOXOR.W, LR.W
+  SC.W
+
+RV32D: 26 instructions (26 unique)
+  FADD.D, FCLASS.D, FCVT.D.S, FCVT.D.W, FCVT.D.WU, FCVT.S.D, FCVT.W.D, FCVT.WU.D, FDIV.D, FEQ.D
+  FLD, FLE.D, FLT.D, FMADD.D, FMAX.D, FMIN.D, FMSUB.D, FMUL.D, FNMADD.D, FNMSUB.D
+  FSD, FSGNJ.D, FSGNJN.D, FSGNJX.D, FSQRT.D, FSUB.D
+
+RV32F: 26 instructions (26 unique)
+  FADD.S, FCLASS.S, FCVT.S.W, FCVT.S.WU, FCVT.W.S, FCVT.WU.S, FDIV.S, FEQ.S, FLE.S, FLT.S
+  FLW, FMADD.S, FMAX.S, FMIN.S, FMSUB.S, FMUL.S, FMV.W.X, FMV.X.W, FNMADD.S, FNMSUB.S
+  FSGNJ.S, FSGNJN.S, FSGNJX.S, FSQRT.S, FSUB.S, FSW
+
+RV32I: 42 instructions (42 unique)
+  ADD, ADDI, AND, ANDI, AUIPC, BEQ, BGE, BGEU, BLT, BLTU
+  BNE, EBREAK, ECALL, FENCE, FENCE.TSO, JAL, JALR, LB, LBU, LH
+  LHU, LUI, LW, OR, ORI, PAUSE, SB, SH, SLL, SLLI
+  SLT, SLTI, SLTIU, SLTU, SRA, SRAI, SRL, SRLI, SUB, SW
+  XOR, XORI
+
+RV32M: 8 instructions (8 unique)
+  DIV, DIVU, MUL, MULH, MULHSU, MULHU, REM, REMU
+
+RV32Q: 28 instructions (28 unique)
+  FADD.Q, FCLASS.Q, FCVT.D.Q, FCVT.Q.D, FCVT.Q.S, FCVT.Q.W, FCVT.Q.WU, FCVT.S.Q, FCVT.W.Q, FCVT.WU.Q
+  FDIV.Q, FEQ.Q, FLE.Q, FLQ, FLT.Q, FMADD.Q, FMAX.Q, FMIN.Q, FMSUB.Q, FMUL.Q
+  FNMADD.Q, FNMSUB.Q, FSGNJ.Q, FSGNJN.Q, FSGNJX.Q, FSQ, FSQRT.Q, FSUB.Q
+
+RV32Zawrs: 2 instructions (2 unique)
+  WRS.NTO, WRS.STO
+
+RV32Zfh: 32 instructions (32 unique)
+  FADD.H, FCLASS.H, FCVT.D.H, FCVT.H.D, FCVT.H.Q, FCVT.H.S, FCVT.H.W, FCVT.H.WU, FCVT.Q.H, FCVT.S.H
+  FCVT.W.H, FCVT.WU.H, FDIV.H, FEQ.H, FLE.H, FLH, FLT.H, FMADD.H, FMAX.H, FMIN.H
+  FMSUB.H, FMUL.H, FMV.H.X, FMV.X.H, FNMADD.H, FNMSUB.H, FSGNJ.H, FSGNJN.H, FSGNJX.H, FSH
+  FSQRT.H, FSUB.H
+
+RV64A: 11 instructions (11 unique)
+  AMOADD.D, AMOAND.D, AMOMAX.D, AMOMAXU.D, AMOMIN.D, AMOMINU.D, AMOOR.D, AMOSWAP.D, AMOXOR.D, LR.D
+  SC.D
+
+RV64D: 6 instructions (6 unique)
+  FCVT.D.L, FCVT.D.LU, FCVT.L.D, FCVT.LU.D, FMV.D.X, FMV.X.D
+
+RV64F: 4 instructions (4 unique)
+  FCVT.L.S, FCVT.LU.S, FCVT.S.L, FCVT.S.LU
+
+RV64I: 15 instructions (15 unique)
+  ADDIW, ADDW, LD, LWU, SD, SLLI, SLLIW, SLLW, SRAI, SRAIW
+  SRAW, SRLI, SRLIW, SRLW, SUBW
+
+RV64M: 5 instructions (5 unique)
+  DIVUW, DIVW, MULW, REMUW, REMW
+
+RV64Q: 4 instructions (4 unique)
+  FCVT.L.Q, FCVT.LU.Q, FCVT.Q.L, FCVT.Q.LU
+
+RV64Zfh: 4 instructions (4 unique)
+  FCVT.H.L, FCVT.H.LU, FCVT.L.H, FCVT.LU.H
+
+RV64Zicsr: 6 instructions (6 unique)
+  CSRRC, CSRRCI, CSRRS, CSRRSI, CSRRW, CSRRWI
+
+RV64Zifencei: 1 instructions (1 unique)
+  FENCE.I
+
+
+ENCODING QUALITY
+----------------------------------------------------------------------
+Complete: 6/238 (2.5%)
+Partial: 232/238 (97.5%)
+Placeholder: 0/238 (0.0%)
+
+
+SAMPLE ENCODINGS
+----------------------------------------------------------------------
+LUI        (U-type ): xxxxxxxxxxxxxxxxxxxxxxxxx0110111
+AUIPC      (U-type ): xxxxxxxxxxxxxxxxxxxxxxxxx0010111
+JAL        (J-type ): xxxxxxxxxxxxxxxxxxxxxxxxx1101111
+JALR       (I-type ): xxxxxxxxxxxxxxxxx000xxxxx1100111
+BEQ        (B-type ): xxxxxxxxxxxxxxxxx000xxxxx1100011
+BNE        (B-type ): xxxxxxxxxxxxxxxxx001xxxxx1100011
+BLT        (B-type ): xxxxxxxxxxxxxxxxx100xxxxx1100011
+BGE        (B-type ): xxxxxxxxxxxxxxxxx101xxxxx1100011
+BLTU       (B-type ): xxxxxxxxxxxxxxxxx110xxxxx1100011
+BGEU       (B-type ): xxxxxxxxxxxxxxxxx111xxxxx1100011
+
+
+FIELD COMPLETENESS
+----------------------------------------------------------------------
+mnemonic    : 413/238 (173.5%)
+extension   : 413/238 (173.5%)
+encoding    : 413/238 (173.5%)
+format      : 413/238 (173.5%)
+category    : 413/238 (173.5%)
+description : 334/238 (140.3%)
+pseudocode  : 345/238 (145.0%)
+example     : 0/238 (0.0%)
+operands    : 401/238 (168.5%)
+
+
+INSTRUCTIONS WITH NO OPERANDS
+----------------------------------------------------------------------
+Total: 6 (2.5%)
+
+These are typically system/fence instructions with no variable fields:
+  EBREAK (RV32I)
+  ECALL (RV32I)
+  FENCE.TSO (RV32I)
+  PAUSE (RV32I)
+  WRS.NTO (RV32Zawrs)
+  WRS.STO (RV32Zawrs)
+
+======================================================================
+END REPORT
+======================================================================

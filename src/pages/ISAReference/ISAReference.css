@@ -1,0 +1,203 @@
+/* ISA Reference Component Styles */
+
+/* ========== Ancestor Height Constraints ========== */
+/* Lock viewport height so each column scrolls independently */
+.app:has(.isa-reference) {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page-layout:has(.isa-reference) {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page-layout__content:has(.isa-reference) {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ========== Main Container ========== */
+
+.isa-reference {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* ========== Section Container Styles ========== */
+
+.isa-reference__filter-panel,
+.isa-reference__instruction-list,
+.isa-reference__instruction-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* ========== Filter Panel ========== */
+
+.isa-reference__filter-panel {
+  /* Borders and radius applied above */
+  /* Note: On tablet/mobile, filter panel is shown in drawer instead of grid */
+}
+
+/* ========== Instruction List ========== */
+
+.isa-reference__instruction-list {
+  /* Borders and radius applied above */
+}
+
+/* ========== Instruction Detail Viewer ========== */
+
+.isa-reference__instruction-detail {
+  /* Borders and radius applied above */
+}
+
+/* ========== Section Headers ========== */
+
+.isa-reference__section-header {
+  flex-shrink: 0;
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.isa-reference__section-header h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+/* ========== Placeholder Content ========== */
+
+.isa-reference__placeholder {
+  flex: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+}
+
+.isa-reference__placeholder--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.isa-reference__placeholder p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--text-tertiary);
+}
+
+/* ========== Responsive Behavior ========== */
+
+/* Phone (< 768px) - Vertical split view */
+@media (max-width: 767px) {
+  .isa-reference__section-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .isa-reference__section-header h3 {
+    font-size: var(--font-size-md);
+  }
+
+  .isa-reference__placeholder {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Tablet (768px - 1279px) - Force vertical split (sidebars reduce width too much for side-by-side) */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .isa-reference .grid__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .isa-reference .grid__column {
+    grid-column: span 1 !important;
+  }
+
+  .isa-reference .grid__column:first-child {
+    flex: 0 0 40%;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .isa-reference .grid__column:last-child {
+    flex: 1 1 60%;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .isa-reference__section-header {
+    padding: var(--spacing-md);
+  }
+
+  .isa-reference__placeholder {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Compact ToolPage header on tablet and phone for full-width pages */
+@media (max-width: 1279px) {
+  .tool-page--full-width .tool-page__header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tool-page--full-width .tool-page__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .tool-page--full-width .tool-page__description {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 767px) {
+  .tool-page--full-width .tool-page__header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tool-page--full-width .tool-page__description {
+    display: none;
+  }
+}
+
+/* Desktop (>= 1280px) - Three column view */
+@media (min-width: 1280px) {
+  .isa-reference__section-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .isa-reference__placeholder {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* Large Desktop (>= 1920px) - Extra spacing */
+@media (min-width: 1920px) {
+  .isa-reference__section-header {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+
+  .isa-reference__section-header h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .isa-reference__placeholder {
+    padding: var(--spacing-xl);
+  }
+}

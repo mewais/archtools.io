@@ -1,0 +1,110 @@
+/* FilterSection Component Styles */
+
+.filter-section {
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-section__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  /* Improve touch handling */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px; /* iOS minimum touch target */
+}
+
+.filter-section__header:hover {
+  background-color: var(--bg-hover);
+}
+
+.filter-section__header:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.filter-section__title {
+  flex: 1;
+  text-align: left;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-subtitle);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.filter-section__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary);
+  transition: transform var(--transition-base), color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.filter-section__icon--expanded {
+  transform: rotate(180deg);
+}
+
+.filter-section__header:hover .filter-section__icon {
+  color: var(--text-primary);
+}
+
+.filter-section__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-slow);
+}
+
+.filter-section__content--expanded {
+  max-height: none; /* Remove constraint to allow full content visibility */
+}
+
+.filter-section__content-inner {
+  padding: 0 0 var(--spacing-md) 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .filter-section__header {
+    padding: var(--spacing-md) var(--spacing-sm);
+    min-height: 48px; /* Slightly larger for easier touch on mobile */
+  }
+
+  .filter-section__title {
+    font-size: var(--font-size-md);
+  }
+
+  .filter-section__icon {
+    width: 28px;
+    height: 28px;
+    /* Larger touch target for icon area */
+    padding: 2px;
+  }
+
+  .filter-section__content-inner {
+    padding: 0 var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .filter-section__header {
+    min-height: 44px;
+  }
+
+  .filter-section__icon {
+    width: 24px;
+    height: 24px;
+  }
+}

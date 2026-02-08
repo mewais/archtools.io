@@ -1,0 +1,94 @@
+/* Badge Component Styles */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-content);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+/* Size Variants */
+.badge--sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
+}
+
+.badge--md {
+  padding: calc(var(--spacing-xs) + 2px) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-tight);
+}
+
+.badge--lg {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-tight);
+}
+
+/* Color Variants - Light Theme */
+.badge--extension {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-primary-200);
+}
+
+.badge--category {
+  background-color: hsl(280, 70%, 95%);
+  color: hsl(280, 70%, 30%);
+  border: 1px solid hsl(280, 70%, 60%);
+}
+
+.badge--format {
+  background-color: hsl(140, 70%, 95%);
+  color: hsl(140, 70%, 30%);
+  border: 1px solid hsl(140, 70%, 60%);
+}
+
+.badge--pseudo {
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-700);
+  border: 1px solid var(--color-warning-200);
+}
+
+/* Dark Theme */
+[data-theme='dark'] .badge--extension {
+  background-color: var(--color-primary-900);
+  color: var(--color-primary-300);
+  border-color: var(--color-primary-800);
+}
+
+[data-theme='dark'] .badge--category {
+  background-color: hsl(280, 50%, 20%);
+  color: hsl(280, 70%, 80%);
+  border-color: hsl(280, 50%, 40%);
+}
+
+[data-theme='dark'] .badge--format {
+  background-color: hsl(140, 50%, 20%);
+  color: hsl(140, 70%, 80%);
+  border-color: hsl(140, 50%, 40%);
+}
+
+[data-theme='dark'] .badge--pseudo {
+  background-color: var(--color-warning-900);
+  color: var(--color-warning-300);
+  border-color: var(--color-warning-800);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .badge--md {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+
+  .badge--lg {
+    padding: calc(var(--spacing-xs) + 2px) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}

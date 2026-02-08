@@ -1,0 +1,213 @@
+/* InstructionItem Component Styles */
+
+.instruction-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--border-primary);
+  background-color: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 64px;
+}
+
+.instruction-item:hover {
+  background-color: var(--bg-hover);
+  border-left-color: var(--color-primary-300);
+}
+
+.instruction-item:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+  z-index: var(--z-base);
+}
+
+.instruction-item--selected {
+  background-color: var(--bg-tertiary);
+  border-left-color: var(--color-primary-500);
+}
+
+.instruction-item--selected:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.instruction-item--pseudo {
+  border-left-style: dashed;
+}
+
+/* Header */
+.instruction-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.instruction-item__mnemonic {
+  font-family: var(--font-code);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  line-height: var(--line-height-tight);
+  word-break: break-all;
+  flex: 1;
+}
+
+.instruction-item__badges-group {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.instruction-item__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Badge color variants */
+.instruction-item__badge--primary {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+[data-theme="dark"] .instruction-item__badge--primary {
+  background-color: var(--color-primary-900);
+  color: var(--color-primary-200);
+}
+
+.instruction-item__badge--success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+[data-theme="dark"] .instruction-item__badge--success {
+  background-color: #064e3b;
+  color: #6ee7b7;
+}
+
+.instruction-item__badge--warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+[data-theme="dark"] .instruction-item__badge--warning {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.instruction-item__badge--info {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+[data-theme="dark"] .instruction-item__badge--info {
+  background-color: var(--color-primary-900);
+  color: var(--color-primary-200);
+}
+
+.instruction-item__badge--purple {
+  background-color: #e9d5ff;
+  color: #6b21a8;
+}
+
+[data-theme="dark"] .instruction-item__badge--purple {
+  background-color: #581c87;
+  color: #d8b4fe;
+}
+
+.instruction-item__badge--orange {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+[data-theme="dark"] .instruction-item__badge--orange {
+  background-color: #7c2d12;
+  color: #fdba74;
+}
+
+.instruction-item__badge--secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.instruction-item__badge--pseudo {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+[data-theme="dark"] .instruction-item__badge--pseudo {
+  background-color: #374151;
+  color: #d1d5db;
+  border: 1px solid #4b5563;
+}
+
+/* Meta */
+.instruction-item__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-height-tight);
+}
+
+.instruction-item__format,
+.instruction-item__category {
+  font-weight: var(--font-weight-medium);
+}
+
+.instruction-item__separator {
+  color: var(--text-tertiary);
+}
+
+/* Search highlight */
+.instruction-item__highlight {
+  background-color: #fef08a;
+  color: #713f12;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: var(--font-weight-semibold);
+}
+
+[data-theme="dark"] .instruction-item__highlight {
+  background-color: #713f12;
+  color: #fef08a;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+  .instruction-item {
+    min-height: 56px;
+    padding: var(--spacing-sm);
+  }
+
+  .instruction-item__mnemonic {
+    font-size: var(--font-size-base);
+  }
+
+  .instruction-item__badge {
+    font-size: 0.625rem; /* 10px */
+    padding: 2px var(--spacing-xs);
+  }
+
+  .instruction-item__meta {
+    font-size: 0.625rem; /* 10px */
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .instruction-item {
+    min-height: 60px;
+  }
+}

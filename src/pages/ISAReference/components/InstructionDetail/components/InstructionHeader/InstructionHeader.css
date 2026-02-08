@@ -1,0 +1,49 @@
+/* InstructionHeader Component Styles */
+
+.instruction-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.instruction-header__mnemonic {
+  font-family: var(--font-title);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.instruction-header__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+/* Responsive: Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .instruction-header__mnemonic {
+    font-size: var(--font-size-2xl);
+  }
+
+  .instruction-header__badges {
+    gap: var(--spacing-xs);
+  }
+}
+
+/* Responsive: Phone */
+@media (max-width: 767px) {
+  .instruction-header {
+    gap: var(--spacing-sm);
+  }
+
+  .instruction-header__mnemonic {
+    font-size: var(--font-size-2xl);
+  }
+
+  .instruction-header__badges {
+    gap: var(--spacing-xs);
+  }
+}

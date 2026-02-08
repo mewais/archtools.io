@@ -57,6 +57,29 @@
   font-size: var(--font-size-lg);
 }
 
+/* Full Width Variant */
+.tool-page--full-width {
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.tool-page--full-width .tool-page__header {
+  flex-shrink: 0;
+}
+
+.tool-page--full-width .tool-page__content {
+  border: none;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
 /* Responsive */
 @media (max-width: 767px) {
   .tool-page {

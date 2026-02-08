@@ -1,0 +1,86 @@
+/* FilterPanel Component Styles */
+
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--bg-primary);
+}
+
+.filter-panel__sections {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.filter-panel__sections::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-panel__sections::-webkit-scrollbar-track {
+  background-color: var(--bg-secondary);
+}
+
+.filter-panel__sections::-webkit-scrollbar-thumb {
+  background-color: var(--border-secondary);
+  border-radius: var(--radius-full);
+}
+
+.filter-panel__sections::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-tertiary);
+}
+
+.filter-panel__groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.filter-panel__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.filter-panel__group-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding-left: var(--spacing-lg);
+  border-left: 2px solid var(--border-primary);
+  margin-left: var(--spacing-sm);
+}
+
+/* Desktop Layout (Fixed Sidebar) */
+@media (min-width: 1280px) {
+  .filter-panel {
+    padding: var(--spacing-md);
+    min-height: 100%;
+  }
+
+  .filter-panel__sections {
+    margin-top: var(--spacing-md);
+  }
+}
+
+/* Tablet and Mobile: When used in FilterDrawer */
+@media (max-width: 1279px) {
+  .filter-panel {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .filter-panel__sections {
+    margin-top: 0;
+  }
+
+  .filter-panel__group {
+    gap: var(--spacing-sm);
+  }
+
+  .filter-panel__group-items {
+    gap: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+  }
+}

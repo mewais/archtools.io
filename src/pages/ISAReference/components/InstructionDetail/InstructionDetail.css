@@ -1,0 +1,273 @@
+/* InstructionDetail Component Styles */
+
+.instruction-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Empty State */
+.instruction-detail--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instruction-detail__empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  text-align: center;
+  max-width: 400px;
+  padding: var(--spacing-2xl);
+}
+
+.instruction-detail__empty-icon {
+  color: var(--text-tertiary);
+  opacity: 0.5;
+}
+
+.instruction-detail__empty-title {
+  font-family: var(--font-title);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.instruction-detail__empty-message {
+  font-size: var(--font-size-base);
+  color: var(--text-tertiary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Sections */
+.instruction-detail__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.instruction-detail__section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.instruction-detail__section-title {
+  font-family: var(--font-subtitle);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+/* Format Text */
+.instruction-detail__format-text {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.instruction-detail__format-label {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+.instruction-detail__format-value {
+  font-family: var(--font-content);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Description */
+.instruction-detail__description {
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Badges */
+.instruction-detail__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+/* Operands */
+.instruction-detail__operands {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.instruction-detail__operand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.instruction-detail__operand:hover {
+  border-color: var(--color-primary-400);
+  box-shadow: var(--shadow-sm);
+}
+
+.instruction-detail__operand-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.instruction-detail__operand-name {
+  font-family: var(--font-code);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.instruction-detail__operand-type {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-tertiary);
+  padding: 2px var(--spacing-xs);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+.instruction-detail__operand-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* Responsive: Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .instruction-detail {
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+
+  .instruction-detail__section {
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .instruction-detail__section-title {
+    font-size: var(--font-size-md);
+  }
+
+  .instruction-detail__operands {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .instruction-detail__operand {
+    padding: var(--spacing-sm);
+  }
+
+  .instruction-detail__empty-state {
+    padding: var(--spacing-xl);
+  }
+
+  .instruction-detail__empty-title {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Responsive: Phone */
+@media (max-width: 767px) {
+  .instruction-detail {
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  .instruction-detail__section {
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .instruction-detail__section-title {
+    font-size: var(--font-size-base);
+  }
+
+  .instruction-detail__description {
+    font-size: var(--font-size-sm);
+  }
+
+  .instruction-detail__operands {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .instruction-detail__operand {
+    padding: var(--spacing-sm);
+  }
+
+  .instruction-detail__operand-name {
+    font-size: var(--font-size-sm);
+  }
+
+  .instruction-detail__operand-type {
+    font-size: 10px;
+  }
+
+  .instruction-detail__operand-description {
+    font-size: var(--font-size-xs);
+  }
+
+  .instruction-detail__empty-state {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+
+  .instruction-detail__empty-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .instruction-detail__empty-title {
+    font-size: var(--font-size-md);
+  }
+
+  .instruction-detail__empty-message {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Scrollbar styling */
+.instruction-detail::-webkit-scrollbar {
+  width: 8px;
+}
+
+.instruction-detail::-webkit-scrollbar-track {
+  background-color: var(--bg-secondary);
+}
+
+.instruction-detail::-webkit-scrollbar-thumb {
+  background-color: var(--border-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.instruction-detail::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-tertiary);
+}

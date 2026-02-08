@@ -1,0 +1,51 @@
+======================================================================
+RISC-V VECTOR EXTENSION EXTRACTION REPORT
+======================================================================
+Generated: 2026-01-04 20:15:15
+
+OVERALL STATISTICS
+----------------------------------------------------------------------
+Total instructions extracted: 750
+Unique mnemonics: 375
+
+EXTENSION BREAKDOWN
+----------------------------------------------------------------------
+RV32V: 375 instructions
+RV64V: 375 instructions
+
+ENCODING QUALITY
+----------------------------------------------------------------------
+Complete: 2/750 (0.3%)
+Partial: 748/750 (99.7%)
+Placeholder: 0/750 (0.0%)
+
+SAMPLE ENCODINGS
+----------------------------------------------------------------------
+VSETIVLI             (RV32V): 11xxxxxxxxxxxxxxx111xxxxx1010111
+VSETVLI              (RV32V): 0xxxxxxxxxxxxxxxx111xxxxx1010111
+VSETVL               (RV32V): 1000000xxxxxxxxxx111xxxxx1010111
+VLM.V                (RV32V): 000000101011xxxxx000xxxxx0000111
+VSM.V                (RV32V): 000000101011xxxxx000xxxxx0100111
+
+INSTRUCTIONS BY EXTENSION
+----------------------------------------------------------------------
+
+RV32V: 375 unique mnemonics
+  VAADD.VV, VAADD.VX, VAADDU.VV, VAADDU.VX, VADC.VIM, VADC.VVM, VADC.VXM, VADD.VI
+  VADD.VV, VADD.VX, VAND.VI, VAND.VV, VAND.VX, VASUB.VV, VASUB.VX, VASUBU.VV
+  VASUBU.VX, VCOMPRESS.VM, VCPOP.M, VDIV.VV, VDIV.VX, VDIVU.VV, VDIVU.VX, VFADD.VF
+  VFADD.VV, VFCLASS.V, VFCVT.F.X.V, VFCVT.F.XU.V, VFCVT.RTZ.X.F.V, VFCVT.RTZ.XU.F.V, VFCVT.X.F.V, VFCVT.XU.F.V
+  VFDIV.VF, VFDIV.VV, VFIRST.M, VFMACC.VF, VFMACC.VV, VFMADD.VF, VFMADD.VV, VFMAX.VF
+  ... and 335 more
+
+RV64V: 375 unique mnemonics
+  VAADD.VV, VAADD.VX, VAADDU.VV, VAADDU.VX, VADC.VIM, VADC.VVM, VADC.VXM, VADD.VI
+  VADD.VV, VADD.VX, VAND.VI, VAND.VV, VAND.VX, VASUB.VV, VASUB.VX, VASUBU.VV
+  VASUBU.VX, VCOMPRESS.VM, VCPOP.M, VDIV.VV, VDIV.VX, VDIVU.VV, VDIVU.VX, VFADD.VF
+  VFADD.VV, VFCLASS.V, VFCVT.F.X.V, VFCVT.F.XU.V, VFCVT.RTZ.X.F.V, VFCVT.RTZ.XU.F.V, VFCVT.X.F.V, VFCVT.XU.F.V
+  VFDIV.VF, VFDIV.VV, VFIRST.M, VFMACC.VF, VFMACC.VV, VFMADD.VF, VFMADD.VV, VFMAX.VF
+  ... and 335 more
+
+======================================================================
+END REPORT
+======================================================================

@@ -1,0 +1,102 @@
+/* InstructionList Component Styles */
+
+.instruction-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.instruction-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--border-primary);
+  background-color: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.instruction-list__count {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.instruction-list__count--error {
+  color: var(--color-error);
+}
+
+/* Empty states */
+.instruction-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  text-align: center;
+  flex: 1;
+}
+
+.instruction-list__empty p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.instruction-list__empty p:first-child {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.instruction-list__empty-hint {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  margin-top: var(--spacing-xs);
+}
+
+.instruction-list__error-detail {
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  background-color: var(--bg-tertiary);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+  .instruction-list__header {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .instruction-list__count {
+    font-size: var(--font-size-xs);
+  }
+
+  .instruction-list__empty {
+    padding: var(--spacing-xl);
+  }
+
+  .instruction-list__empty p {
+    font-size: var(--font-size-sm);
+  }
+
+  .instruction-list__empty-hint {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .instruction-list__header {
+    padding: var(--spacing-sm);
+  }
+}

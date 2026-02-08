@@ -1,5 +1,7 @@
 // Type definitions for ArchTools.io
 
+export * from './isa';
+
 export type Theme = 'light' | 'dark';
 
 export interface TabItem {
@@ -65,6 +67,7 @@ export interface CardProps {
 export interface ToolPageProps {
   title: string;
   description: string;
+  fullWidth?: boolean;
   children?: React.ReactNode;
 }
 
