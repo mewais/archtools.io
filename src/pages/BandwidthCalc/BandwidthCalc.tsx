@@ -62,54 +62,106 @@ interface DiagramRow {
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const TIMING_PRESETS: Record<string, TimingPreset> = {
+  // ── DDR4 (Ramulator2-verified, x8 org, 8Gb density) ──────────────────
+  'DDR4-1600': {
+    label: 'DDR4-1600 (CL11)', memType: 'ddr4', tCK: 1.25, dataRate: 1600,
+    nCL: 11, nRCD: 11, nRP: 11, nRAS: 28, nRC: 39,
+    nRFC: 288, nREFI: 6240,
+    nRRD_S: 4, nRRD_L: 5, nWTR_S: 2, nWTR_L: 6,
+    nCCD_S: 4, nCCD_L: 5, nFAW: 20, BL: 8,
+    bankGroups: 4, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+  },
+  'DDR4-1866': {
+    label: 'DDR4-1866 (CL13)', memType: 'ddr4', tCK: 1.072, dataRate: 1866,
+    nCL: 13, nRCD: 13, nRP: 13, nRAS: 32, nRC: 45,
+    nRFC: 336, nREFI: 7277,
+    nRRD_S: 4, nRRD_L: 5, nWTR_S: 3, nWTR_L: 7,
+    nCCD_S: 4, nCCD_L: 5, nFAW: 22, BL: 8,
+    bankGroups: 4, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+  },
+  'DDR4-2133': {
+    label: 'DDR4-2133 (CL15)', memType: 'ddr4', tCK: 0.938, dataRate: 2133,
+    nCL: 15, nRCD: 15, nRP: 15, nRAS: 36, nRC: 51,
+    nRFC: 384, nREFI: 8316,
+    nRRD_S: 4, nRRD_L: 6, nWTR_S: 3, nWTR_L: 8,
+    nCCD_S: 4, nCCD_L: 6, nFAW: 23, BL: 8,
+    bankGroups: 4, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+  },
   'DDR4-2400': {
-    label: 'DDR4-2400', memType: 'ddr4', tCK: 0.833, dataRate: 2400,
+    label: 'DDR4-2400 (CL17)', memType: 'ddr4', tCK: 0.833, dataRate: 2400,
     nCL: 17, nRCD: 17, nRP: 17, nRAS: 39, nRC: 56,
-    nRFC: 420, nREFI: 9360,
-    nRRD_S: 7, nRRD_L: 8, nWTR_S: 3, nWTR_L: 9,
-    nCCD_S: 4, nCCD_L: 6, nFAW: 28, BL: 8,
-    bankGroups: 2, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+    nRFC: 433, nREFI: 9364,
+    nRRD_S: 4, nRRD_L: 6, nWTR_S: 3, nWTR_L: 9,
+    nCCD_S: 4, nCCD_L: 6, nFAW: 26, BL: 8,
+    bankGroups: 4, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+  },
+  'DDR4-2666': {
+    label: 'DDR4-2666 (CL18)', memType: 'ddr4', tCK: 0.75, dataRate: 2666,
+    nCL: 18, nRCD: 18, nRP: 18, nRAS: 43, nRC: 61,
+    nRFC: 480, nREFI: 10400,
+    nRRD_S: 4, nRRD_L: 7, nWTR_S: 4, nWTR_L: 10,
+    nCCD_S: 4, nCCD_L: 7, nFAW: 28, BL: 8,
+    bankGroups: 4, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+  },
+  'DDR4-2933': {
+    label: 'DDR4-2933 (CL20)', memType: 'ddr4', tCK: 0.682, dataRate: 2933,
+    nCL: 20, nRCD: 20, nRP: 20, nRAS: 47, nRC: 67,
+    nRFC: 528, nREFI: 11437,
+    nRRD_S: 4, nRRD_L: 8, nWTR_S: 4, nWTR_L: 11,
+    nCCD_S: 4, nCCD_L: 8, nFAW: 31, BL: 8,
+    bankGroups: 4, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
   },
   'DDR4-3200': {
-    label: 'DDR4-3200', memType: 'ddr4', tCK: 0.625, dataRate: 3200,
+    label: 'DDR4-3200 (CL22)', memType: 'ddr4', tCK: 0.625, dataRate: 3200,
     nCL: 22, nRCD: 22, nRP: 22, nRAS: 52, nRC: 74,
-    nRFC: 560, nREFI: 12480,
-    nRRD_S: 9, nRRD_L: 11, nWTR_S: 4, nWTR_L: 12,
-    nCCD_S: 4, nCCD_L: 8, nFAW: 36, BL: 8,
-    bankGroups: 2, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+    nRFC: 576, nREFI: 12480,
+    nRRD_S: 4, nRRD_L: 8, nWTR_S: 4, nWTR_L: 12,
+    nCCD_S: 4, nCCD_L: 8, nFAW: 34, BL: 8,
+    bankGroups: 4, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 64,
+  },
+  // ── DDR5 (JEDEC-based, x8 org, 16Gb density) ────────────────────────
+  'DDR5-3200': {
+    label: 'DDR5-3200 (CL24)', memType: 'ddr5', tCK: 0.625, dataRate: 3200,
+    nCL: 24, nRCD: 24, nRP: 24, nRAS: 52, nRC: 76,
+    nRFC: 472, nREFI: 6240,
+    nRRD_S: 8, nRRD_L: 8, nWTR_S: 4, nWTR_L: 16,
+    nCCD_S: 8, nCCD_L: 8, nFAW: 32, BL: 16,
+    bankGroups: 8, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 32,
   },
   'DDR5-4800': {
-    label: 'DDR5-4800', memType: 'ddr5', tCK: 0.416, dataRate: 4800,
+    label: 'DDR5-4800 (CL40)', memType: 'ddr5', tCK: 0.417, dataRate: 4800,
     nCL: 40, nRCD: 40, nRP: 40, nRAS: 76, nRC: 116,
-    nRFC: 410, nREFI: 9360,
+    nRFC: 708, nREFI: 9353,
     nRRD_S: 8, nRRD_L: 12, nWTR_S: 4, nWTR_L: 16,
     nCCD_S: 8, nCCD_L: 8, nFAW: 40, BL: 16,
     bankGroups: 8, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 32,
   },
   'DDR5-5600': {
-    label: 'DDR5-5600', memType: 'ddr5', tCK: 0.357, dataRate: 5600,
+    label: 'DDR5-5600 (CL46)', memType: 'ddr5', tCK: 0.357, dataRate: 5600,
     nCL: 46, nRCD: 46, nRP: 46, nRAS: 88, nRC: 134,
-    nRFC: 480, nREFI: 10920,
+    nRFC: 827, nREFI: 10924,
     nRRD_S: 8, nRRD_L: 12, nWTR_S: 4, nWTR_L: 16,
     nCCD_S: 8, nCCD_L: 8, nFAW: 40, BL: 16,
     bankGroups: 8, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 32,
   },
   'DDR5-6400': {
-    label: 'DDR5-6400', memType: 'ddr5', tCK: 0.3125, dataRate: 6400,
+    label: 'DDR5-6400 (CL52)', memType: 'ddr5', tCK: 0.3125, dataRate: 6400,
     nCL: 52, nRCD: 52, nRP: 52, nRAS: 100, nRC: 152,
-    nRFC: 545, nREFI: 12480,
+    nRFC: 944, nREFI: 12480,
     nRRD_S: 8, nRRD_L: 12, nWTR_S: 4, nWTR_L: 16,
     nCCD_S: 8, nCCD_L: 8, nFAW: 40, BL: 16,
     bankGroups: 8, banksPerGroup: 4, deviceWidth: 8, defaultBusWidth: 32,
   },
+  // ── LPDDR5 ───────────────────────────────────────────────────────────
   'LPDDR5-6400': {
     label: 'LPDDR5-6400', memType: 'lpddr5', tCK: 0.3125, dataRate: 6400,
     nCL: 28, nRCD: 24, nRP: 24, nRAS: 56, nRC: 80,
-    nRFC: 380, nREFI: 9360,
+    nRFC: 672, nREFI: 12500,
     nRRD_S: 8, nRRD_L: 10, nWTR_S: 4, nWTR_L: 12,
     nCCD_S: 8, nCCD_L: 8, nFAW: 32, BL: 16,
     bankGroups: 4, banksPerGroup: 4, deviceWidth: 16, defaultBusWidth: 32,
   },
+  // ── GDDR6 ────────────────────────────────────────────────────────────
   'GDDR6-16Gbps': {
     label: 'GDDR6-16Gbps', memType: 'gddr6', tCK: 0.625, dataRate: 16000,
     nCL: 24, nRCD: 24, nRP: 24, nRAS: 54, nRC: 78,
@@ -118,10 +170,11 @@ const TIMING_PRESETS: Record<string, TimingPreset> = {
     nCCD_S: 3, nCCD_L: 4, nFAW: 32, BL: 16,
     bankGroups: 4, banksPerGroup: 4, deviceWidth: 32, defaultBusWidth: 32,
   },
+  // ── HBM ──────────────────────────────────────────────────────────────
   'HBM2': {
     label: 'HBM2', memType: 'hbm2', tCK: 1.0, dataRate: 2000,
     nCL: 14, nRCD: 14, nRP: 14, nRAS: 34, nRC: 48,
-    nRFC: 260, nREFI: 3900,
+    nRFC: 350, nREFI: 3900,
     nRRD_S: 4, nRRD_L: 6, nWTR_S: 4, nWTR_L: 8,
     nCCD_S: 1, nCCD_L: 2, nFAW: 30, BL: 4,
     bankGroups: 4, banksPerGroup: 4, deviceWidth: 128, defaultBusWidth: 64,
@@ -129,7 +182,7 @@ const TIMING_PRESETS: Record<string, TimingPreset> = {
   'HBM3': {
     label: 'HBM3', memType: 'hbm3', tCK: 0.5, dataRate: 6400,
     nCL: 22, nRCD: 22, nRP: 22, nRAS: 42, nRC: 64,
-    nRFC: 310, nREFI: 3900,
+    nRFC: 310, nREFI: 7800,
     nRRD_S: 4, nRRD_L: 8, nWTR_S: 4, nWTR_L: 8,
     nCCD_S: 2, nCCD_L: 4, nFAW: 20, BL: 8,
     bankGroups: 4, banksPerGroup: 4, deviceWidth: 128, defaultBusWidth: 64,
@@ -137,7 +190,9 @@ const TIMING_PRESETS: Record<string, TimingPreset> = {
 };
 
 const SYSTEM_PRESETS: SystemPreset[] = [
+  { name: 'Desktop DDR4-2400 Dual Channel', timingKey: 'DDR4-2400', channels: 2, ranksPerChannel: 1, busWidth: 64 },
   { name: 'Desktop DDR4-3200 Dual Channel', timingKey: 'DDR4-3200', channels: 2, ranksPerChannel: 1, busWidth: 64 },
+  { name: 'Server DDR4-2933 8-Channel', timingKey: 'DDR4-2933', channels: 8, ranksPerChannel: 2, busWidth: 64, note: '4 DIMMs \u00d7 2 ranks' },
   { name: 'Desktop DDR5-5600 Dual Channel', timingKey: 'DDR5-5600', channels: 4, ranksPerChannel: 1, busWidth: 32, note: '2 DIMMs \u00d7 2 subchannels' },
   { name: 'Desktop DDR5-6400 Dual Channel', timingKey: 'DDR5-6400', channels: 4, ranksPerChannel: 1, busWidth: 32, note: '2 DIMMs \u00d7 2 subchannels' },
   { name: 'Server DDR5-4800 8-Channel', timingKey: 'DDR5-4800', channels: 16, ranksPerChannel: 2, busWidth: 32, note: '8 DIMMs \u00d7 2 subchannels' },
@@ -416,13 +471,13 @@ const BandwidthCalc: React.FC = () => {
   const [nRC, setNRC] = useState(TIMING_PRESETS['DDR4-3200'].nRC);
   const [nRFC, setNRFC] = useState(TIMING_PRESETS['DDR4-3200'].nRFC);
   const [nREFI, setNREFI] = useState(TIMING_PRESETS['DDR4-3200'].nREFI);
-  const [nRRD_S, setNRRD_S] = useState(TIMING_PRESETS['DDR4-3200'].nRRD_S);
-  const [nRRD_L, setNRRD_L] = useState(TIMING_PRESETS['DDR4-3200'].nRRD_L);
+  const [nRRD_S, setNRRD_S] = useState(TIMING_PRESETS['DDR4-3200'].nRRD_S);  // 4 (Ramulator2 x8)
+  const [nRRD_L, setNRRD_L] = useState(TIMING_PRESETS['DDR4-3200'].nRRD_L);  // 8 (Ramulator2 x8)
   const [nWTR_S, setNWTR_S] = useState(TIMING_PRESETS['DDR4-3200'].nWTR_S);
   const [nWTR_L, setNWTR_L] = useState(TIMING_PRESETS['DDR4-3200'].nWTR_L);
   const [nCCD_S, setNCCD_S] = useState(TIMING_PRESETS['DDR4-3200'].nCCD_S);
   const [nCCD_L, setNCCD_L] = useState(TIMING_PRESETS['DDR4-3200'].nCCD_L);
-  const [nFAW, setNFAW] = useState(TIMING_PRESETS['DDR4-3200'].nFAW);
+  const [nFAW, setNFAW] = useState(TIMING_PRESETS['DDR4-3200'].nFAW);        // 34 (Ramulator2 x8)
   const [deviceWidth, setDeviceWidth] = useState(TIMING_PRESETS['DDR4-3200'].deviceWidth);
 
   // ─── Preset Loading ────────────────────────────────────────────────────
