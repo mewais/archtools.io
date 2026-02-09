@@ -246,6 +246,115 @@ def parse_operands(operand_string: str) -> Tuple[List[str], List[str]]:
     return (operands, operand_types)
 
 
+def is_multiply_accumulate(mnemonic: str) -> bool:
+    """
+    Check if instruction is a multiply-accumulate type.
+
+    These instructions use assembly syntax vd, vs1, vs2 (vs1 before vs2)
+    instead of the standard vd, vs2, vs1 order.
+
+    Includes: vmacc, vnmsac, vmadd, vnmsub, vwmacc*, vfmacc*, vfnmacc*, etc.
+    """
+    base = mnemonic.upper().split('.')[0]
+    return bool(re.match(r'V[FW]*N?M(ACC[SU]*|SAC|ADD|SUB)$', base))
+
+
+def reorder_operands_for_assembly(operands: List[str], format_type: str, mnemonic: str) -> List[str]:
+    """
+    Reorder operands from encoding field order (MSB→LSB) to RISC-V assembly syntax order.
+
+    The riscv-opcodes file lists fields in encoding order, but assembly syntax uses:
+    - Destination first (vd, vs3, rd)
+    - Source operands in spec-defined order
+    - Mask register (vm) last
+
+    Key distinction for V-Type arithmetic:
+    - Standard (vadd, vsub, etc.): vd, vs2, vs1[, vm]
+    - Multiply-accumulate (vmacc, etc.): vd, vs1, vs2[, vm]
+    """
+    if format_type == 'VSETVL-Type':
+        # vsetvli rd, rs1, vtypei / vsetivli rd, uimm, vtypei / vsetvl rd, rs1, rs2
+        ordered = []
+        if 'rd' in operands:
+            ordered.append('rd')
+        if 'rs1' in operands:
+            ordered.append('rs1')
+        if 'rs2' in operands:
+            ordered.append('rs2')
+        imm_count = operands.count('imm')
+        for _ in range(imm_count):
+            ordered.append('imm')
+        return ordered
+
+    elif format_type == 'VLS-Type':
+        # Loads:  vd, (rs1)[, rs2/vs2][, vm]
+        # Stores: vs3, (rs1)[, rs2/vs2][, vm]
+        ordered = []
+        if 'vd' in operands:
+            ordered.append('vd')
+        elif 'vs3' in operands:
+            ordered.append('vs3')
+        if 'rs1' in operands:
+            ordered.append('rs1')
+        if 'rs2' in operands:
+            ordered.append('rs2')
+        if 'vs2' in operands:
+            ordered.append('vs2')
+        if 'vm' in operands:
+            ordered.append('vm')
+        return ordered
+
+    elif format_type == 'V-Type':
+        ordered = []
+        macc = is_multiply_accumulate(mnemonic)
+
+        # Destination first
+        if 'vd' in operands:
+            ordered.append('vd')
+        elif 'vs3' in operands:
+            ordered.append('vs3')
+        elif 'rd' in operands:
+            ordered.append('rd')
+
+        if macc:
+            # Multiply-accumulate: vs1/rs1 before vs2
+            if 'vs1' in operands:
+                ordered.append('vs1')
+            elif 'rs1' in operands:
+                ordered.append('rs1')
+            if 'vs2' in operands:
+                ordered.append('vs2')
+        else:
+            # Standard: vs2 before vs1/rs1
+            if 'vs2' in operands:
+                ordered.append('vs2')
+            if 'vs1' in operands:
+                ordered.append('vs1')
+            elif 'rs1' in operands:
+                ordered.append('rs1')
+
+        # Immediates
+        imm_count = operands.count('imm')
+        for _ in range(imm_count):
+            ordered.append('imm')
+
+        # Mask last
+        if 'vm' in operands:
+            ordered.append('vm')
+        return ordered
+
+    # Unknown format - return as-is
+    return operands
+
+
+def operand_name_to_type(name: str) -> str:
+    """Map operand name to its type."""
+    if name in ('vd', 'vs1', 'vs2', 'vs3', 'rd', 'rs1', 'rs2', 'rs3',
+                'fd', 'fs1', 'fs2', 'fs3'):
+        return 'register'
+    return 'immediate'
+
+
 def infer_format_from_opcode(encoding: str, mnemonic: str = "") -> str:
     """
     Infer instruction format from opcode (bits [6:0]) and mnemonic.
@@ -404,9 +513,9 @@ def parse_instruction_line(line: str) -> Optional[Instruction]:
             # This is an operand
             operand_parts.append(part)
 
-    # Parse operands
+    # Parse operands (types are rebuilt after reordering below)
     operand_string = ' '.join(operand_parts)
-    operands, operand_types = parse_operands(operand_string)
+    operands, _ = parse_operands(operand_string)
 
     # Build encoding
     encoding = build_encoding_from_specs(encoding_specs)
@@ -414,10 +523,12 @@ def parse_instruction_line(line: str) -> Optional[Instruction]:
     # Create instruction (will be duplicated for RV32V and RV64V later)
     instr = Instruction(mnemonic, "RV32V")
     instr.encoding = encoding
-    instr.operands = operands
-    instr.operand_types = operand_types
     instr.category = infer_category(mnemonic)
     instr.format = infer_format_from_opcode(encoding, mnemonic)
+
+    # Reorder operands from encoding field order to assembly syntax order
+    instr.operands = reorder_operands_for_assembly(operands, instr.format, mnemonic)
+    instr.operand_types = [operand_name_to_type(op) for op in instr.operands]
 
     # Parse encoding into structured fields using vector-specific formats
     instr.encoding_fields = parse_encoding_fields(instr.encoding, instr.format)
