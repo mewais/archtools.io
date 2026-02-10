@@ -14,6 +14,8 @@ import {
   CacheConfig,
   ISAReference,
   Simulator,
+  SignalReference,
+  ABIReference,
 } from './pages';
 import type { Theme } from './types';
 import './styles/theme.css';
@@ -62,6 +64,8 @@ function App() {
             <Route path="/cache-config" element={<CacheConfig />} />
             <Route path="/isa-reference" element={<ISAReference />} />
             <Route path="/simulator" element={<Simulator />} />
+            <Route path="/signal-reference" element={<SignalReference />} />
+            <Route path="/abi-reference" element={<ABIReference />} />
           </Routes>
         </PageLayout>
 

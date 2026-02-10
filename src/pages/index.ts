@@ -11,3 +11,5 @@ export { default as FLOPSCalc } from './FLOPSCalc';
 export { default as CacheConfig } from './CacheConfig';
 export { default as ISAReference } from './ISAReference';
 export { default as Simulator } from './Simulator';
+export { default as SignalReference } from './SignalReference';
+export { default as ABIReference } from './ABIReference';

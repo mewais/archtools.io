@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../../components';
-import { HexIcon, FloatIcon, BinaryViewerIcon, BitwiseIcon, ChecksumIcon, CacheIcon, SpeedupIcon, BandwidthIcon, FLOPSIcon, BookIcon, PlayIcon } from '../../components/Icons';
+import { HexIcon, FloatIcon, BinaryViewerIcon, BitwiseIcon, ChecksumIcon, CacheIcon, SpeedupIcon, BandwidthIcon, FLOPSIcon, BookIcon, PlayIcon, SignalIcon, ABIIcon } from '../../components/Icons';
 import './Home.css';
 
 const tools = {
@@ -78,6 +78,24 @@ const tools = {
       href: '/bandwidth-calc',
       icon: <BandwidthIcon size={28} />,
       tags: ['DDR5', 'HBM', 'bandwidth'],
+    },
+  ],
+  system: [
+    {
+      id: 'signal-reference',
+      title: 'Signal Reference',
+      description: 'Interactive Unix/Linux signal reference. Browse all standard signals with numbers, default actions, and usage notes.',
+      href: '/signal-reference',
+      icon: <SignalIcon size={28} />,
+      tags: ['POSIX', 'signals', 'Linux'],
+    },
+    {
+      id: 'abi-reference',
+      title: 'ABI / Calling Convention',
+      description: 'Compare calling conventions across x86-64, AArch64, RISC-V, and i386. Register roles, argument passing, and stack rules.',
+      href: '/abi-reference',
+      icon: <ABIIcon size={28} />,
+      tags: ['ABI', 'registers', 'calling convention'],
     },
   ],
   riscv: [
@@ -163,6 +181,29 @@ const Home: React.FC = () => {
               icon={tool.icon}
               href={tool.href}
               category="general"
+              tags={tool.tags}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* System Tools */}
+      <section className="home__section">
+        <div className="home__section-header">
+          <h2 className="home__section-title">System Tools</h2>
+          <p className="home__section-description">
+            Signal references, ABI conventions, and system-level programming utilities
+          </p>
+        </div>
+        <div className="home__grid">
+          {tools.system.map((tool) => (
+            <Card
+              key={tool.id}
+              title={tool.title}
+              description={tool.description}
+              icon={tool.icon}
+              href={tool.href}
+              category="system"
               tags={tool.tags}
             />
           ))}

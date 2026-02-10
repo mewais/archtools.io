@@ -1,0 +1,370 @@
+/* ABI / Calling Convention Reference Styles */
+
+.abi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ─── Selector Bar ───────────────────────────────────────────────────────── */
+
+.abi__selector-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.abi__selector-bar--secondary {
+  padding-top: var(--spacing-sm);
+  border-top: 1px dashed var(--border-primary);
+}
+
+.abi__tab-wrap {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.abi__compare-btn--active {
+  background: var(--color-primary-500) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--color-primary-500) !important;
+}
+
+/* Mobile select */
+
+.abi__select-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.abi__select-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  font-weight: var(--font-weight-medium);
+}
+
+.abi__select {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  min-height: var(--size-touch-target);
+}
+
+.abi__select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* ─── Content ────────────────────────────────────────────────────────────── */
+
+.abi__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ─── Section ────────────────────────────────────────────────────────────── */
+
+.abi__section {
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  background: var(--bg-primary);
+}
+
+.abi__section-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+/* ─── Overview Grid ──────────────────────────────────────────────────────── */
+
+.abi__overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.abi__overview-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+}
+
+.abi__overview-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-medium);
+}
+
+.abi__overview-value {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ─── Register Name ──────────────────────────────────────────────────────── */
+
+.abi__reg-name {
+  font-family: var(--font-code);
+}
+
+/* ─── Argument Passing ───────────────────────────────────────────────────── */
+
+.abi__arg-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.abi__arg-col {
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+}
+
+.abi__arg-col-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.abi__arg-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.abi__arg-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.abi__arg-index {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  min-width: 1.5rem;
+}
+
+.abi__arg-none {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ─── Return Values ──────────────────────────────────────────────────────── */
+
+.abi__return-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.abi__return-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+}
+
+.abi__return-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  min-width: 4rem;
+}
+
+.abi__return-regs {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ─── Register Table ─────────────────────────────────────────────────────── */
+
+.abi__reg-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.abi__reg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.abi__reg-table th {
+  text-align: left;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-tertiary);
+  border-bottom: 2px solid var(--border-primary);
+  white-space: nowrap;
+}
+
+.abi__reg-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--border-primary);
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.abi__reg-table tbody tr:nth-child(odd) {
+  background: var(--bg-secondary);
+}
+
+.abi__roles-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+/* ─── Role Badge ─────────────────────────────────────────────────────────── */
+
+.abi__role-badge {
+  display: inline-block;
+  padding: var(--spacing-2xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.abi__role-badge--arg-int {
+  background: color-mix(in srgb, var(--abi-role-arg-int) 15%, transparent);
+  color: var(--abi-role-arg-int);
+}
+
+.abi__role-badge--arg-float {
+  background: color-mix(in srgb, var(--abi-role-arg-float) 15%, transparent);
+  color: var(--abi-role-arg-float);
+}
+
+.abi__role-badge--return {
+  background: color-mix(in srgb, var(--abi-role-return) 15%, transparent);
+  color: var(--abi-role-return);
+}
+
+.abi__role-badge--callee {
+  background: color-mix(in srgb, var(--abi-role-callee) 15%, transparent);
+  color: var(--abi-role-callee);
+}
+
+.abi__role-badge--caller {
+  background: color-mix(in srgb, var(--abi-role-caller) 15%, transparent);
+  color: var(--abi-role-caller);
+}
+
+.abi__role-badge--special {
+  background: color-mix(in srgb, var(--abi-role-special) 15%, transparent);
+  color: var(--abi-role-special);
+}
+
+/* ─── Special Rules ──────────────────────────────────────────────────────── */
+
+.abi__rules {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.abi__rule {
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+}
+
+.abi__rule-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.abi__rule-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* ─── Diff Highlight ─────────────────────────────────────────────────────── */
+
+.abi__diff {
+  background: var(--abi-diff-bg) !important;
+}
+
+/* ─── Compare Grid (Desktop) ─────────────────────────────────────────────── */
+
+.abi__compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.abi__compare-heading {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--border-primary);
+}
+
+/* ─── Responsive: Tablet ─────────────────────────────────────────────────── */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .abi__section {
+    padding: var(--spacing-md);
+  }
+}
+
+/* ─── Responsive: Mobile ─────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .abi {
+    gap: var(--spacing-md);
+  }
+
+  .abi__selector-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .abi__section {
+    padding: var(--spacing-md);
+  }
+
+  .abi__overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .abi__arg-columns {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}

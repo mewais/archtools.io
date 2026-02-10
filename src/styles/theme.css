@@ -210,6 +210,25 @@
   /* Category Colors */
   --category-general: #8b5cf6;
   --category-riscv: #10b981;
+  --category-system: #3b82f6;
+
+  /* Signal action badge colors */
+  --signal-action-term: var(--color-red-400);
+  --signal-action-core: var(--color-palette-orange);
+  --signal-action-ign: var(--text-tertiary);
+  --signal-action-stop: var(--color-warning-400);
+  --signal-action-cont: var(--color-success);
+
+  /* ABI register role colors */
+  --abi-role-arg-int: var(--color-info);
+  --abi-role-arg-float: var(--color-palette-purple);
+  --abi-role-return: var(--color-success);
+  --abi-role-callee: var(--color-warning-500);
+  --abi-role-caller: var(--color-red-400);
+  --abi-role-special: var(--text-tertiary);
+
+  /* Diff highlight */
+  --abi-diff-bg: color-mix(in srgb, var(--color-warning-400) 10%, transparent);
 
   /* Red Color Scale */
   --color-red-50: #fef2f2;
@@ -336,6 +355,7 @@
   /* Category Colors - Dark Theme */
   --category-general: #a78bfa;
   --category-riscv: #34d399;
+  --category-system: #60a5fa;
 
   /* Red Color Scale - Dark Theme */
   --color-red-50: #7f1d1d;

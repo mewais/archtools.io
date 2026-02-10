@@ -59,7 +59,7 @@ export interface CardProps {
   description: string;
   icon: React.ReactNode;
   href: string;
-  category: 'general' | 'riscv';
+  category: 'general' | 'riscv' | 'system';
   tags?: string[];
   className?: string;
 }
@@ -76,7 +76,7 @@ export interface Tool {
   title: string;
   description: string;
   href: string;
-  category: 'general' | 'riscv';
+  category: 'general' | 'riscv' | 'system';
   icon: string;
   tags: string[];
   comingSoon?: boolean;

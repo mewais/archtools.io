@@ -125,6 +125,14 @@
   border-color: var(--category-riscv);
 }
 
+.tool-card--system .tool-card__icon {
+  color: var(--category-system);
+}
+
+.tool-card--system:hover {
+  border-color: var(--category-system);
+}
+
 /* Responsive */
 @media (max-width: 767px) {
   .tool-card {

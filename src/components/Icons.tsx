@@ -271,6 +271,34 @@ export const VectorRegisterIcon: React.FC<IconProps> = ({ size = 24, className =
   </svg>
 );
 
+export const SignalIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="signalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3B82F6" />
+        <stop offset="100%" stopColor="#06B6D4" />
+      </linearGradient>
+    </defs>
+    <polyline points="2 12 5 12 8 4 11 20 14 8 17 16 20 12 22 12" stroke="url(#signalGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+);
+
+export const ABIIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="abiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3B82F6" />
+        <stop offset="100%" stopColor="#6366F1" />
+      </linearGradient>
+    </defs>
+    <rect x="3" y="2" width="18" height="20" rx="2" stroke="url(#abiGrad)" strokeWidth="1.5" fill="none" />
+    <rect x="6" y="6" width="12" height="2" rx="0.5" fill="url(#abiGrad)" opacity="0.8" />
+    <rect x="6" y="10" width="12" height="2" rx="0.5" fill="url(#abiGrad)" opacity="0.6" />
+    <rect x="6" y="14" width="12" height="2" rx="0.5" fill="url(#abiGrad)" opacity="0.4" />
+    <rect x="6" y="18" width="8" height="2" rx="0.5" fill="url(#abiGrad)" opacity="0.3" />
+  </svg>
+);
+
 export const FLOPSIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <defs>
