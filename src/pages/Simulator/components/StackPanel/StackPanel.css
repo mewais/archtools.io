@@ -1,0 +1,48 @@
+/* StackPanel Component Styles */
+
+/* ========== Base Styles ========== */
+.stack-panel .expandable-panel__content {
+  padding: 0; /* No padding - StackVisualizer has its own border */
+}
+
+.stack-panel__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ========== Phone Styles ========== */
+@media (max-width: 767px) {
+  /* Fix bounding box stretching */
+  .stack-panel {
+    align-self: flex-start;
+    width: 100%;
+  }
+
+  .stack-panel.expandable-panel {
+    height: auto;
+    width: 100%;
+  }
+
+  .stack-panel .expandable-panel__content {
+    height: auto;
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 40vh;
+    max-height: 60vh;
+    overflow: auto;
+  }
+
+  /* Ensure stack viewer uses full width */
+  .stack-panel__content {
+    width: 100%;
+  }
+
+  .stack-panel .stack-visualizer {
+    width: 100%;
+  }
+
+  .stack-panel .stack-visualizer table {
+    width: 100%;
+  }
+}

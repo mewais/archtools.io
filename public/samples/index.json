@@ -1,0 +1,497 @@
+{
+  "version": "1.0.0",
+  "description": "Educational RISC-V sample programs for the Architect.io simulator",
+  "lastUpdated": "2024-01-01",
+  "categories": [
+    {
+      "id": "rv32i",
+      "name": "RV32I Base Integer",
+      "description": "Fundamental 32-bit integer operations",
+      "extension": "rv32i"
+    },
+    {
+      "id": "rv64i",
+      "name": "RV64I Base Integer",
+      "description": "64-bit integer operations",
+      "extension": "rv64i"
+    },
+    {
+      "id": "rvm",
+      "name": "M Extension",
+      "description": "Integer multiplication and division",
+      "extension": "rv32im"
+    },
+    {
+      "id": "rvf",
+      "name": "F Extension",
+      "description": "Single-precision floating point",
+      "extension": "rv32imf"
+    },
+    {
+      "id": "rvd",
+      "name": "D Extension",
+      "description": "Double-precision floating point",
+      "extension": "rv32imfd"
+    },
+    {
+      "id": "rva",
+      "name": "A Extension",
+      "description": "Atomic memory operations",
+      "extension": "rv32ima"
+    },
+    {
+      "id": "rvv",
+      "name": "V Extension",
+      "description": "Vector operations",
+      "extension": "rv32imv"
+    }
+  ],
+  "samples": [
+    {
+      "id": "hello-registers",
+      "title": "Hello Registers",
+      "file": "rv32i/hello-registers.s",
+      "category": "rv32i",
+      "description": "Introduction to RISC-V registers, immediate loading, and basic data movement. Learn about the x0 zero register, LI pseudo-instruction, and register naming conventions.",
+      "extension": "rv32i",
+      "difficulty": "beginner",
+      "concepts": ["registers", "immediates", "li", "mv", "lui", "addi", "abi-names"],
+      "instructionCount": 15,
+      "expectedResults": {
+        "registers": {
+          "x1": 42,
+          "x2": 100,
+          "x3": -15,
+          "x4": 0,
+          "x5": 10,
+          "x6": -15,
+          "x7": 305419896,
+          "x8": 255,
+          "x10": 7
+        }
+      }
+    },
+    {
+      "id": "arithmetic",
+      "title": "Arithmetic Operations",
+      "file": "rv32i/arithmetic.s",
+      "category": "rv32i",
+      "description": "Comprehensive demonstration of RV32I arithmetic and logical operations including addition, subtraction, bitwise AND/OR/XOR, shifts, and comparisons.",
+      "extension": "rv32i",
+      "difficulty": "beginner",
+      "concepts": ["add", "sub", "and", "or", "xor", "sll", "srl", "sra", "slt", "sltu"],
+      "instructionCount": 35,
+      "expectedResults": {
+        "registers": {
+          "t3": 35,
+          "t4": 15,
+          "t5": 32,
+          "t6": 22,
+          "a2": 160,
+          "a3": 250,
+          "a4": 90,
+          "s1": 32,
+          "s2": 4,
+          "s8": 1,
+          "s9": 0
+        }
+      }
+    },
+    {
+      "id": "branches",
+      "title": "Branch Instructions",
+      "file": "rv32i/branches.s",
+      "category": "rv32i",
+      "description": "Learn conditional branching and control flow with BEQ, BNE, BLT, BGE, and their unsigned variants. Understand how the PC changes based on conditions.",
+      "extension": "rv32i",
+      "difficulty": "beginner",
+      "concepts": ["beq", "bne", "blt", "bge", "bltu", "bgeu", "j", "control-flow"],
+      "instructionCount": 30,
+      "expectedResults": {
+        "registers": {
+          "a0": 9,
+          "t0": 10,
+          "t1": 10,
+          "t2": 20,
+          "t4": 5,
+          "t5": 10
+        }
+      }
+    },
+    {
+      "id": "loops",
+      "title": "Loop Constructs",
+      "file": "rv32i/loops.s",
+      "category": "rv32i",
+      "description": "Implement for loops, while loops, and do-while loops using branches. Includes countdown loops and early exit (break) patterns.",
+      "extension": "rv32i",
+      "difficulty": "beginner",
+      "concepts": ["for-loop", "while-loop", "do-while", "loop-patterns", "break"],
+      "instructionCount": 40,
+      "expectedResults": {
+        "registers": {
+          "a0": 15,
+          "a1": 6,
+          "a2": -2,
+          "a3": 16,
+          "a4": 15,
+          "a5": 21
+        }
+      }
+    },
+    {
+      "id": "memory",
+      "title": "Memory Operations",
+      "file": "rv32i/memory.s",
+      "category": "rv32i",
+      "description": "Master load and store instructions: LW/SW for words, LH/SH for halfwords, LB/SB for bytes. Understand sign extension vs zero extension.",
+      "extension": "rv32i",
+      "difficulty": "beginner",
+      "concepts": ["lw", "sw", "lh", "sh", "lb", "sb", "lhu", "lbu", "sign-extension", "memory-alignment"],
+      "instructionCount": 35,
+      "expectedResults": {
+        "registers": {
+          "t0": -100,
+          "t1": 65436,
+          "t2": 3735928559,
+          "a3": 10,
+          "a4": 20,
+          "a5": 30,
+          "a6": 40,
+          "a7": 100,
+          "s7": 100
+        }
+      }
+    },
+    {
+      "id": "fibonacci",
+      "title": "Fibonacci Sequence",
+      "file": "rv32i/fibonacci.s",
+      "category": "rv32i",
+      "description": "Compute Fibonacci numbers iteratively. Demonstrates state management in loops and register allocation for the classic algorithm.",
+      "extension": "rv32i",
+      "difficulty": "intermediate",
+      "concepts": ["fibonacci", "state-variables", "register-allocation", "algorithm"],
+      "instructionCount": 40,
+      "expectedResults": {
+        "registers": {
+          "a0": 10,
+          "a1": 55,
+          "a2": 0,
+          "a3": 1,
+          "a4": 1,
+          "a5": 2,
+          "a6": 3,
+          "a7": 5,
+          "s2": 8,
+          "s3": 13,
+          "s4": 233,
+          "s5": 13
+        }
+      }
+    },
+    {
+      "id": "sum-array",
+      "title": "Sum Array Elements",
+      "file": "rv32i/sum-array.s",
+      "category": "rv32i",
+      "description": "Array traversal patterns: index-based and pointer-based iteration. Also computes min, max, and counts elements above a threshold.",
+      "extension": "rv32i",
+      "difficulty": "intermediate",
+      "concepts": ["arrays", "pointer-arithmetic", "index-calculation", "min-max", "iteration"],
+      "instructionCount": 45,
+      "expectedResults": {
+        "registers": {
+          "a0": 213,
+          "a1": 213,
+          "a2": 4,
+          "a3": 55,
+          "a4": 4,
+          "a5": 21,
+          "a6": 3,
+          "s1": 10
+        }
+      }
+    },
+    {
+      "id": "64bit-arithmetic",
+      "title": "64-bit Arithmetic",
+      "file": "rv64i/64bit-arithmetic.s",
+      "category": "rv64i",
+      "description": "Work with 64-bit values in RV64I. Covers loading large constants, 64-bit addition without overflow, word operations with sign extension, and 64-bit shifts.",
+      "extension": "rv64i",
+      "difficulty": "intermediate",
+      "concepts": ["64-bit", "addw", "slliw", "sraiw", "sign-extension", "large-constants"],
+      "instructionCount": 35,
+      "expectedResults": {
+        "registers": {
+          "a2": 4294967296,
+          "s1": 4294967296,
+          "s2": 9223372036854775808,
+          "t1": 305419896,
+          "t2": 3735928559
+        },
+        "notes": "64-bit values shown as decimal; some exceed 32-bit range"
+      }
+    },
+    {
+      "id": "pointer-ops",
+      "title": "64-bit Pointer Operations",
+      "file": "rv64i/pointer-ops.s",
+      "category": "rv64i",
+      "description": "64-bit address manipulation with LD/SD for doublewords, LWU for unsigned word loads, struct access patterns, and pointer arithmetic.",
+      "extension": "rv64i",
+      "difficulty": "intermediate",
+      "concepts": ["ld", "sd", "lwu", "64-bit-pointers", "struct-access", "array-indexing"],
+      "instructionCount": 40,
+      "expectedResults": {
+        "registers": {
+          "t0": "0x1111111111111111",
+          "t1": "0x2222222222222222",
+          "a3": "0x3333333333333333",
+          "a5": -1,
+          "a6": 4294967295
+        }
+      }
+    },
+    {
+      "id": "multiply",
+      "title": "Multiplication Operations",
+      "file": "rvm/multiply.s",
+      "category": "rvm",
+      "description": "M extension multiplication: MUL for lower 32 bits, MULH/MULHU/MULHSU for upper 32 bits. Learn to compute full 64-bit products.",
+      "extension": "rv32im",
+      "difficulty": "intermediate",
+      "concepts": ["mul", "mulh", "mulhu", "mulhsu", "64-bit-product", "overflow"],
+      "instructionCount": 30,
+      "expectedResults": {
+        "registers": {
+          "t2": 42,
+          "t5": 2000000,
+          "a2": 0,
+          "a3": 1,
+          "s9": 750,
+          "s11": 152399025
+        }
+      }
+    },
+    {
+      "id": "divide",
+      "title": "Division and Remainder",
+      "file": "rvm/divide.s",
+      "category": "rvm",
+      "description": "M extension division: DIV/DIVU for quotients, REM/REMU for remainders. Covers rounding behavior, division by zero, and overflow cases.",
+      "extension": "rv32im",
+      "difficulty": "intermediate",
+      "concepts": ["div", "divu", "rem", "remu", "truncation", "division-by-zero", "overflow"],
+      "instructionCount": 35,
+      "expectedResults": {
+        "registers": {
+          "t2": 6,
+          "a2": -3,
+          "a3": -2,
+          "s6": -1,
+          "s8": 100,
+          "a4": 5,
+          "a5": 4,
+          "a6": 3
+        }
+      }
+    },
+    {
+      "id": "float-basics",
+      "title": "Floating Point Basics",
+      "file": "rvf/float-basics.s",
+      "category": "rvf",
+      "description": "Introduction to single-precision floats: FLW/FSW for load/store, FADD.S, FSUB.S, FMUL.S, FDIV.S, FSQRT.S, comparisons, and sign manipulation.",
+      "extension": "rv32imf",
+      "difficulty": "intermediate",
+      "concepts": ["flw", "fsw", "fadd.s", "fmul.s", "fdiv.s", "fsqrt.s", "flt.s", "feq.s", "ieee754"],
+      "instructionCount": 40,
+      "expectedResults": {
+        "registers": {
+          "a0": 1,
+          "a1": 1,
+          "a2": 0,
+          "a3": "0x40490FDB"
+        },
+        "floatRegisters": {
+          "f0": 3.14159265,
+          "f1": 2.71828182,
+          "f4": 5.85987,
+          "f6": 6.28318,
+          "f11": 1.41421,
+          "f22": 12.566
+        }
+      }
+    },
+    {
+      "id": "float-convert",
+      "title": "Float Conversions",
+      "file": "rvf/float-convert.s",
+      "category": "rvf",
+      "description": "Convert between integers and floats: FCVT.S.W, FCVT.W.S, unsigned variants, rounding modes (rne, rtz, rdn, rup), and overflow handling.",
+      "extension": "rv32imf",
+      "difficulty": "intermediate",
+      "concepts": ["fcvt.s.w", "fcvt.w.s", "fcvt.s.wu", "fcvt.wu.s", "rounding-modes", "overflow"],
+      "instructionCount": 40,
+      "expectedResults": {
+        "registers": {
+          "t5": 3,
+          "t6": -2,
+          "a0": 4,
+          "a1": 3,
+          "a2": 3,
+          "a3": 4,
+          "a4": -2,
+          "a6": -3,
+          "s0": 100,
+          "s1": 0,
+          "s11": 1408
+        }
+      }
+    },
+    {
+      "id": "double-precision",
+      "title": "Double-Precision Floats",
+      "file": "rvd/double-precision.s",
+      "category": "rvd",
+      "description": "64-bit double-precision operations: FLD/FSD, FADD.D, FMUL.D, FDIV.D, precision comparison with single-precision, and large exponent handling.",
+      "extension": "rv32imfd",
+      "difficulty": "advanced",
+      "concepts": ["fld", "fsd", "fadd.d", "fmul.d", "fcvt.d.s", "fcvt.s.d", "precision", "double"],
+      "instructionCount": 45,
+      "expectedResults": {
+        "registers": {
+          "a2": 123456789,
+          "a3": 3,
+          "a6": 1,
+          "a7": 1,
+          "s0": 0
+        },
+        "floatRegisters": {
+          "f0": 3.14159265358979,
+          "f1": 2.71828182845904,
+          "f4": 5.85987448204883,
+          "f12": 9.86960440108935
+        },
+        "notes": "Double values shown with more decimal places"
+      }
+    },
+    {
+      "id": "atomics",
+      "title": "Atomic Operations",
+      "file": "rva/atomics.s",
+      "category": "rva",
+      "description": "A extension atomics: LR.W/SC.W for load-reserved/store-conditional, AMO operations (swap, add, and, or, xor, min, max). Essential for multi-core synchronization.",
+      "extension": "rv32ima",
+      "difficulty": "advanced",
+      "concepts": ["lr.w", "sc.w", "amoswap", "amoadd", "amoand", "amoor", "amoxor", "amomin", "amomax", "spinlock"],
+      "instructionCount": 50,
+      "expectedResults": {
+        "registers": {
+          "a0": 12,
+          "a1": 99,
+          "a2": 2,
+          "a3": 7,
+          "a4": 170,
+          "a6": 175,
+          "a7": 80,
+          "s6": 10,
+          "s11": 25
+        },
+        "memory": {
+          "counter": 8,
+          "lock_var": 0,
+          "swap_target": 99,
+          "min_value": 50
+        }
+      }
+    },
+    {
+      "id": "vector-add",
+      "title": "Vector Addition",
+      "file": "rvv/vector-add.s",
+      "category": "rvv",
+      "description": "Introduction to RVV: VSETVLI configuration, VLE32.V/VSE32.V load/store, VADD.VV vector-vector add. Includes stripmine loop for large arrays.",
+      "extension": "rv32imv",
+      "difficulty": "advanced",
+      "concepts": ["vsetvli", "vle32.v", "vse32.v", "vadd.vv", "vadd.vx", "vadd.vi", "stripmine"],
+      "instructionCount": 35,
+      "expectedResults": {
+        "registers": {
+          "a3": 11,
+          "a4": 22,
+          "a5": 88,
+          "a6": 101,
+          "a7": 1616
+        },
+        "memory": {
+          "array_c": [11, 22, 33, 44, 55, 66, 77, 88],
+          "large_c": [101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515, 1616]
+        }
+      }
+    },
+    {
+      "id": "vector-dot",
+      "title": "Vector Dot Product",
+      "file": "rvv/vector-dot.s",
+      "category": "rvv",
+      "description": "Compute dot products using VMUL.VV and VREDSUM.VS reduction. Includes finding min/max elements and sum of squares. Fundamental operation for ML/graphics.",
+      "extension": "rv32imv",
+      "difficulty": "advanced",
+      "concepts": ["vmul.vv", "vredsum.vs", "vredmax.vs", "vredmin.vs", "vmv.x.s", "dot-product", "reduction"],
+      "instructionCount": 40,
+      "expectedResults": {
+        "registers": {
+          "a2": 72,
+          "a3": 20,
+          "a4": 136,
+          "a5": 360,
+          "a6": 8,
+          "a7": 1,
+          "s4": 30
+        }
+      }
+    }
+  ],
+  "difficultyLevels": {
+    "beginner": {
+      "description": "Basic concepts suitable for first-time RISC-V learners",
+      "prerequisites": "Basic programming knowledge",
+      "estimatedTime": "15-30 minutes per program"
+    },
+    "intermediate": {
+      "description": "Builds on basics, introduces more complex patterns",
+      "prerequisites": "Understanding of beginner programs",
+      "estimatedTime": "30-60 minutes per program"
+    },
+    "advanced": {
+      "description": "Complex operations requiring deeper understanding",
+      "prerequisites": "Solid grasp of RISC-V fundamentals",
+      "estimatedTime": "60+ minutes per program"
+    }
+  },
+  "learningPaths": {
+    "fundamentals": {
+      "name": "RISC-V Fundamentals",
+      "description": "Start here for a complete introduction to RISC-V",
+      "samples": ["hello-registers", "arithmetic", "branches", "loops", "memory"]
+    },
+    "algorithms": {
+      "name": "Algorithm Implementation",
+      "description": "Learn to implement common algorithms in assembly",
+      "samples": ["fibonacci", "sum-array"]
+    },
+    "floating-point": {
+      "name": "Floating Point Programming",
+      "description": "Master IEEE 754 floating-point operations",
+      "samples": ["float-basics", "float-convert", "double-precision"]
+    },
+    "parallel-computing": {
+      "name": "Parallel and Vector Computing",
+      "description": "Explore multi-core and vector operations",
+      "samples": ["atomics", "vector-add", "vector-dot"]
+    }
+  }
+}

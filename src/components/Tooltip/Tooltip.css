@@ -1,0 +1,131 @@
+/* Tooltip Component Styles */
+
+/* ========== Wrapper ========== */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== Tooltip Container ========== */
+.tooltip {
+  position: absolute;
+  z-index: var(--z-tooltip);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-content);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-lg);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========== Tooltip Content ========== */
+.tooltip__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== Tooltip Arrow ========== */
+.tooltip__arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  transform: rotate(45deg);
+}
+
+/* ========== Position: Top ========== */
+.tooltip--top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--top .tooltip__arrow {
+  bottom: -5px;
+  left: 50%;
+  margin-left: -4px;
+  border-top: none;
+  border-left: none;
+}
+
+/* ========== Position: Bottom ========== */
+.tooltip--bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--bottom .tooltip__arrow {
+  top: -5px;
+  left: 50%;
+  margin-left: -4px;
+  border-bottom: none;
+  border-right: none;
+}
+
+/* ========== Position: Left ========== */
+.tooltip--left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip--left .tooltip__arrow {
+  right: -5px;
+  top: 50%;
+  margin-top: -4px;
+  border-left: none;
+  border-bottom: none;
+}
+
+/* ========== Position: Right ========== */
+.tooltip--right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip--right .tooltip__arrow {
+  left: -5px;
+  top: 50%;
+  margin-top: -4px;
+  border-right: none;
+  border-top: none;
+}
+
+/* ========== Dark Theme Adjustments ========== */
+[data-theme='dark'] .tooltip {
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow-xl);
+}
+
+[data-theme='dark'] .tooltip__arrow {
+  background-color: var(--bg-secondary);
+}
+
+/* ========== Responsive Design ========== */
+
+/* Phone: Larger tooltip text for touch devices */
+@media (max-width: 767px) {
+  .tooltip {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm);
+  }
+}

@@ -217,6 +217,60 @@ export const BandwidthIcon: React.FC<IconProps> = ({ size = 24, className = '' }
   </svg>
 );
 
+export const IntegerRegisterIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="intRegGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3b82f6" />
+        <stop offset="100%" stopColor="#1d4ed8" />
+      </linearGradient>
+    </defs>
+    <circle cx="6" cy="8" r="2.5" fill="url(#intRegGradient)" />
+    <circle cx="12" cy="8" r="2.5" fill="url(#intRegGradient)" />
+    <circle cx="18" cy="8" r="2.5" fill="url(#intRegGradient)" />
+    <circle cx="6" cy="16" r="2.5" fill="url(#intRegGradient)" />
+    <circle cx="12" cy="16" r="2.5" fill="url(#intRegGradient)" />
+    <circle cx="18" cy="16" r="2.5" fill="url(#intRegGradient)" />
+    <text x="6" y="9.5" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#ffffff" fontWeight="bold">1</text>
+    <text x="12" y="9.5" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#ffffff" fontWeight="bold">0</text>
+    <text x="18" y="9.5" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#ffffff" fontWeight="bold">1</text>
+    <text x="6" y="17.5" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#ffffff" fontWeight="bold">0</text>
+    <text x="12" y="17.5" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#ffffff" fontWeight="bold">1</text>
+    <text x="18" y="17.5" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#ffffff" fontWeight="bold">1</text>
+  </svg>
+);
+
+export const FloatRegisterIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="floatRegGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#10b981" />
+        <stop offset="100%" stopColor="#059669" />
+      </linearGradient>
+    </defs>
+    <text x="12" y="16" textAnchor="middle" fontFamily="serif" fontSize="18" fontWeight="bold" fill="url(#floatRegGradient)">
+      π
+    </text>
+    <circle cx="12" cy="20" r="1.5" fill="#10b981" />
+  </svg>
+);
+
+export const VectorRegisterIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="vecRegGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#a855f7" />
+        <stop offset="100%" stopColor="#7c3aed" />
+      </linearGradient>
+    </defs>
+    <rect x="2" y="4" width="20" height="3" rx="1" fill="url(#vecRegGradient)" opacity="0.9" />
+    <rect x="2" y="9" width="20" height="3" rx="1" fill="url(#vecRegGradient)" opacity="0.7" />
+    <rect x="2" y="14" width="20" height="3" rx="1" fill="url(#vecRegGradient)" opacity="0.5" />
+    <path d="M4 2 L2 2 L2 20 L4 20" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" fill="none" />
+    <path d="M20 2 L22 2 L22 20 L20 20" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" fill="none" />
+  </svg>
+);
+
 export const FLOPSIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <defs>

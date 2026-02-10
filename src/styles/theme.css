@@ -121,6 +121,10 @@
 
   /* ========== Additional Typography ========== */
   --font-subtitle: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-table: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* ========== Container Radius ========== */
+  --radius-container: 0.75rem;
 }
 
 /* ============================================
@@ -206,6 +210,42 @@
   /* Category Colors */
   --category-general: #8b5cf6;
   --category-riscv: #10b981;
+
+  /* Red Color Scale */
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+
+  /* Green Color Scale */
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+
+  /* Amber Color Scale */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
 
   /* Visualization Palette (charts, color-coded groups) */
   --color-palette-purple: #8b5cf6;
@@ -296,6 +336,42 @@
   /* Category Colors - Dark Theme */
   --category-general: #a78bfa;
   --category-riscv: #34d399;
+
+  /* Red Color Scale - Dark Theme */
+  --color-red-50: #7f1d1d;
+  --color-red-100: #991b1b;
+  --color-red-200: #b91c1c;
+  --color-red-300: #dc2626;
+  --color-red-400: #ef4444;
+  --color-red-500: #f87171;
+  --color-red-600: #fca5a5;
+  --color-red-700: #fecaca;
+  --color-red-800: #fee2e2;
+  --color-red-900: #fef2f2;
+
+  /* Green Color Scale - Dark Theme */
+  --color-green-50: #14532d;
+  --color-green-100: #166534;
+  --color-green-200: #15803d;
+  --color-green-300: #16a34a;
+  --color-green-400: #22c55e;
+  --color-green-500: #4ade80;
+  --color-green-600: #86efac;
+  --color-green-700: #bbf7d0;
+  --color-green-800: #dcfce7;
+  --color-green-900: #f0fdf4;
+
+  /* Amber Color Scale - Dark Theme */
+  --color-amber-50: #78350f;
+  --color-amber-100: #92400e;
+  --color-amber-200: #b45309;
+  --color-amber-300: #d97706;
+  --color-amber-400: #f59e0b;
+  --color-amber-500: #fbbf24;
+  --color-amber-600: #fcd34d;
+  --color-amber-700: #fde68a;
+  --color-amber-800: #fef3c7;
+  --color-amber-900: #fffbeb;
 
   /* Visualization Palette - Dark Theme */
   --color-palette-purple: #a78bfa;

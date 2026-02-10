@@ -1,0 +1,285 @@
+/* ExpandablePanel Component Styles */
+
+/* ========== Base Panel Styles ========== */
+.expandable-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-container);
+  overflow: visible; /* Allow header dropdowns to overflow */
+  transition: all var(--transition-base);
+  height: 100%;
+}
+
+/* ========== Header Styles ========== */
+.expandable-panel__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: var(--spacing-sm);
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+  gap: var(--spacing-sm);
+  box-sizing: border-box;
+  /* Match parent's top border radius */
+  border-radius: calc(var(--radius-container) - 1px) calc(var(--radius-container) - 1px) 0 0;
+}
+
+.expandable-panel__title {
+  margin: 0;
+  font-family: var(--font-subtitle);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+  grid-column: 1;
+}
+
+/* Hidden title - visually hidden but accessible to screen readers */
+.expandable-panel__title--hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.expandable-panel__custom-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  grid-column: 2;
+  min-width: 0; /* Allow shrinking */
+  overflow: visible; /* Allow dropdowns to overflow */
+  /* Let child components control their own alignment */
+}
+
+.expandable-panel__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+  grid-column: 3;
+  /* Ensure buttons are always visible */
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== Header Buttons ========== */
+.expandable-panel__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
+  min-width: var(--spacing-lg);
+  min-height: var(--spacing-lg);
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-content);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.expandable-panel__button:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-secondary);
+  color: var(--text-primary);
+}
+
+.expandable-panel__button:active {
+  transform: scale(0.95);
+}
+
+.expandable-panel__button:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Touch-friendly sizing on mobile */
+@media (max-width: 767px) {
+  .expandable-panel__button {
+    width: var(--spacing-xl);
+    height: var(--spacing-xl);
+    min-width: var(--spacing-xl);
+    min-height: var(--spacing-xl);
+  }
+}
+
+/* ========== Content Styles ========== */
+.expandable-panel__content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--spacing-md);
+  animation: expandContent var(--transition-base);
+}
+
+@keyframes expandContent {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== Minimized State ========== */
+.expandable-panel--minimized {
+  height: auto;
+}
+
+.expandable-panel--minimized .expandable-panel__content {
+  display: none;
+}
+
+.expandable-panel--minimized .expandable-panel__header {
+  border-bottom: none;
+  /* Maintain same padding and spacing as expanded state */
+}
+
+.expandable-panel--minimized .expandable-panel__custom-actions {
+  display: none;
+}
+
+/* ========== Expanded State (Overlay) ========== */
+.expandable-panel__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  z-index: var(--z-modal-backdrop);
+  animation: fadeIn var(--transition-base);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.expandable-panel--expanded {
+  position: relative;
+  width: 90vw;
+  height: 85vh;
+  max-width: 1600px;
+  max-height: 1200px;
+  box-shadow: var(--shadow-xl);
+  animation: expandPanel var(--transition-base);
+  z-index: var(--z-modal);
+}
+
+@keyframes expandPanel {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.expandable-panel--expanded .expandable-panel__content {
+  flex: 1;
+  overflow: auto;
+}
+
+/* Scrollbar styling for expanded panels */
+.expandable-panel--expanded .expandable-panel__content::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.expandable-panel--expanded .expandable-panel__content::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.expandable-panel--expanded .expandable-panel__content::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: var(--radius-sm);
+}
+
+.expandable-panel--expanded .expandable-panel__content::-webkit-scrollbar-thumb:hover {
+  background: var(--border-secondary);
+}
+
+/* ========== Responsive Design ========== */
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .expandable-panel--expanded {
+    width: 92vw;
+    height: 88vh;
+  }
+
+  .expandable-panel__content {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+/* Phone (<768px) */
+@media (max-width: 767px) {
+  .expandable-panel--expanded {
+    width: 95vw;
+    height: 90vh;
+    border-radius: var(--radius-md);
+  }
+
+  .expandable-panel__backdrop {
+    padding: var(--spacing-sm);
+  }
+
+  .expandable-panel__header {
+    padding: var(--spacing-xs);
+  }
+
+  .expandable-panel__title {
+    font-size: var(--font-size-sm);
+  }
+
+  .expandable-panel__content {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* ========== Accessibility ========== */
+.expandable-panel__button:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .expandable-panel,
+  .expandable-panel__content,
+  .expandable-panel__backdrop,
+  .expandable-panel--expanded {
+    animation: none;
+    transition: none;
+  }
+}

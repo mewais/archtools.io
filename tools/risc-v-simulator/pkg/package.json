@@ -1,0 +1,20 @@
+{
+  "name": "risc-v-simulator",
+  "type": "module",
+  "collaborators": [
+    "Architect.io"
+  ],
+  "description": "High-performance RISC-V functional simulator with WebAssembly bindings",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "risc_v_simulator_bg.wasm",
+    "risc_v_simulator.js",
+    "risc_v_simulator.d.ts"
+  ],
+  "main": "risc_v_simulator.js",
+  "types": "risc_v_simulator.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

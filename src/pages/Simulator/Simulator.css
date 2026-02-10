@@ -1,0 +1,165 @@
+/* Simulator Component Styles */
+
+/* ========== Ancestor Height Constraints ========== */
+/* Lock viewport height so each column scrolls independently */
+.app:has(.simulator) {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page-layout:has(.simulator) {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page-layout__content:has(.simulator) {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ========== Main Container ========== */
+.simulator {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ========== Column Layout ========== */
+.simulator__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  height: 100%;
+  overflow: hidden;
+}
+
+.simulator__column--left {
+  min-height: 0;
+}
+
+/* Left column: Code Editor (70%) + PC Decode (30%) */
+.simulator__column--left > :first-child {
+  flex: 7;
+  min-height: 0;
+}
+
+.simulator__column--left > :last-child {
+  flex: 3;
+  min-height: 0;
+}
+
+/* When a panel is minimized, it should take only minimum space */
+.simulator__column > .expandable-panel--minimized {
+  flex: 0 0 fit-content !important;
+  min-height: 0 !important;
+  height: fit-content !important;
+}
+
+/* When sibling panel is minimized, expand to fill space */
+.simulator__column--left > :first-child.expandable-panel--minimized + :last-child {
+  flex: 1 !important;
+}
+
+.simulator__column--left:has(> :last-child.expandable-panel--minimized) > :first-child {
+  flex: 1 !important;
+}
+
+/* ========== Right Panel (Desktop) ========== */
+.simulator__right-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.simulator__right-tabs {
+  flex-shrink: 0;
+  margin-bottom: var(--spacing-sm);
+}
+
+.simulator__right-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Ensure the active panel fills the right content area */
+.simulator__right-content > * {
+  height: 100%;
+}
+
+/* ========== Mobile Layout ========== */
+.simulator__mobile-tabs {
+  flex-shrink: 0;
+  margin-bottom: var(--spacing-sm);
+}
+
+.simulator__mobile-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.simulator__mobile-content > * {
+  height: 100%;
+}
+
+/* ========== Responsive Design ========== */
+
+/* Tablet (768px - 1279px) */
+@media (max-width: 1279px) and (min-width: 768px) {
+  .simulator__column {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Phone (<768px) */
+@media (max-width: 767px) {
+  .simulator {
+    height: auto;
+    overflow: visible;
+  }
+
+  .simulator__mobile-content {
+    min-height: 400px;
+  }
+}
+
+/* ========== Loading State ========== */
+.simulator--loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-family: var(--font-content);
+  font-size: var(--font-size-lg);
+}
+
+/* ========== Error State ========== */
+.simulator__error {
+  padding: var(--spacing-lg);
+  background-color: var(--color-red-50);
+  border: 1px solid var(--color-red-200);
+  border-radius: var(--radius-md);
+  color: var(--color-red-700);
+  font-family: var(--font-content);
+  font-size: var(--font-size-base);
+  text-align: center;
+}
+
+/* ========== Accessibility ========== */
+.simulator:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* ========== Print Styles ========== */
+@media print {
+  .simulator {
+    overflow: visible;
+  }
+}

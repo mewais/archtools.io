@@ -1,0 +1,148 @@
+/* PCDecodePanel Component Styles */
+
+/* ========== Base Styles ========== */
+.pc-decode-panel .expandable-panel__content {
+  padding: var(--spacing-xs); /* Minimal padding */
+  overflow: hidden; /* Prevent scrolling on the content container */
+}
+
+.pc-decode-panel__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs); /* Minimal gap between PC header and encoding */
+  flex: 1;
+  min-height: 0; /* Allow flex item to shrink below content size */
+  height: 100%;
+}
+
+/* ========== Header - PC & Instruction on Same Row ========== */
+.pc-decode-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.pc-decode-panel__header-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.pc-decode-panel__label {
+  font-family: var(--font-subtitle);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* ========== Value Display ========== */
+.pc-decode-panel__value {
+  font-family: var(--font-code);
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+}
+
+.pc-decode-panel__value--pc {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-500);
+}
+
+.pc-decode-panel__value--mnemonic {
+  font-weight: var(--font-weight-semibold);
+}
+
+.pc-decode-panel__operands {
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-normal);
+}
+
+/* ========== Encoding Visualization ========== */
+.pc-decode-panel__encoding {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Allow flex item to shrink below content size */
+  overflow: hidden;
+}
+
+/* Remove gap in encoding visualization when in PC decode panel (always compact mode) */
+.pc-decode-panel__encoding .encoding-visualization {
+  gap: 0;
+}
+
+/* ========== Responsive Design ========== */
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .pc-decode-panel__header {
+    flex-wrap: wrap;
+  }
+
+  .pc-decode-panel__label {
+    font-size: 10px;
+  }
+
+  .pc-decode-panel__value {
+    font-size: 11px;
+  }
+}
+
+/* Phone (<768px) */
+@media (max-width: 767px) {
+  /* Prevent panel from stretching - make it compact and natural height */
+  .pc-decode-panel {
+    align-self: flex-start;
+    width: 100%; /* Ensure full width despite align-self */
+  }
+
+  /* Override ExpandablePanel wrapper's height: 100% from base styles */
+  .pc-decode-panel.expandable-panel {
+    height: auto;
+    width: 100%; /* Ensure full width */
+  }
+
+  /* Override ExpandablePanel wrapper to fit content tightly */
+  .pc-decode-panel .expandable-panel__content {
+    height: auto;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    width: 100%; /* Ensure full width */
+  }
+
+  .pc-decode-panel__content {
+    height: auto; /* Override 100% height */
+    flex: 0 0 auto; /* Don't grow or shrink, use natural size */
+  }
+
+  .pc-decode-panel__encoding {
+    flex: 0 0 auto; /* Don't grow, use natural size */
+  }
+
+  .pc-decode-panel__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .pc-decode-panel__header-item {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .pc-decode-panel__label {
+    font-size: 10px;
+  }
+
+  .pc-decode-panel__value {
+    font-size: 10px;
+  }
+}

@@ -9,5 +9,7 @@ export { default as AdUnit } from './AdUnit';
 export { default as PageLayout } from './PageLayout';
 export { default as TabSelector } from './TabSelector';
 export { default as Grid } from './Grid';
+export { default as Tooltip } from './Tooltip';
+export { default as StackVisualizer } from './StackVisualizer';
 
 export * from './Icons';

@@ -1,0 +1,371 @@
+/* MemoryPanel Component Styles */
+
+/* ========== CSS Variables ========== */
+.memory-panel {
+  /* No custom variables needed */
+}
+
+/* ========== Base Styles ========== */
+.memory-panel .expandable-panel__content {
+  padding: var(--spacing-sm); /* Reduced padding for memory panel */
+}
+
+.memory-panel__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  height: 100%;
+}
+
+/* ========== Controls - Desktop: 2 Rows, Tablet: 1 Row, Phone: 2 Rows ========== */
+.memory-panel__controls {
+  display: flex;
+  flex-direction: column; /* Desktop: 2 rows (address row + actions row) */
+  align-items: stretch;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.memory-panel__address-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-xs);
+  width: 100%; /* Desktop: full width for address row */
+}
+
+.memory-panel__label {
+  font-family: var(--font-subtitle);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.memory-panel__address-input {
+  width: 120px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.memory-panel__address-input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.memory-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  width: 100%; /* Desktop: full width for actions row */
+  justify-content: flex-start;
+}
+
+.memory-panel__divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--border-primary);
+  margin: 0 var(--spacing-xs);
+}
+
+/* ========== Table Wrapper ========== */
+.memory-panel__table-wrapper {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+}
+
+/* ========== Table Styles ========== */
+.memory-panel__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-code);
+  font-size: var(--font-size-xs);
+}
+
+.memory-panel__thead {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-secondary);
+  z-index: var(--z-sticky);
+  border-bottom: 2px solid var(--border-primary);
+}
+
+.memory-panel__header {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-size: var(--font-size-xs);
+}
+
+.memory-panel__header--watch {
+  background-color: var(--bg-secondary);
+}
+
+.memory-panel__header--address {
+  position: sticky;
+  left: 0;
+  background-color: var(--bg-secondary);
+  text-align: left;
+  z-index: var(--z-sticky);
+}
+
+.memory-panel__header--byte {
+  min-width: var(--spacing-xl);
+}
+
+.memory-panel__tbody {
+  background-color: var(--bg-primary);
+}
+
+/* ========== Table Rows ========== */
+.memory-panel__row {
+  border-bottom: 1px solid var(--border-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.memory-panel__row:hover {
+  background-color: var(--bg-secondary);
+}
+
+.memory-panel__row:last-child {
+  border-bottom: none;
+}
+
+/* ========== Table Cells ========== */
+.memory-panel__cell {
+  padding: var(--spacing-xs);
+  vertical-align: middle;
+  text-align: center;
+}
+
+.memory-panel__cell--address {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-500);
+  text-align: left;
+  padding-left: var(--spacing-sm);
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  background-color: var(--bg-primary);
+  border-right: 1px solid var(--border-primary);
+  z-index: var(--z-base);
+}
+
+.memory-panel__row:hover .memory-panel__cell--address {
+  background-color: var(--bg-secondary);
+}
+
+.memory-panel__cell--byte {
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+}
+
+.memory-panel__cell--byte:hover .memory-panel__byte-value {
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+.memory-panel__cell--ascii {
+  font-family: var(--font-code);
+  color: var(--text-secondary);
+  text-align: left;
+  padding-left: var(--spacing-md);
+  border-left: 1px solid var(--border-primary);
+  white-space: pre;
+}
+
+.memory-panel__cell--watch {
+  text-align: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.memory-panel__row:hover .memory-panel__cell--watch {
+  background-color: var(--bg-secondary);
+}
+
+/* ========== Watchpoint Bubble (Yellow) ========== */
+.memory-panel__watch-bubble {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--border-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin: 0 auto;
+}
+
+.memory-panel__watch-bubble:hover {
+  border-color: #fbbf24;
+  background-color: rgba(251, 191, 36, 0.2);
+  box-shadow: 0 0 4px rgba(251, 191, 36, 0.4);
+}
+
+.memory-panel__watch-bubble--active {
+  background-color: #fbbf24;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.memory-panel__watch-bubble--active:hover {
+  background-color: #f59e0b;
+  box-shadow: 0 0 4px rgba(245, 158, 11, 0.6);
+}
+
+/* ========== Byte Value ========== */
+.memory-panel__byte-value {
+  display: inline-block;
+  padding: 2px 4px;
+  transition: all var(--transition-fast);
+}
+
+/* ========== Input Field ========== */
+.memory-panel__input {
+  width: 100%;
+  max-width: 40px;
+  padding: 2px 4px;
+  font-family: var(--font-code);
+  font-size: var(--font-size-xs);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--color-primary-500);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+  text-align: center;
+}
+
+.memory-panel__input:focus {
+  border-color: var(--color-primary-600);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+/* Old watch button styles removed - using bubbles now */
+
+/* ========== Scrollbar Styling ========== */
+.memory-panel__table-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.memory-panel__table-wrapper::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.memory-panel__table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: var(--radius-sm);
+}
+
+.memory-panel__table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--border-secondary);
+}
+
+/* ========== Responsive Design ========== */
+
+/* Tablet (768px - 1023px) - Override desktop to use single row */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .memory-panel__controls {
+    flex-direction: row; /* Tablet: single row (override desktop column) */
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .memory-panel__address-group {
+    flex: 1;
+    min-width: 180px;
+    width: auto; /* Reset desktop full width */
+  }
+
+  .memory-panel__actions {
+    width: auto; /* Reset desktop full width */
+  }
+
+  .memory-panel__table {
+    font-size: 10px;
+  }
+}
+
+/* Phone (<768px) */
+@media (max-width: 767px) {
+  /* Constrain memory panel height and maintain scroll structure like desktop */
+  .memory-panel {
+    align-self: flex-start;
+    width: 100%;
+  }
+
+  .memory-panel.expandable-panel {
+    height: 60vh; /* Fixed height to constrain panel */
+    max-height: 60vh;
+    min-height: 40vh;
+    width: 100%;
+  }
+
+  /* Ensure content area takes full height to allow table-wrapper to scroll */
+  .memory-panel .expandable-panel__content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .memory-panel__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .memory-panel__controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .memory-panel__address-group {
+    width: 100%;
+  }
+
+  .memory-panel__address-input {
+    width: 100%;
+  }
+
+  .memory-panel__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .memory-panel__divider {
+    display: none;
+  }
+
+  .memory-panel__table {
+    font-size: 9px;
+  }
+
+  .memory-panel__cell {
+    padding: 2px;
+  }
+
+  .memory-panel__header {
+    padding: var(--spacing-xs);
+  }
+
+  /* Enable horizontal scrolling - show all columns but make them scrollable */
+  .memory-panel__table-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+}

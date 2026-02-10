@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Backend source (only artifacts are committed)
+tools/risc-v-simulator/src/
+tools/risc-v-simulator/Cargo.*
+tools/risc-v-simulator/tests/
+tools/risc-v-simulator/target/
+tools/data-extraction/
+tools/instruction-generator/
+tools/spike/
+tools/verification/
