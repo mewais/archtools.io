@@ -120,6 +120,23 @@ const Simulator: React.FC = () => {
     <ToolPage
       title="RISC-V Functional Simulator"
       description="Step-by-step RISC-V assembly execution with real-time visualization of registers, memory, and program flow."
+      keywords={[
+        'RISC-V simulator',
+        'RISC-V emulator',
+        'RISC-V assembly simulator',
+        'RISC-V online simulator',
+        'assembly simulator',
+        'RISC-V debugger',
+        'RISC-V register viewer',
+        'RISC-V memory viewer',
+        'step through assembly',
+        'assembly execution',
+        'RISC-V programming',
+        'computer architecture simulator',
+        'instruction execution',
+        'program counter',
+        'assembly language',
+      ]}
       fullWidth
     >
       <SimulatorProvider>

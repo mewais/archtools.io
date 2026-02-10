@@ -193,6 +193,26 @@ const ISAReference: React.FC = () => {
     <ToolPage
       title="RISC-V ISA Reference"
       description="Interactive instruction set reference for RISC-V. Browse and search 1300+ instructions across RV32I, RV64I, M, A, F, D, C, V, B, and more extensions."
+      keywords={[
+        'RISC-V ISA reference',
+        'RISC-V instructions',
+        'RISC-V instruction set',
+        'RV32I instructions',
+        'RV64I instructions',
+        'RISC-V extensions',
+        'RISC-V opcode',
+        'RISC-V encoding',
+        'RISC-V assembly',
+        'RISC-V vector',
+        'RVV instructions',
+        'RISC-V multiply',
+        'RISC-V atomic',
+        'RISC-V floating point',
+        'RISC-V compressed',
+        'RISC-V bit manipulation',
+        'instruction set architecture',
+        'computer architecture',
+      ]}
       fullWidth
     >
       <div className="isa-reference">
