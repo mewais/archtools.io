@@ -166,9 +166,7 @@
 
 .sc__desc-cell {
   color: var(--text-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-break: break-word;
 }
 
 .sc__icon-cell {
@@ -302,8 +300,8 @@
   font-family: var(--font-code);
   font-size: var(--font-size-sm);
   color: var(--text-primary);
-  overflow-x: auto;
-  white-space: nowrap;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* ─── Parameters Table ───────────────────────────────────────────────────── */
@@ -333,10 +331,17 @@
 
 .sc__param-row {
   display: grid;
-  grid-template-columns: 8rem 8rem 1fr;
+  grid-template-columns: 3rem 10rem 6rem 1fr;
   gap: var(--spacing-sm);
   padding: var(--spacing-2xs) 0;
   align-items: baseline;
+}
+
+.sc__param-reg {
+  font-family: var(--font-code);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-500);
 }
 
 .sc__param-name {
@@ -350,6 +355,7 @@
   font-family: var(--font-code);
   font-size: var(--font-size-xs);
   color: var(--text-tertiary);
+  word-break: break-all;
 }
 
 .sc__param-desc {
@@ -483,6 +489,8 @@
   border-left: var(--spacing-xs) solid var(--text-tertiary);
   cursor: pointer;
   transition: border-color var(--transition-fast), background var(--transition-fast);
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .sc__card:hover {
@@ -629,7 +637,7 @@
   }
 
   .sc__param-row {
-    grid-template-columns: 6rem 6rem 1fr;
+    grid-template-columns: 3rem 8rem 5rem 1fr;
   }
 }
 

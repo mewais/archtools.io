@@ -75,6 +75,21 @@ const mipsAbiTabs = [
   { id: 'n64', label: 'n64' },
 ];
 
+/* Syscall calling-convention registers per architecture (arg0 … arg5).
+ * Verified against kernel entry code: the register convention is uniform
+ * for ALL syscalls on a given architecture — no per-syscall exceptions. */
+const SYSCALL_REGS: Record<string, { nr: string; args: string[] }> = {
+  'x86-64':   { nr: 'rax',  args: ['rdi', 'rsi', 'rdx', 'r10', 'r8', 'r9'] },
+  'i386':     { nr: 'eax',  args: ['ebx', 'ecx', 'edx', 'esi', 'edi', 'ebp'] },
+  'arm64':    { nr: 'x8',   args: ['x0', 'x1', 'x2', 'x3', 'x4', 'x5'] },
+  'riscv':    { nr: 'a7',   args: ['a0', 'a1', 'a2', 'a3', 'a4', 'a5'] },
+  'mips-o32': { nr: 'v0',   args: ['a0', 'a1', 'a2', 'a3', 'stack', 'stack'] },
+  'mips-n64': { nr: 'v0',   args: ['a0', 'a1', 'a2', 'a3', 'a4', 'a5'] },
+};
+
+const getRegsForArch = (arch: string, mipsAbi: string) =>
+  SYSCALL_REGS[arch === 'mips' ? `mips-${mipsAbi}` : arch];
+
 const deprecatedFilterTabs = [
   { id: 'any', label: 'Any' },
   { id: 'yes', label: 'Yes' },
@@ -189,6 +204,7 @@ const SyscallReference: React.FC = () => {
 
   const renderExpandedContent = (s: Syscall) => {
     const num = getSyscallNumber(s, archMode, mipsAbi);
+    const regs = getRegsForArch(archMode, mipsAbi);
     return (
       <div className="sc__expanded">
         {/* On tablet/mobile, show hidden metadata */}
@@ -220,10 +236,11 @@ const SyscallReference: React.FC = () => {
           <div className="sc__params">
             <span className="sc__section-label">Parameters</span>
             <div className="sc__params-table">
-              {s.parameters.map(p => (
+              {s.parameters.map((p, i) => (
                 <div key={p.name} className="sc__param-row">
-                  <code className="sc__param-name">{p.name}</code>
+                  {regs && <code className="sc__param-reg">{regs.args[i]}</code>}
                   <code className="sc__param-type">{p.type}</code>
+                  <code className="sc__param-name">{p.name}</code>
                   <span className="sc__param-desc">{p.description}</span>
                 </div>
               ))}
