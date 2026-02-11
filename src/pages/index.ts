@@ -13,3 +13,4 @@ export { default as ISAReference } from './ISAReference';
 export { default as Simulator } from './Simulator';
 export { default as SignalReference } from './SignalReference';
 export { default as ABIReference } from './ABIReference';
+export { default as SyscallReference } from './SyscallReference';

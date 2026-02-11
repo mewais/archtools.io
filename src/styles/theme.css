@@ -219,6 +219,18 @@
   --signal-action-stop: var(--color-warning-400);
   --signal-action-cont: var(--color-success);
 
+  /* Syscall category colors */
+  --syscall-cat-filesystem: #3B82F6;
+  --syscall-cat-process: #10B981;
+  --syscall-cat-memory: #8B5CF6;
+  --syscall-cat-network: #06B6D4;
+  --syscall-cat-signal: #F97316;
+  --syscall-cat-ipc: #EC4899;
+  --syscall-cat-time: #FBBF24;
+  --syscall-cat-security: #EF4444;
+  --syscall-cat-system: #6366F1;
+  --syscall-cat-misc: #9CA3AF;
+
   /* ABI register role colors */
   --abi-role-arg-int: var(--color-info);
   --abi-role-arg-float: var(--color-palette-purple);
@@ -356,6 +368,18 @@
   --category-general: #a78bfa;
   --category-riscv: #34d399;
   --category-system: #60a5fa;
+
+  /* Syscall category colors - Dark Theme */
+  --syscall-cat-filesystem: #60A5FA;
+  --syscall-cat-process: #34D399;
+  --syscall-cat-memory: #A78BFA;
+  --syscall-cat-network: #22D3EE;
+  --syscall-cat-signal: #FB923C;
+  --syscall-cat-ipc: #F472B6;
+  --syscall-cat-time: #FCD34D;
+  --syscall-cat-security: #F87171;
+  --syscall-cat-system: #818CF8;
+  --syscall-cat-misc: #D1D5DB;
 
   /* Red Color Scale - Dark Theme */
   --color-red-50: #7f1d1d;

@@ -299,6 +299,21 @@ export const ABIIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
   </svg>
 );
 
+export const SyscallIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="syscallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#10B981" />
+        <stop offset="100%" stopColor="#3B82F6" />
+      </linearGradient>
+    </defs>
+    <rect x="3" y="3" width="18" height="18" rx="2" stroke="url(#syscallGrad)" strokeWidth="1.5" fill="none" />
+    <rect x="5" y="6" width="14" height="2.5" rx="0.5" fill="url(#syscallGrad)" opacity="0.3" />
+    <rect x="5" y="10.5" width="14" height="2.5" rx="0.5" fill="url(#syscallGrad)" opacity="0.9" />
+    <rect x="5" y="15" width="14" height="2.5" rx="0.5" fill="url(#syscallGrad)" opacity="0.3" />
+  </svg>
+);
+
 export const FLOPSIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <defs>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../../components';
-import { HexIcon, FloatIcon, BinaryViewerIcon, BitwiseIcon, ChecksumIcon, CacheIcon, SpeedupIcon, BandwidthIcon, FLOPSIcon, BookIcon, PlayIcon, SignalIcon, ABIIcon } from '../../components/Icons';
+import { HexIcon, FloatIcon, BinaryViewerIcon, BitwiseIcon, ChecksumIcon, CacheIcon, SpeedupIcon, BandwidthIcon, FLOPSIcon, BookIcon, PlayIcon, SignalIcon, ABIIcon, SyscallIcon } from '../../components/Icons';
 import './Home.css';
 
 const tools = {
@@ -96,6 +96,14 @@ const tools = {
       href: '/abi-reference',
       icon: <ABIIcon size={28} />,
       tags: ['ABI', 'registers', 'calling convention'],
+    },
+    {
+      id: 'syscalls-reference',
+      title: 'Linux Syscalls Reference',
+      description: 'Browse ~470 Linux system calls with per-architecture numbers, parameters, and notes for x86-64, ARM64, RISC-V, i386, and MIPS.',
+      href: '/syscalls-reference',
+      icon: <SyscallIcon size={28} />,
+      tags: ['syscalls', 'Linux', 'kernel'],
     },
   ],
   riscv: [

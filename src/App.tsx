@@ -16,6 +16,7 @@ import {
   Simulator,
   SignalReference,
   ABIReference,
+  SyscallReference,
 } from './pages';
 import type { Theme } from './types';
 import './styles/theme.css';
@@ -66,6 +67,7 @@ function App() {
             <Route path="/simulator" element={<Simulator />} />
             <Route path="/signal-reference" element={<SignalReference />} />
             <Route path="/abi-reference" element={<ABIReference />} />
+            <Route path="/syscalls-reference" element={<SyscallReference />} />
           </Routes>
         </PageLayout>
 
