@@ -14,3 +14,4 @@ export { default as Simulator } from './Simulator';
 export { default as SignalReference } from './SignalReference';
 export { default as ABIReference } from './ABIReference';
 export { default as SyscallReference } from './SyscallReference';
+export { default as NotFound } from './NotFound';

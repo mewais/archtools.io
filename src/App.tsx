@@ -17,6 +17,7 @@ import {
   SignalReference,
   ABIReference,
   SyscallReference,
+  NotFound,
 } from './pages';
 import type { Theme } from './types';
 import './styles/theme.css';
@@ -68,6 +69,7 @@ function App() {
             <Route path="/signal-reference" element={<SignalReference />} />
             <Route path="/abi-reference" element={<ABIReference />} />
             <Route path="/syscalls-reference" element={<SyscallReference />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </PageLayout>
 
