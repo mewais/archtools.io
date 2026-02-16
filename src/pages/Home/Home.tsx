@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../../components';
-import { HexIcon, FloatIcon, BinaryViewerIcon, BitwiseIcon, ChecksumIcon, CacheIcon, SpeedupIcon, BandwidthIcon, FLOPSIcon, BookIcon, PlayIcon, SignalIcon, ABIIcon, SyscallIcon } from '../../components/Icons';
+import { HexIcon, FloatIcon, BinaryViewerIcon, BitwiseIcon, ChecksumIcon, CacheIcon, SpeedupIcon, BandwidthIcon, FLOPSIcon, BookIcon, PlayIcon, SignalIcon, ABIIcon, SyscallIcon, EncoderDecoderIcon } from '../../components/Icons';
 import './Home.css';
 
 const tools = {
@@ -114,6 +114,14 @@ const tools = {
       href: '/isa-reference',
       icon: <BookIcon size={28} />,
       tags: ['RISC-V', 'instructions', 'encoding'],
+    },
+    {
+      id: 'encoder-decoder',
+      title: 'Instruction Encoder/Decoder',
+      description: 'Encode RISC-V assembly to machine code or decode hex/binary back to instructions with bit-field visualization.',
+      href: '/encoder-decoder',
+      icon: <EncoderDecoderIcon size={28} />,
+      tags: ['RISC-V', 'encoding', 'machine code'],
     },
     {
       id: 'simulator',

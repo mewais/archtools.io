@@ -76,7 +76,7 @@ export interface AssemblyResult {
 /**
  * Parsed operand value
  */
-interface ParsedOperand {
+export interface ParsedOperand {
   type: 'register' | 'fp_register' | 'vector_register' | 'csr' | 'immediate' | 'label' | 'memory' | 'rounding_mode' | 'vtype_field';
   value: number | string;
   offset?: number; // For memory operands like 4(sp)
@@ -101,7 +101,7 @@ interface ParsedLine {
 /**
  * ABI register name to number mapping for integer registers (x0-x31)
  */
-const REGISTER_MAP: Record<string, number> = {
+export const REGISTER_MAP: Record<string, number> = {
   // x0-x31 numeric names
   ...Object.fromEntries(Array.from({ length: 32 }, (_, i) => [`x${i}`, i])),
   // ABI names
@@ -116,7 +116,7 @@ const REGISTER_MAP: Record<string, number> = {
 /**
  * Floating-point register name to number mapping (f0-f31)
  */
-const FP_REGISTER_MAP: Record<string, number> = {
+export const FP_REGISTER_MAP: Record<string, number> = {
   // f0-f31 numeric names
   ...Object.fromEntries(Array.from({ length: 32 }, (_, i) => [`f${i}`, i])),
   // FP ABI names
@@ -139,7 +139,7 @@ const VECTOR_REGISTER_MAP: Record<string, number> = {
 /**
  * CSR name to number mapping (common CSRs)
  */
-const CSR_MAP: Record<string, number> = {
+export const CSR_MAP: Record<string, number> = {
   // User-level CSRs
   fflags: 0x001, frm: 0x002, fcsr: 0x003,
   cycle: 0xC00, time: 0xC01, instret: 0xC02,
@@ -159,7 +159,7 @@ const CSR_MAP: Record<string, number> = {
  * Rounding mode modifier suffixes and their encoding values
  * Used for FP instructions: FADD.S.RNE, FCVT.W.S.RTZ, etc.
  */
-const ROUNDING_MODE_MAP: Record<string, number> = {
+export const ROUNDING_MODE_MAP: Record<string, number> = {
   RNE: 0,  // Round to Nearest, ties to Even
   RTZ: 1,  // Round towards Zero
   RDN: 2,  // Round Down (towards -inf)
@@ -226,7 +226,7 @@ const ATOMIC_ORDERING_MAP: Record<string, { aq: number; rl: number }> = {
  * @param mnemonic - Full mnemonic like "FADD.S.RNE" or "LR.W.AQ"
  * @returns Object with baseMnemonic and modifier values
  */
-function parseModifiers(mnemonic: string): {
+export function parseModifiers(mnemonic: string): {
   baseMnemonic: string;
   rm?: number;
   aq?: number;
@@ -262,14 +262,14 @@ function parseModifiers(mnemonic: string): {
  * Instruction lookup table (mnemonic -> instruction definition)
  * Stores ALL instructions from all extensions for comprehensive support
  */
-const INSTRUCTION_MAP: Map<string, Instruction> = new Map();
+export const INSTRUCTION_MAP: Map<string, Instruction> = new Map();
 
 /**
  * Extension-specific instruction map
  * Maps "mnemonic:extension" -> instruction definition
  * Used for instructions that have different encodings per extension (e.g., REV8, ZEXT.H)
  */
-const INSTRUCTION_BY_EXT_MAP: Map<string, Instruction> = new Map();
+export const INSTRUCTION_BY_EXT_MAP: Map<string, Instruction> = new Map();
 
 // Build instruction lookup tables on module load - include ALL instructions
 for (const instr of instructionsData as Instruction[]) {
@@ -302,10 +302,11 @@ let currentXlen: Xlen = 32;
  * @param mnemonic - Instruction mnemonic (case-insensitive)
  * @returns Instruction definition or undefined if not found
  */
-function lookupInstruction(mnemonic: string): Instruction | undefined {
+export function lookupInstruction(mnemonic: string, xlen?: Xlen): Instruction | undefined {
+  const effectiveXlen = xlen ?? currentXlen;
   const key = mnemonic.toUpperCase();
 
-  if (currentXlen === 64) {
+  if (effectiveXlen === 64) {
     // For RV64, prefer RV64 variants for instructions that have different encodings
     // Try common RV64 extensions in priority order
     for (const ext of ['RV64I', 'RV64M', 'RV64A', 'RV64F', 'RV64D', 'RV64B', 'RV64C', 'RV64V', 'RV64Zfh']) {
@@ -355,7 +356,7 @@ for (const pseudo of pseudoinstructionsData as PseudoInstructionDef[]) {
  * @param encoding - 32-bit encoding pattern string with 'x' for variable bits
  * @returns Base encoding value
  */
-function getBaseEncoding(encoding: string): number {
+export function getBaseEncoding(encoding: string): number {
   return parseInt(encoding.replace(/x/gi, '0'), 2);
 }
 
@@ -368,7 +369,7 @@ function getBaseEncoding(encoding: string): number {
  * @param endBit - End bit position (inclusive)
  * @returns Modified value
  */
-function setBits(base: number, value: number, startBit: number, endBit: number): number {
+export function setBits(base: number, value: number, startBit: number, endBit: number): number {
   const width = endBit - startBit + 1;
   const mask = ((1 << width) - 1) << startBit;
   return (base & ~mask) | ((value << startBit) & mask);
@@ -386,7 +387,7 @@ function setBits(base: number, value: number, startBit: number, endBit: number):
  * @param fieldValue - Field value pattern (e.g., "0100000xxxxx" or "xxxxx")
  * @returns Modified value
  */
-function setBitsPreservingFixed(
+export function setBitsPreservingFixed(
   base: number,
   value: number,
   startBit: number,
@@ -442,7 +443,7 @@ function setBitsPreservingFixed(
  * @param fieldName - Field name like "imm[11:0]" or "imm[12]"
  * @returns Extracted bits
  */
-function extractImmediateBits(imm: number, fieldName: string): number {
+export function extractImmediateBits(imm: number, fieldName: string): number {
   // Match patterns like imm[11:0], imm[12], offset[31:12], symbol[11:0]
   const match = fieldName.match(/(?:imm|offset|symbol|shamt)\[(\d+)(?::(\d+))?\]/i);
   if (match) {
@@ -469,7 +470,7 @@ function extractImmediateBits(imm: number, fieldName: string): number {
  * @param operandValues - Map of operand names to values (rd, rs1, rs2, imm, etc.)
  * @returns Encoded instruction
  */
-function encodeInstructionDataDriven(
+export function encodeInstructionDataDriven(
   instr: Instruction,
   operandValues: Record<string, number>
 ): number {
@@ -744,7 +745,7 @@ function isLabel(str: string): boolean {
  * Parse a single operand string
  * Handles integer, FP, vector registers, CSRs, memory operands, labels, and immediates
  */
-function parseOperand(operandStr: string): ParsedOperand {
+export function parseOperand(operandStr: string): ParsedOperand {
   const trimmed = operandStr.trim();
 
   // Atomic instruction format: (rs1) - register in parentheses without offset
@@ -1722,7 +1723,7 @@ function expandPseudoInstruction(
 /**
  * Helper to extract register value from operand (handles both int and FP)
  */
-function getRegisterValue(operand: ParsedOperand | undefined): number {
+export function getRegisterValue(operand: ParsedOperand | undefined): number {
   if (!operand) return 0;
   if (operand.type === 'register' || operand.type === 'fp_register' || operand.type === 'vector_register') {
     return operand.value as number;
@@ -2611,6 +2612,154 @@ export function assemble(
 // ============================================================================
 // DISASSEMBLY (for debugging)
 // ============================================================================
+
+/**
+ * Rich decode result with structured data for visualization
+ */
+export interface DecodeResult {
+  instruction: Instruction;
+  assemblyText: string;
+  operands: Record<string, number>;
+}
+
+/**
+ * Decode a single 32-bit instruction word into structured data.
+ * Returns the matched instruction, formatted assembly text, and extracted operand values.
+ *
+ * @param word - 32-bit instruction word
+ * @param xlen - Register width (32 or 64), defaults to 32
+ * @returns DecodeResult or null if no match
+ */
+export function decodeWord(word: number, xlen: Xlen = 32): DecodeResult | null {
+  const rd = (word >> 7) & 0x1F;
+  const rs1 = (word >> 15) & 0x1F;
+  const rs2 = (word >> 20) & 0x1F;
+  const funct7 = (word >> 25) & 0x7F;
+
+  // Iterate ALL instructions from the extension-specific map (all 1300+ entries).
+  // Priority order: current XLEN variants first, then generic extensions, then other XLEN.
+  const preferred: [string, Instruction][] = [];
+  const generic: [string, Instruction][] = [];
+  const fallbacks: [string, Instruction][] = [];
+  const xlenPrefix = xlen === 64 ? 'RV64' : 'RV32';
+  const otherPrefix = xlen === 64 ? 'RV32' : 'RV64';
+
+  for (const [extKey, instr] of INSTRUCTION_BY_EXT_MAP) {
+    const mnemonic = extKey.split(':')[0];
+    if (instr.extension.startsWith(xlenPrefix)) {
+      preferred.push([mnemonic, instr]);
+    } else if (instr.extension.startsWith(otherPrefix)) {
+      fallbacks.push([mnemonic, instr]);
+    } else {
+      generic.push([mnemonic, instr]);
+    }
+  }
+
+  const allEntries = [...preferred, ...generic, ...fallbacks];
+
+  const is16bit = (word >>> 16) === 0 && (word & 0x3) !== 0x3;
+
+  for (const [mnemonic, instr] of allEntries) {
+    if (!instr.encodingFields) continue;
+    // Match instruction width: 16-bit encodings only for 16-bit words, 32-bit for 32-bit
+    const instrIs16bit = instr.encoding.length === 16;
+    if (instrIs16bit !== is16bit) continue;
+
+    let matches = true;
+    for (const field of instr.encodingFields) {
+      if (field.value.includes('x')) continue;
+
+      const fieldValue = parseInt(field.value, 2);
+      const width = field.endBit - field.startBit + 1;
+      const mask = ((1 << width) - 1);
+      const extractedValue = (word >> field.startBit) & mask;
+
+      if (extractedValue !== fieldValue) {
+        matches = false;
+        break;
+      }
+    }
+
+    if (matches) {
+      const format = instr.format.toLowerCase();
+      const operands: Record<string, number> = {};
+      let assemblyText = '';
+
+      if (format === 'r-type') {
+        operands.rd = rd;
+        operands.rs1 = rs1;
+        operands.rs2 = rs2;
+        assemblyText = `${mnemonic.toLowerCase()} x${rd}, x${rs1}, x${rs2}`;
+      } else if (format === 'i-type') {
+        const imm = (word >> 20) & 0xFFF;
+        const signedImm = imm >= 0x800 ? imm - 0x1000 : imm;
+        operands.rd = rd;
+        operands.rs1 = rs1;
+        operands.imm = signedImm;
+
+        if (instr.category === 'Load') {
+          assemblyText = `${mnemonic.toLowerCase()} x${rd}, ${signedImm}(x${rs1})`;
+        } else if (mnemonic.toUpperCase() === 'JALR') {
+          assemblyText = `${mnemonic.toLowerCase()} x${rd}, x${rs1}, ${signedImm}`;
+        } else if (mnemonic.toUpperCase().includes('SL') || mnemonic.toUpperCase().includes('SR')) {
+          const shamt = imm & (xlen === 64 ? 0x3F : 0x1F);
+          operands.imm = shamt;
+          assemblyText = `${mnemonic.toLowerCase()} x${rd}, x${rs1}, ${shamt}`;
+        } else {
+          assemblyText = `${mnemonic.toLowerCase()} x${rd}, x${rs1}, ${signedImm}`;
+        }
+      } else if (format === 's-type') {
+        const imm_11_5 = funct7;
+        const imm_4_0 = rd;
+        const imm = (imm_11_5 << 5) | imm_4_0;
+        const signedImm = imm >= 0x800 ? imm - 0x1000 : imm;
+        operands.rs1 = rs1;
+        operands.rs2 = rs2;
+        operands.imm = signedImm;
+        assemblyText = `${mnemonic.toLowerCase()} x${rs2}, ${signedImm}(x${rs1})`;
+      } else if (format === 'b-type') {
+        const bit12 = (word >> 31) & 0x1;
+        const bits10_5 = (word >> 25) & 0x3F;
+        const bits4_1 = (word >> 8) & 0xF;
+        const bit11 = (word >> 7) & 0x1;
+        const imm = (bit12 << 12) | (bit11 << 11) | (bits10_5 << 5) | (bits4_1 << 1);
+        const signedImm = imm >= 0x1000 ? imm - 0x2000 : imm;
+        operands.rs1 = rs1;
+        operands.rs2 = rs2;
+        operands.imm = signedImm;
+        assemblyText = `${mnemonic.toLowerCase()} x${rs1}, x${rs2}, ${signedImm}`;
+      } else if (format === 'u-type') {
+        const imm20 = (word >> 12) & 0xFFFFF;
+        operands.rd = rd;
+        operands.imm = imm20;
+        assemblyText = `${mnemonic.toLowerCase()} x${rd}, 0x${imm20.toString(16)}`;
+      } else if (format === 'j-type') {
+        const bit20 = (word >> 31) & 0x1;
+        const bits10_1 = (word >> 21) & 0x3FF;
+        const bit11 = (word >> 20) & 0x1;
+        const bits19_12 = (word >> 12) & 0xFF;
+        const imm = (bit20 << 20) | (bits19_12 << 12) | (bit11 << 11) | (bits10_1 << 1);
+        const signedImm = imm >= 0x100000 ? imm - 0x200000 : imm;
+        operands.rd = rd;
+        operands.imm = signedImm;
+        assemblyText = `${mnemonic.toLowerCase()} x${rd}, ${signedImm}`;
+      } else if (format === 'r4-type') {
+        const rs3 = (word >> 27) & 0x1F;
+        operands.rd = rd;
+        operands.rs1 = rs1;
+        operands.rs2 = rs2;
+        operands.rs3 = rs3;
+        assemblyText = `${mnemonic.toLowerCase()} f${rd}, f${rs1}, f${rs2}, f${rs3}`;
+      } else {
+        assemblyText = mnemonic.toLowerCase();
+      }
+
+      return { instruction: instr, assemblyText, operands };
+    }
+  }
+
+  return null;
+}
 
 /**
  * Disassemble a single 32-bit instruction word

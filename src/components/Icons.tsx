@@ -314,6 +314,22 @@ export const SyscallIcon: React.FC<IconProps> = ({ size = 24, className = '' }) 
   </svg>
 );
 
+export const EncoderDecoderIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    <defs>
+      <linearGradient id="edGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6366F1" />
+        <stop offset="100%" stopColor="#06B6D4" />
+      </linearGradient>
+    </defs>
+    <rect x="2" y="4" width="8" height="3" rx="1" fill="url(#edGrad)" opacity="0.8" />
+    <rect x="2" y="9" width="8" height="3" rx="1" fill="url(#edGrad)" opacity="0.5" />
+    <rect x="2" y="14" width="8" height="3" rx="1" fill="url(#edGrad)" opacity="0.8" />
+    <path d="M13 8l3 4-3 4" stroke="url(#edGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    <path d="M22 8l-3 4 3 4" stroke="url(#edGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+);
+
 export const FLOPSIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <defs>

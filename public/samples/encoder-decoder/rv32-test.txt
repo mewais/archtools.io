@@ -1,0 +1,137 @@
+# =============================================================================
+# RISC-V Encoder/Decoder Test Data — RV32
+# =============================================================================
+# Paste assembly lines into the encoder (bulk mode, RV32) to test encoding.
+# Paste hex values into the decoder (bulk mode, RV32) to test decoding.
+# Expected hex values are in comments for cross-verification.
+# =============================================================================
+
+# ===================== RV32I: R-type (Register-Register) =====================
+add x1, x2, x3             # 0x003100B3
+sub x10, x11, x12          # 0x40C58533
+and x15, x16, x17          # 0x011877B3
+or x20, x21, x22           # 0x016AEA33
+xor x5, x6, x7             # 0x007342B3
+sll x8, x9, x10            # 0x00A49433
+srl x8, x9, x10            # 0x00A4D433
+sra x8, x9, x10            # 0x40A4D433
+slt x3, x4, x5             # 0x005221B3
+sltu x3, x4, x5            # 0x005231B3
+
+# ===================== RV32I: I-type (Immediate Arithmetic) ==================
+addi x1, x2, 42            # 0x02A10093
+addi x1, x0, -1            # 0xFFF00093
+andi x10, x11, 255         # 0x0FF5F513
+ori x12, x13, 16           # 0x0106E613
+xori x14, x15, -1          # 0xFFF7C713
+slti x3, x4, 100           # 0x06422193
+sltiu x3, x4, 100          # 0x06423193
+
+# ===================== RV32I: I-type (Loads) =================================
+lw x5, 8(x10)              # 0x00852283
+lh x6, -4(x11)             # 0xFFC59303
+lb x7, 0(x12)              # 0x00060383
+lbu x8, 1(x13)             # 0x0016C403
+lhu x9, 2(x14)             # 0x00275483
+
+# ===================== RV32I: I-type (Shifts) ================================
+slli x3, x4, 5             # 0x00521193
+srli x3, x4, 5             # 0x00525193
+srai x3, x4, 5             # 0x40525193
+
+# ===================== RV32I: S-type (Stores) ================================
+sw x5, 16(x10)             # 0x00552823
+sh x6, -8(x11)             # 0xFE659C23
+sb x7, 4(x12)              # 0x00760223
+
+# ===================== RV32I: B-type (Branches) ==============================
+beq x1, x2, 8              # 0x00208463
+bne x3, x4, 16             # 0x00419863
+blt x5, x6, -4             # 0xFE62CEE3
+bge x7, x8, 12             # 0x0083D663
+bltu x9, x10, 20           # 0x00A4EA63
+bgeu x11, x12, 24          # 0x00C5FC63
+
+# ===================== RV32I: U-type (Upper Immediate) =======================
+lui x1, 0x12345            # 0x123450B7
+auipc x2, 0x1000           # 0x01000117
+
+# ===================== RV32I: J-type (Jump) ==================================
+jal x1, 100                # 0x064000EF
+
+# ===================== RV32I: JALR ==========================================
+jalr x1, x2, 0             # 0x000100E7
+
+# ===================== RV32I: System =========================================
+ecall                       # 0x00000073
+ebreak                      # 0x00100073
+
+# ===================== M Extension (Multiply/Divide) =========================
+mul x1, x2, x3             # 0x023100B3
+mulh x4, x5, x6            # 0x02629233
+mulhu x7, x8, x9           # 0x029433B3
+div x10, x11, x12          # 0x02C5C533
+divu x13, x14, x15         # 0x02F756B3
+rem x16, x17, x18          # 0x0328E833
+remu x19, x20, x21         # 0x035A79B3
+
+# ===================== A Extension (Atomics) =================================
+lr.w x5, (x10)             # 0x100522AF
+sc.w x6, x7, (x10)         # 0x1875232F
+amoadd.w x5, x6, (x10)     # 0x006522AF
+amoswap.w x5, x6, (x10)    # 0x086522AF
+amoand.w x5, x6, (x10)     # 0x606522AF
+amoor.w x5, x6, (x10)      # 0x406522AF
+amoxor.w x5, x6, (x10)     # 0x206522AF
+amomin.w x5, x6, (x10)     # 0x806522AF
+amomax.w x5, x6, (x10)     # 0xA06522AF
+
+# ===================== F Extension (Single-Precision Float) ==================
+flw f1, 0(x10)              # 0x00052087
+fsw f2, 4(x10)              # 0x00252227
+fadd.s f3, f1, f2           # 0x0020F1D3
+fsub.s f4, f1, f2           # 0x0820F253
+fmul.s f5, f1, f2           # 0x1020F2D3
+fdiv.s f6, f1, f2           # 0x1820F353
+fsqrt.s f7, f1              # 0x5800F3D3
+feq.s x10, f1, f2           # 0xA020A553
+flt.s x10, f1, f2           # 0xA0209553
+fle.s x10, f1, f2           # 0xA0208553
+fcvt.w.s x10, f1            # 0xC000F553
+fcvt.s.w f9, x10            # 0xD00574D3
+fmv.x.w x10, f1             # 0xE0008553
+fmv.w.x f8, x10             # 0xF0050453
+
+# ===================== D Extension (Double-Precision Float) ==================
+fld f1, 0(x10)              # 0x00053087
+fsd f2, 8(x10)              # 0x00253427
+fadd.d f3, f1, f2           # 0x0220F1D3
+fsub.d f4, f1, f2           # 0x0A20F253
+fmul.d f5, f1, f2           # 0x1220F2D3
+fdiv.d f6, f1, f2           # 0x1A20F353
+fsqrt.d f7, f1              # 0x5A00F3D3
+fcvt.d.s f10, f1            # 0x4200F553
+fcvt.s.d f10, f1            # 0x4010F553
+
+# =============================================================================
+# DECODE TEST: Paste the hex values below into the decoder (bulk mode, RV32).
+# =============================================================================
+# 0x003100B3  ->  add x1, x2, x3
+# 0x40C58533  ->  sub x10, x11, x12
+# 0x02A10093  ->  addi x1, x2, 42
+# 0xFFF00093  ->  addi x1, x0, -1
+# 0x00852283  ->  lw x5, 8(x10)
+# 0x00552823  ->  sw x5, 16(x10)
+# 0x00208463  ->  beq x1, x2, 8
+# 0x123450B7  ->  lui x1, 0x12345
+# 0x064000EF  ->  jal x1, 100
+# 0x023100B3  ->  mul x1, x2, x3
+# 0x02C5C533  ->  div x10, x11, x12
+# 0x100522AF  ->  lr.w x5, (x10)
+# 0x006522AF  ->  amoadd.w x5, x6, (x10)
+# 0x0020F1D3  ->  fadd.s f3, f1, f2
+# 0x00052087  ->  flw f1, 0(x10)
+# 0x0220F1D3  ->  fadd.d f3, f1, f2
+# 0x00053087  ->  fld f1, 0(x10)
+# 0x00000073  ->  ecall
+# 0x00100073  ->  ebreak
