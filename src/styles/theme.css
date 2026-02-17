@@ -73,6 +73,9 @@
   /* Textarea min-height */
   --size-textarea-min: 7.5rem;
 
+  /* Full-page tool content height */
+  --size-tool-viewport: 90vh;
+
   /* Grid card minimum widths */
   --size-card-min-sm: 14rem;
   --size-card-min-md: 18rem;

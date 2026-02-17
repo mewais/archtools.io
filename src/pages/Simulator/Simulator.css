@@ -1,28 +1,9 @@
 /* Simulator Component Styles */
 
-/* ========== Ancestor Height Constraints ========== */
-/* Lock viewport height so each column scrolls independently */
-.app:has(.simulator) {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.page-layout:has(.simulator) {
-  min-height: 0;
-  overflow: hidden;
-}
-
-.page-layout__content:has(.simulator) {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-}
-
 /* ========== Main Container ========== */
 .simulator {
   width: 100%;
-  height: 100%;
+  height: var(--size-tool-viewport);
   display: flex;
   flex-direction: column;
   overflow: hidden;
